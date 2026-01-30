@@ -1,0 +1,19 @@
+{
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=@my-app/web",
+    "dev:mobile": "npm run start --workspace=@my-app/mobile",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.1.6"
+  },
+  "overrides": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  }
+}
