@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "MyApp",
+    "slug": "my-app",
+    "scheme": "myapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "enabled": false
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kiseki.app"
+    },
+    "android": {
+      "package": "com.kiseki.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-google-signin/google-signin"
+    ]
+  }
+}

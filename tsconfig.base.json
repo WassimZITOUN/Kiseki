@@ -13,7 +13,11 @@
       "@my-app/core": ["packages/core/src"],
       "@my-app/core/*": ["packages/core/src/*"],
       "@my-app/types": ["packages/types/src"],
-      "@my-app/types/*": ["packages/types/src/*"]
+      "@my-app/types/*": ["packages/types/src/*"],
+      "@repo/ui": ["packages/ui/src"],
+      "@repo/ui/*": ["packages/ui/src/*"],
+      "@repo/app": ["packages/app/features"],
+      "@repo/app/*": ["packages/app/features/*"]
     },
     "types": []
   }

@@ -7,27 +7,30 @@ node_modules/
 coverage/
 
 # Next.js
-apps/web/.next/
-apps/web/out/
-apps/web/next-env.d.ts
+apps/next/.next/
+apps/next/out/
+apps/next/next-env.d.ts
 
 # Expo
-apps/mobile/.expo/
-apps/mobile/dist/
-apps/mobile/npm-debug.*
-apps/mobile/*.jks
-apps/mobile/*.p8
-apps/mobile/*.p12
-apps/mobile/*.key
-apps/mobile/*.mobileprovision
-apps/mobile/*.orig.*
-apps/mobile/web-build/
+apps/expo/.expo/
+apps/expo/dist/
+apps/expo/npm-debug.*
+apps/expo/*.jks
+apps/expo/*.p8
+apps/expo/*.p12
+apps/expo/*.key
+apps/expo/*.mobileprovision
+apps/expo/*.orig.*
+apps/expo/web-build/
 
 # Expo (root)
 .expo/
 
 # Claude Code
 .claude/
+
+# Turbo
+.turbo/
 
 # Misc
 .DS_Store

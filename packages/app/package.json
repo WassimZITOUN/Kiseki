@@ -1,0 +1,23 @@
+{
+  "name": "@repo/app",
+  "version": "1.0.0",
+  "main": "features/index.ts",
+  "types": "features/index.ts",
+  "dependencies": {
+    "@my-app/core": "1.0.0",
+    "@repo/ui": "1.0.0",
+    "@supabase/supabase-js": "^2.93.3",
+    "solito": "^4.2.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-reanimated": "*",
+    "expo-secure-store": "*"
+  },
+  "peerDependenciesMeta": {
+    "expo-secure-store": {
+      "optional": true
+    }
+  }
+}

@@ -9,3 +9,6 @@ export const makeExample = (id: string, name: string): DomainExample => {
 export const greetService = (name: string) => {
   return `Service says hello to ${name}`;
 };
+
+export { createGroupsService } from "./groups";
+export { createVotesService } from "./votes";

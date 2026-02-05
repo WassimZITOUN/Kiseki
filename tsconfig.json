@@ -5,9 +5,11 @@
   },
   "include": [],
   "references": [
-    { "path": "apps/web" },
-    { "path": "apps/mobile" },
+    { "path": "apps/next" },
+    { "path": "apps/expo" },
     { "path": "packages/core" },
-    { "path": "packages/types" }
+    { "path": "packages/types" },
+    { "path": "packages/ui" },
+    { "path": "packages/app" }
   ]
 }
