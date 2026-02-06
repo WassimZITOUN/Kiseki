@@ -15,7 +15,7 @@ type Props = {
  *
  * Architecture:
  * 1. Shadow layer (violet glow, no clip)
- * 2. Blur layer (expo-blur with experimentalBlurMethod, tint="dark")
+ * 2. Blur layer (expo-blur with experimentalBlurMethod, tint="default" = pure blur, no color overlay)
  * 3. Refraction border (subtle white edge)
  * 4. Content
  *
@@ -75,7 +75,7 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
       >
         <BlurView
           intensity={intensity}
-          tint="dark"
+          tint="default"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />

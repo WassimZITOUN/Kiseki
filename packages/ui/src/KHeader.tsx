@@ -52,7 +52,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
           >
             <BlurView
               intensity={30}
-              tint="dark"
+              tint="default"
               experimentalBlurMethod="dimezisBlurView"
               style={StyleSheet.absoluteFill}
             />
@@ -116,7 +116,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                   >
                     <BlurView
                       intensity={25}
-                      tint="dark"
+                      tint="default"
                       experimentalBlurMethod="dimezisBlurView"
                       style={StyleSheet.absoluteFill}
                     />

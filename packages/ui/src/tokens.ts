@@ -45,7 +45,7 @@ export const colors = {
   // Status colors — vibrant for dark theme
   error: "#FF6B6B",
   success: "#4ADE80",
-  overlay: "rgba(0,0,0,0.6)",
+  overlay: "rgba(0,0,0,0)",
 } as const;
 
 export const spacing = {

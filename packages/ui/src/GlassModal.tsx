@@ -97,7 +97,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
       >
         <BlurView
           intensity={60}
-          tint="dark"
+          tint="default"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
