@@ -4,23 +4,15 @@ export default function AppLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: true,
-        headerTitle: "Kiseki",
+        headerShown: false,
+        contentStyle: { backgroundColor: "transparent" },
+        animation: "fade",
       }}
     >
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="groups/create"
-        options={{ headerTitle: "Creer un groupe" }}
-      />
-      <Stack.Screen
-        name="groups/join"
-        options={{ headerTitle: "Rejoindre un groupe" }}
-      />
-      <Stack.Screen
-        name="groups/[id]/index"
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="index" />
+      <Stack.Screen name="groups/create" />
+      <Stack.Screen name="groups/join" />
+      <Stack.Screen name="groups/[id]/index" />
     </Stack>
   );
 }
