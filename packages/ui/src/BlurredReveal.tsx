@@ -74,7 +74,7 @@ export function BlurredReveal({
       >
         <BlurView
           intensity={80}
-          tint="default"
+          tint="dark"
           experimentalBlurMethod="dimezisBlurView"
           style={{ flex: 1 }}
         />

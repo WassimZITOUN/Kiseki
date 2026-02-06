@@ -85,7 +85,7 @@ function SheetContent({ children }: { children: React.ReactNode }) {
       >
         <BlurView
           intensity={60}
-          tint="default"
+          tint="dark"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
