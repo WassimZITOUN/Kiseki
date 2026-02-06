@@ -1,6 +1,6 @@
 "use client";
 
-import { View, TouchableOpacity, Image, Alert, Platform } from "react-native";
+import { View, TouchableOpacity, Alert, Platform } from "react-native";
 import type { Group, GroupMemberWithProfile } from "@my-app/types";
 import {
   GlassBottomSheet,
@@ -82,6 +82,7 @@ export function GroupMenu({
 
   return (
     <GlassBottomSheet visible={visible} onClose={onClose}>
+      {/* Header */}
       <View
         style={{
           flexDirection: "row",
@@ -91,35 +92,81 @@ export function GroupMenu({
         }}
       >
         <KText variant="h3">{group.name}</KText>
-        <TouchableOpacity onPress={onClose}>
-          <KText variant="body" color={colors.textMuted}>
+        <TouchableOpacity
+          onPress={onClose}
+          style={{
+            paddingHorizontal: spacing.sm,
+            paddingVertical: spacing.xs,
+            borderRadius: radii.full,
+            backgroundColor: "rgba(255,255,255,0.05)",
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.2)",
+          }}
+        >
+          <KText variant="bodySmall" color={colors.textMuted}>
             Fermer
           </KText>
         </TouchableOpacity>
       </View>
 
+      {/* Group info pills */}
       <View
         style={{
           flexDirection: "row",
-          gap: spacing.sm,
+          flexWrap: "wrap",
+          gap: spacing.xs,
           marginBottom: spacing.md,
         }}
       >
-        <KText variant="caption" color={colors.textSecondary}>
-          Question : {group.question_time}
-        </KText>
-        <KText variant="caption" color={colors.textSecondary}>
-          Reveal : {group.reveal_time}
-        </KText>
-        <KText variant="caption" color={colors.textSecondary}>
-          Max : {group.max_members}
-        </KText>
+        <View
+          style={{
+            backgroundColor: "rgba(255,255,255,0.05)",
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.15)",
+            borderRadius: radii.full,
+            paddingHorizontal: spacing.sm,
+            paddingVertical: 4,
+          }}
+        >
+          <KText variant="caption" color={colors.textSecondary}>
+            Question : {group.question_time}
+          </KText>
+        </View>
+        <View
+          style={{
+            backgroundColor: "rgba(255,255,255,0.05)",
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.15)",
+            borderRadius: radii.full,
+            paddingHorizontal: spacing.sm,
+            paddingVertical: 4,
+          }}
+        >
+          <KText variant="caption" color={colors.textSecondary}>
+            Reveal : {group.reveal_time}
+          </KText>
+        </View>
+        <View
+          style={{
+            backgroundColor: "rgba(255,255,255,0.05)",
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.15)",
+            borderRadius: radii.full,
+            paddingHorizontal: spacing.sm,
+            paddingVertical: 4,
+          }}
+        >
+          <KText variant="caption" color={colors.textSecondary}>
+            Max : {group.max_members}
+          </KText>
+        </View>
       </View>
 
+      {/* Copy code button */}
       <KButton
         title={
           codeCopied
-            ? "Code copie !"
+            ? "Code copié !"
             : `Copier le code : ${group.invite_code.toUpperCase()}`
         }
         onPress={onCopyCode}
@@ -127,6 +174,7 @@ export function GroupMenu({
         style={{ marginBottom: spacing.md }}
       />
 
+      {/* Members section */}
       <KText
         variant="body"
         style={{
@@ -137,15 +185,16 @@ export function GroupMenu({
         Membres ({members.length}/{group.max_members})
       </KText>
 
-      {members.map((item) => (
+      {/* Members list */}
+      {members.map((item, index) => (
         <View
           key={item.id}
           style={{
             flexDirection: "row",
             alignItems: "center",
             paddingVertical: spacing.sm,
-            borderBottomWidth: 1,
-            borderBottomColor: "rgba(255,255,255,0.2)",
+            borderBottomWidth: index < members.length - 1 ? 1 : 0,
+            borderBottomColor: "rgba(255,255,255,0.1)",
           }}
         >
           <KAvatar
@@ -154,7 +203,7 @@ export function GroupMenu({
               item.profiles?.display_name ??
               item.profiles?.username
             }
-            size={32}
+            size={36}
             style={{ marginRight: spacing.sm }}
           />
           <View style={{ flex: 1 }}>
@@ -167,10 +216,12 @@ export function GroupMenu({
           {item.role === "admin" && (
             <View
               style={{
-                backgroundColor: colors.violet[100],
-                paddingHorizontal: 6,
-                paddingVertical: 2,
+                backgroundColor: "rgba(149, 114, 207, 0.15)",
+                paddingHorizontal: spacing.sm,
+                paddingVertical: 3,
                 borderRadius: radii.full,
+                borderWidth: 1,
+                borderColor: "rgba(149, 114, 207, 0.3)",
               }}
             >
               <KText variant="caption" color={colors.violet.primary}>
@@ -185,8 +236,10 @@ export function GroupMenu({
                 marginLeft: spacing.sm,
                 paddingHorizontal: spacing.sm,
                 paddingVertical: spacing.xs,
-                borderRadius: 4,
+                borderRadius: radii.full,
                 backgroundColor: "rgba(229, 62, 62, 0.1)",
+                borderWidth: 1,
+                borderColor: "rgba(229, 62, 62, 0.2)",
               }}
             >
               <KText variant="caption" color={colors.error}>
@@ -197,12 +250,13 @@ export function GroupMenu({
         </View>
       ))}
 
+      {/* Leave button */}
       <KButton
-        title={leaving ? "Depart..." : "Quitter le groupe"}
+        title={leaving ? "Départ..." : "Quitter le groupe"}
         onPress={handleLeave}
         disabled={leaving}
         variant="ghost"
-        style={{ marginTop: spacing.md }}
+        style={{ marginTop: spacing.lg }}
       />
     </GlassBottomSheet>
   );

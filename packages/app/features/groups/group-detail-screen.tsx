@@ -271,9 +271,21 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
   };
 
   const headerRightAction = (
-    <TouchableOpacity onPress={() => setMenuVisible(true)}>
-      <KText variant="h2" color={colors.textSecondary}>
-        ...
+    <TouchableOpacity
+      onPress={() => setMenuVisible(true)}
+      style={{
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: "rgba(255,255,255,0.05)",
+        borderWidth: 1,
+        borderColor: "rgba(255,255,255,0.3)",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <KText variant="h3" color={colors.textPrimary}>
+        ⋯
       </KText>
     </TouchableOpacity>
   );

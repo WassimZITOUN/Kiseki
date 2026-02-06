@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { View, TouchableOpacity, Platform, StatusBar } from "react-native";
-import { colors, spacing } from "./tokens";
+import { View, TouchableOpacity, Platform, StatusBar, StyleSheet } from "react-native";
+import { colors, spacing, radii } from "./tokens";
 import { KText } from "./KText";
-import { GlassCard } from "./GlassCard";
 
 type Props = {
   title: string;
@@ -20,6 +19,11 @@ export function KHeader({ title, onBack, rightAction }: Props) {
         ? 50
         : 0;
 
+  const isWeb = Platform.OS === "web";
+
+  // Inline glass header — no GlassCard to avoid padding conflicts
+  const BlurView = !isWeb ? require("expo-blur").BlurView : null;
+
   return (
     <View
       style={{
@@ -28,46 +32,95 @@ export function KHeader({ title, onBack, rightAction }: Props) {
         paddingHorizontal: spacing.md,
       }}
     >
-      <GlassCard
+      <View
         style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingVertical: spacing.sm,
-          paddingHorizontal: spacing.md,
+          borderRadius: radii.lg,
+          shadowColor: colors.shadow.color,
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: 0.15,
+          shadowRadius: 15,
+          elevation: 8,
         }}
       >
-        <View style={{ width: 44 }}>
-          {onBack && (
-            <TouchableOpacity
-              onPress={onBack}
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 22,
-                backgroundColor: colors.glass.background, // 5% zero-fill
-                borderWidth: 1,
-                borderColor: colors.glass.border,
-                alignItems: "center",
-                justifyContent: "center",
-                shadowColor: colors.shadow.color,
-                shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.08,
-                shadowRadius: 12,
-                elevation: 4,
-              }}
-            >
-              <KText style={{ fontSize: 20 }}>←</KText>
-            </TouchableOpacity>
-          )}
+        {/* Blur layer (native only) */}
+        {!isWeb && (
+          <View
+            style={[
+              StyleSheet.absoluteFill,
+              { borderRadius: radii.lg, overflow: "hidden" },
+            ]}
+          >
+            <BlurView
+              intensity={30}
+              tint="light"
+              experimentalBlurMethod="dimezisBlurView"
+              style={StyleSheet.absoluteFill}
+            />
+          </View>
+        )}
+
+        {/* Border layer */}
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              borderRadius: radii.lg,
+              borderWidth: 1,
+              borderColor: colors.glass.border,
+              backgroundColor: colors.glass.background,
+              ...(isWeb
+                ? {
+                    // @ts-ignore web-only
+                    backdropFilter: "blur(15px)",
+                    WebkitBackdropFilter: "blur(15px)",
+                  }
+                : {}),
+            },
+          ]}
+        />
+
+        {/* Content row */}
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingVertical: spacing.sm,
+            paddingHorizontal: spacing.md,
+          }}
+        >
+          {/* Left slot — back button */}
+          <View style={{ width: 44 }}>
+            {onBack && (
+              <TouchableOpacity
+                onPress={onBack}
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 22,
+                  backgroundColor: colors.glass.background,
+                  borderWidth: 1,
+                  borderColor: colors.glass.border,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <KText style={{ fontSize: 20 }}>←</KText>
+              </TouchableOpacity>
+            )}
+          </View>
+
+          {/* Center — title */}
+          <KText variant="h3" style={{ flex: 1, textAlign: "center" }}>
+            {title}
+          </KText>
+
+          {/* Right slot — action */}
+          <View style={{ width: 44, alignItems: "flex-end", justifyContent: "center" }}>
+            {rightAction}
+          </View>
         </View>
-        <KText variant="h3" style={{ flex: 1, textAlign: "center" }}>
-          {title}
-        </KText>
-        <View style={{ width: 44, alignItems: "flex-end" }}>
-          {rightAction}
-        </View>
-      </GlassCard>
+      </View>
     </View>
   );
 }
