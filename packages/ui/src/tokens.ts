@@ -24,10 +24,10 @@ export const colors = {
     yuzu: "#FFD93D",
     sakura: "#F0B4E0",
   },
-  cream: "#F9F7F2",
+  cream: "#f9f7f2",
   glass: {
-    background: "rgba(255,255,255,0.05)", // Zero-fill: quasi-transparent
-    border: "rgba(255,255,255,0.3)", // Refraction border only
+    background: "rgba(255,255,255,0.02)", // Ultra zero-fill: quasi-invisible
+    border: "rgba(255,255,255,0.25)", // Subtle refraction border
   },
   shadow: {
     color: "#A29BFE",
@@ -35,13 +35,13 @@ export const colors = {
     opacity: 0.1,
     radius: 24,
   },
-  surface: "#F9F7F2",
+  surface: "#f9f7f2",
   textPrimary: "#1A1036",
   textSecondary: "#6B6183",
   textMuted: "#9E97AD",
   error: "#E53E3E",
   success: "#38A169",
-  overlay: "rgba(26,16,54,0.4)",
+  overlay: "rgba(26,16,54,0.2)",
 } as const;
 
 export const spacing = {

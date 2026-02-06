@@ -89,23 +89,68 @@ export function KHeader({ title, onBack, rightAction }: Props) {
             paddingHorizontal: spacing.md,
           }}
         >
-          {/* Left slot — back button */}
+          {/* Left slot — back button with full glass effect */}
           <View style={{ width: 44 }}>
             {onBack && (
               <TouchableOpacity
                 onPress={onBack}
+                activeOpacity={0.8}
                 style={{
                   width: 44,
                   height: 44,
                   borderRadius: 22,
-                  backgroundColor: colors.glass.background,
-                  borderWidth: 1,
-                  borderColor: colors.glass.border,
-                  alignItems: "center",
-                  justifyContent: "center",
+                  shadowColor: colors.shadow.color,
+                  shadowOffset: { width: 0, height: 4 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 8,
+                  elevation: 4,
                 }}
               >
-                <KText style={{ fontSize: 20 }}>←</KText>
+                {/* Blur layer */}
+                {!isWeb && (
+                  <View
+                    style={[
+                      StyleSheet.absoluteFill,
+                      { borderRadius: 22, overflow: "hidden" },
+                    ]}
+                  >
+                    <BlurView
+                      intensity={25}
+                      tint="light"
+                      experimentalBlurMethod="dimezisBlurView"
+                      style={StyleSheet.absoluteFill}
+                    />
+                  </View>
+                )}
+                {/* Border + bg layer */}
+                <View
+                  style={[
+                    StyleSheet.absoluteFill,
+                    {
+                      borderRadius: 22,
+                      borderWidth: 1,
+                      borderColor: colors.glass.border,
+                      backgroundColor: colors.glass.background,
+                      ...(isWeb
+                        ? {
+                            // @ts-ignore web-only
+                            backdropFilter: "blur(12px)",
+                            WebkitBackdropFilter: "blur(12px)",
+                          }
+                        : {}),
+                    },
+                  ]}
+                />
+                {/* Icon */}
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <KText style={{ fontSize: 20 }}>←</KText>
+                </View>
               </TouchableOpacity>
             )}
           </View>

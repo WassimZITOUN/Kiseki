@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Platform,
+  StyleSheet,
 } from "react-native";
 import Animated, { FadeIn, SlideInUp } from "react-native-reanimated";
 import type {
@@ -270,23 +271,71 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
     );
   };
 
+  const isWeb = Platform.OS === "web";
+  const BlurView = !isWeb ? require("expo-blur").BlurView : null;
+
   const headerRightAction = (
     <TouchableOpacity
       onPress={() => setMenuVisible(true)}
+      activeOpacity={0.8}
       style={{
         width: 44,
         height: 44,
         borderRadius: 22,
-        backgroundColor: "rgba(255,255,255,0.05)",
-        borderWidth: 1,
-        borderColor: "rgba(255,255,255,0.3)",
-        alignItems: "center",
-        justifyContent: "center",
+        shadowColor: "#A29BFE",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+        elevation: 4,
       }}
     >
-      <KText variant="h3" color={colors.textPrimary}>
-        ⋯
-      </KText>
+      {/* Blur layer */}
+      {!isWeb && (
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            { borderRadius: 22, overflow: "hidden" },
+          ]}
+        >
+          <BlurView
+            intensity={25}
+            tint="light"
+            experimentalBlurMethod="dimezisBlurView"
+            style={StyleSheet.absoluteFill}
+          />
+        </View>
+      )}
+      {/* Border + bg layer */}
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            borderRadius: 22,
+            borderWidth: 1,
+            borderColor: "rgba(255,255,255,0.25)",
+            backgroundColor: "rgba(255,255,255,0.02)",
+            ...(isWeb
+              ? {
+                  // @ts-ignore web-only
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                }
+              : {}),
+          },
+        ]}
+      />
+      {/* Icon */}
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <KText variant="h3" color={colors.textPrimary}>
+          ⋯
+        </KText>
+      </View>
     </TouchableOpacity>
   );
 
