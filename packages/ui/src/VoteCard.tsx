@@ -12,6 +12,14 @@ import { colors, radii, spacing } from "./tokens";
 import { KAvatar } from "./KAvatar";
 import { KText } from "./KText";
 
+// iOS Premium Spring — snappy, no jelly
+const SNAPPY_SPRING = {
+  damping: 40,
+  stiffness: 350,
+  mass: 1,
+  overshootClamping: true,
+};
+
 type Props = {
   userId: string;
   name: string;
@@ -39,12 +47,12 @@ export function VoteCard({
     backgroundColor:
       bgOpacity.value > 0.5
         ? colors.violet[200]
-        : colors.glass.background,
+        : colors.glass.background, // 5% opacity — zero-fill
   }));
 
   const handlePressIn = () => {
-    scale.value = withSpring(0.92, { damping: 12, stiffness: 300 });
-    bgOpacity.value = withTiming(1, { duration: 150 });
+    scale.value = withSpring(0.95, SNAPPY_SPRING);
+    bgOpacity.value = withTiming(1, { duration: 100 });
 
     if (Platform.OS !== "web") {
       try {
@@ -55,9 +63,9 @@ export function VoteCard({
   };
 
   const handlePressOut = () => {
-    scale.value = withSpring(1, { damping: 12, stiffness: 300 });
+    scale.value = withSpring(1, SNAPPY_SPRING);
     if (!selected) {
-      bgOpacity.value = withTiming(0, { duration: 150 });
+      bgOpacity.value = withTiming(0, { duration: 100 });
     }
   };
 
@@ -67,7 +75,7 @@ export function VoteCard({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       disabled={disabled}
-      activeOpacity={0.9}
+      activeOpacity={0.95}
       style={[
         {
           borderRadius: radii.superEllipse,

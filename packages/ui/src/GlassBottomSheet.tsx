@@ -3,8 +3,14 @@
 import React from "react";
 import { View, TouchableOpacity, Modal, Platform, ScrollView, StyleSheet } from "react-native";
 import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
-import { LinearGradient } from "expo-linear-gradient";
 import { colors, radii, spacing } from "./tokens";
+
+// iOS Premium Spring — snappy, no jelly
+const SNAPPY_SPRING_CONFIG = {
+  damping: 40,
+  stiffness: 350,
+  overshootClamping: true,
+};
 
 type Props = {
   visible: boolean;
@@ -16,39 +22,24 @@ function SheetContent({ children }: { children: React.ReactNode }) {
   if (Platform.OS === "web") {
     return (
       <Animated.View
-        entering={SlideInDown.duration(300).springify().damping(18)}
-        exiting={SlideOutDown.duration(200)}
+        entering={SlideInDown.duration(250).springify().damping(40).stiffness(350)}
+        exiting={SlideOutDown.duration(150)}
         style={{
           borderTopLeftRadius: radii.xl,
           borderTopRightRadius: radii.xl,
           overflow: "hidden",
           padding: spacing.lg,
           maxHeight: "80%",
+          backgroundColor: colors.glass.background,
+          borderWidth: 1,
+          borderBottomWidth: 0,
+          borderColor: colors.glass.border,
           // @ts-ignore web-only
           backdropFilter: "blur(40px)",
           WebkitBackdropFilter: "blur(40px)",
-          boxShadow: "0 -8px 32px rgba(162, 155, 254, 0.15)",
+          boxShadow: "0 -12px 40px rgba(162, 155, 254, 0.2)",
         }}
       >
-        {/* Glass gradient surface */}
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderBottomWidth: 0,
-              borderColor: colors.glass.border,
-              borderTopLeftRadius: radii.xl,
-              borderTopRightRadius: radii.xl,
-            },
-          ]}
-        />
         <View
           style={{
             width: 36,
@@ -59,7 +50,9 @@ function SheetContent({ children }: { children: React.ReactNode }) {
             marginBottom: spacing.md,
           }}
         />
-        <ScrollView>{children}</ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {children}
+        </ScrollView>
       </Animated.View>
     );
   }
@@ -68,21 +61,20 @@ function SheetContent({ children }: { children: React.ReactNode }) {
 
   return (
     <Animated.View
-      entering={SlideInDown.duration(300).springify().damping(18)}
-      exiting={SlideOutDown.duration(200)}
+      entering={SlideInDown.duration(250).springify().damping(40).stiffness(350)}
+      exiting={SlideOutDown.duration(150)}
       style={{
         borderTopLeftRadius: radii.xl,
         borderTopRightRadius: radii.xl,
         maxHeight: "80%",
-        padding: spacing.lg,
         shadowColor: colors.shadow.color,
-        shadowOffset: { width: 0, height: -8 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 12,
+        shadowOffset: { width: 0, height: -12 },
+        shadowOpacity: 0.2,
+        shadowRadius: 20,
+        elevation: 16,
       }}
     >
-      {/* Glass layers */}
+      {/* Blur layer */}
       <View
         style={{
           ...StyleSheet.absoluteFillObject,
@@ -92,39 +84,42 @@ function SheetContent({ children }: { children: React.ReactNode }) {
         }}
       >
         <BlurView
-          intensity={80}
+          intensity={60}
           tint="light"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderBottomWidth: 0,
-              borderColor: colors.glass.border,
-            },
-          ]}
-        />
       </View>
+
+      {/* Refraction border */}
       <View
         style={{
-          width: 36,
-          height: 4,
-          borderRadius: 2,
-          backgroundColor: colors.textMuted,
-          alignSelf: "center",
-          marginBottom: spacing.md,
+          ...StyleSheet.absoluteFillObject,
+          borderTopLeftRadius: radii.xl,
+          borderTopRightRadius: radii.xl,
+          borderWidth: 1,
+          borderBottomWidth: 0,
+          borderColor: colors.glass.border,
+          backgroundColor: colors.glass.background,
         }}
       />
-      <ScrollView>{children}</ScrollView>
+
+      {/* Content */}
+      <View style={{ padding: spacing.lg }}>
+        <View
+          style={{
+            width: 36,
+            height: 4,
+            borderRadius: 2,
+            backgroundColor: colors.textMuted,
+            alignSelf: "center",
+            marginBottom: spacing.md,
+          }}
+        />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {children}
+        </ScrollView>
+      </View>
     </Animated.View>
   );
 }

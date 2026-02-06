@@ -2,7 +2,6 @@
 
 import React from "react";
 import { View, Platform, StyleSheet, type ViewStyle } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { colors, radii, spacing } from "./tokens";
 
 type Props = {
@@ -11,6 +10,17 @@ type Props = {
   intensity?: number;
 };
 
+/**
+ * GlassCard — Zero-Fill Glassmorphism
+ *
+ * Architecture:
+ * 1. Shadow layer (outer, no clip)
+ * 2. Blur layer (expo-blur with experimentalBlurMethod)
+ * 3. Refraction border (1px white 30% opacity)
+ * 4. Content
+ *
+ * NO white background fill — pure glass refraction only
+ */
 export function GlassCard({ children, style, intensity = 30 }: Props) {
   const flatStyle = StyleSheet.flatten(style);
   const resolvedRadius = (flatStyle?.borderRadius as number) ?? radii.lg;
@@ -23,31 +33,17 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
             borderRadius: resolvedRadius,
             padding: spacing.md,
             overflow: "hidden",
+            backgroundColor: colors.glass.background, // 5% opacity max
+            borderWidth: 1,
+            borderColor: colors.glass.border,
             // @ts-ignore web-only
             backdropFilter: `blur(${intensity * 0.5}px)`,
             WebkitBackdropFilter: `blur(${intensity * 0.5}px)`,
-            boxShadow: "0 8px 24px rgba(162, 155, 254, 0.15)",
+            boxShadow: "0 8px 32px rgba(162, 155, 254, 0.15)",
           },
           style,
         ]}
       >
-        {/* Glass gradient surface */}
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderColor: colors.glass.border,
-              borderRadius: resolvedRadius,
-            },
-          ]}
-        />
         {children}
       </View>
     );
@@ -61,49 +57,47 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
       style={[
         {
           borderRadius: resolvedRadius,
-          padding: spacing.md,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.15,
-          shadowRadius: 12,
+          shadowRadius: 15,
           elevation: 8,
         },
         style,
       ]}
     >
-      {/* Layers 1-2: Clip + Blur + Glass surface (behind content) */}
+      {/* Layer 1: Blur (clipped) */}
       <View
         style={[
           StyleSheet.absoluteFill,
           { borderRadius: resolvedRadius, overflow: "hidden" },
         ]}
       >
-        {/* Layer 1: Real blur */}
         <BlurView
           intensity={intensity}
           tint="light"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
-        {/* Layer 2: Glass gradient surface + inset border */}
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderColor: colors.glass.border,
-            },
-          ]}
-        />
       </View>
-      {/* Layer 3: Content */}
-      {children}
+
+      {/* Layer 2: Refraction border only — NO fill */}
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            borderRadius: resolvedRadius,
+            borderWidth: 1,
+            borderColor: colors.glass.border,
+            backgroundColor: colors.glass.background, // 5% opacity
+          },
+        ]}
+      />
+
+      {/* Layer 3: Content with padding */}
+      <View style={{ padding: spacing.md }}>
+        {children}
+      </View>
     </View>
   );
 }

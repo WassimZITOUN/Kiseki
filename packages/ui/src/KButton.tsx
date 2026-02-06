@@ -14,6 +14,14 @@ import Animated, {
 import { colors, radii } from "./tokens";
 import { KText } from "./KText";
 
+// iOS Premium Spring — snappy, no jelly
+const SNAPPY_SPRING = {
+  damping: 40,
+  stiffness: 350,
+  mass: 1,
+  overshootClamping: true,
+};
+
 type Variant = "solid" | "glass" | "ghost";
 
 type Props = {
@@ -44,11 +52,11 @@ export function KButton({
   }));
 
   const handlePressIn = () => {
-    scale.value = withSpring(0.96, { damping: 15, stiffness: 300 });
+    scale.value = withSpring(0.97, SNAPPY_SPRING);
   };
 
   const handlePressOut = () => {
-    scale.value = withSpring(1, { damping: 15, stiffness: 300 });
+    scale.value = withSpring(1, SNAPPY_SPRING);
   };
 
   const solidShadow: ViewStyle =
@@ -56,7 +64,7 @@ export function KButton({
       ? {
           shadowColor: colors.violet[600],
           shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.15,
+          shadowOpacity: 0.2,
           shadowRadius: 12,
           elevation: 4,
         }
@@ -86,7 +94,7 @@ export function KButton({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       disabled={disabled || loading}
-      activeOpacity={0.85}
+      activeOpacity={0.9}
       style={[
         {
           borderRadius: isPill ? radii.full : radii.md,

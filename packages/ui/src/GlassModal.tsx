@@ -2,9 +2,22 @@
 
 import React from "react";
 import { View, TouchableOpacity, Modal, Platform, StyleSheet } from "react-native";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import { LinearGradient } from "expo-linear-gradient";
+import Animated, {
+  FadeIn,
+  FadeOut,
+  withSpring,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
 import { colors, radii, spacing } from "./tokens";
+
+// iOS Premium Spring — snappy, no jelly
+const SNAPPY_SPRING = {
+  damping: 40,
+  stiffness: 350,
+  mass: 1,
+  overshootClamping: true,
+};
 
 type Props = {
   visible: boolean;
@@ -13,42 +26,41 @@ type Props = {
 };
 
 function ModalCard({ children }: { children: React.ReactNode }) {
+  const scale = useSharedValue(0.9);
+
+  React.useEffect(() => {
+    scale.value = withSpring(1, SNAPPY_SPRING);
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
   if (Platform.OS === "web") {
     return (
       <Animated.View
-        entering={FadeIn.duration(200)}
-        exiting={FadeOut.duration(150)}
-        style={{
-          borderRadius: radii.xl,
-          marginHorizontal: spacing.lg,
-          maxWidth: 400,
-          width: "100%",
-          alignSelf: "center",
-          overflow: "hidden",
-          padding: spacing.lg,
-          // @ts-ignore web-only
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          boxShadow: "0 12px 32px rgba(162, 155, 254, 0.2)",
-        }}
+        entering={FadeIn.duration(150)}
+        exiting={FadeOut.duration(100)}
+        style={[
+          {
+            borderRadius: radii.xl,
+            marginHorizontal: spacing.lg,
+            maxWidth: 400,
+            width: "100%",
+            alignSelf: "center",
+            overflow: "hidden",
+            padding: spacing.lg,
+            backgroundColor: colors.glass.background,
+            borderWidth: 1,
+            borderColor: colors.glass.border,
+            // @ts-ignore web-only
+            backdropFilter: "blur(40px)",
+            WebkitBackdropFilter: "blur(40px)",
+            boxShadow: "0 16px 48px rgba(162, 155, 254, 0.25)",
+          },
+          animatedStyle,
+        ]}
       >
-        {/* Glass gradient surface */}
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderColor: colors.glass.border,
-              borderRadius: radii.xl,
-            },
-          ]}
-        />
         {children}
       </Animated.View>
     );
@@ -58,23 +70,25 @@ function ModalCard({ children }: { children: React.ReactNode }) {
 
   return (
     <Animated.View
-      entering={FadeIn.duration(200)}
-      exiting={FadeOut.duration(150)}
-      style={{
-        borderRadius: radii.xl,
-        marginHorizontal: spacing.lg,
-        maxWidth: 400,
-        alignSelf: "center",
-        width: "100%",
-        padding: spacing.lg,
-        shadowColor: colors.shadow.color,
-        shadowOffset: { width: 0, height: 12 },
-        shadowOpacity: 0.2,
-        shadowRadius: 20,
-        elevation: 12,
-      }}
+      entering={FadeIn.duration(150)}
+      exiting={FadeOut.duration(100)}
+      style={[
+        {
+          borderRadius: radii.xl,
+          marginHorizontal: spacing.lg,
+          maxWidth: 400,
+          alignSelf: "center",
+          width: "100%",
+          shadowColor: colors.shadow.color,
+          shadowOffset: { width: 0, height: 16 },
+          shadowOpacity: 0.25,
+          shadowRadius: 24,
+          elevation: 16,
+        },
+        animatedStyle,
+      ]}
     >
-      {/* Glass layers */}
+      {/* Blur layer */}
       <View
         style={[
           StyleSheet.absoluteFill,
@@ -82,28 +96,30 @@ function ModalCard({ children }: { children: React.ReactNode }) {
         ]}
       >
         <BlurView
-          intensity={80}
+          intensity={60}
           tint="light"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
-        <LinearGradient
-          colors={[
-            "rgba(255,255,255,0.4)",
-            "rgba(255,255,255,0.1)",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              borderWidth: 1,
-              borderColor: colors.glass.border,
-            },
-          ]}
-        />
       </View>
-      {children}
+
+      {/* Refraction border */}
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            borderRadius: radii.xl,
+            borderWidth: 1,
+            borderColor: colors.glass.border,
+            backgroundColor: colors.glass.background,
+          },
+        ]}
+      />
+
+      {/* Content */}
+      <View style={{ padding: spacing.lg }}>
+        {children}
+      </View>
     </Animated.View>
   );
 }

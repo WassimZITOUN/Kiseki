@@ -26,8 +26,8 @@ export const colors = {
   },
   cream: "#F9F7F2",
   glass: {
-    background: "rgba(255,255,255,0.7)",
-    border: "rgba(255,255,255,0.5)",
+    background: "rgba(255,255,255,0.05)", // Zero-fill: quasi-transparent
+    border: "rgba(255,255,255,0.3)", // Refraction border only
   },
   shadow: {
     color: "#A29BFE",

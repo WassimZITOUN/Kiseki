@@ -45,7 +45,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                 width: 44,
                 height: 44,
                 borderRadius: 22,
-                backgroundColor: "rgba(255,255,255,0.15)",
+                backgroundColor: colors.glass.background, // 5% zero-fill
                 borderWidth: 1,
                 borderColor: colors.glass.border,
                 alignItems: "center",
