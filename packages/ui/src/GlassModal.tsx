@@ -56,7 +56,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
             // @ts-ignore web-only
             backdropFilter: "blur(40px)",
             WebkitBackdropFilter: "blur(40px)",
-            boxShadow: "0 16px 48px rgba(162, 155, 254, 0.25)",
+            boxShadow: "0 16px 48px rgba(122, 0, 255, 0.35)",
           },
           animatedStyle,
         ]}
@@ -97,7 +97,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
       >
         <BlurView
           intensity={60}
-          tint="light"
+          tint="dark"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />

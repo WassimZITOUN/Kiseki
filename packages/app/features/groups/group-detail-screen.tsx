@@ -299,7 +299,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
         >
           <BlurView
             intensity={25}
-            tint="light"
+            tint="dark"
             experimentalBlurMethod="dimezisBlurView"
             style={StyleSheet.absoluteFill}
           />

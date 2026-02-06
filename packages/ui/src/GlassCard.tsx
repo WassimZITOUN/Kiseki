@@ -11,17 +11,17 @@ type Props = {
 };
 
 /**
- * GlassCard — Zero-Fill Glassmorphism
+ * GlassCard — Deep Glass Dark Theme
  *
  * Architecture:
- * 1. Shadow layer (outer, no clip)
- * 2. Blur layer (expo-blur with experimentalBlurMethod)
- * 3. Refraction border (1px white 30% opacity)
+ * 1. Shadow layer (violet glow, no clip)
+ * 2. Blur layer (expo-blur with experimentalBlurMethod, tint="dark")
+ * 3. Refraction border (subtle white edge)
  * 4. Content
  *
- * NO white background fill — pure glass refraction only
+ * Dark mode optimized — glass catches neon orb colors
  */
-export function GlassCard({ children, style, intensity = 30 }: Props) {
+export function GlassCard({ children, style, intensity = 40 }: Props) {
   const flatStyle = StyleSheet.flatten(style);
   const resolvedRadius = (flatStyle?.borderRadius as number) ?? radii.lg;
 
@@ -33,13 +33,13 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
             borderRadius: resolvedRadius,
             padding: spacing.md,
             overflow: "hidden",
-            backgroundColor: colors.glass.background, // 5% opacity max
+            backgroundColor: colors.glass.background,
             borderWidth: 1,
             borderColor: colors.glass.border,
             // @ts-ignore web-only
             backdropFilter: `blur(${intensity * 0.5}px)`,
             WebkitBackdropFilter: `blur(${intensity * 0.5}px)`,
-            boxShadow: "0 8px 32px rgba(162, 155, 254, 0.15)",
+            boxShadow: "0 8px 32px rgba(122, 0, 255, 0.25)",
           },
           style,
         ]}
@@ -52,21 +52,21 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
   const BlurView = require("expo-blur").BlurView;
 
   return (
-    // Layer 0: Shadow caster (no overflow:hidden — shadow must render outside)
+    // Layer 0: Shadow caster — violet glow
     <View
       style={[
         {
           borderRadius: resolvedRadius,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
-          shadowOpacity: 0.15,
-          shadowRadius: 15,
-          elevation: 8,
+          shadowOpacity: 0.4,
+          shadowRadius: 20,
+          elevation: 12,
         },
         style,
       ]}
     >
-      {/* Layer 1: Blur (clipped) */}
+      {/* Layer 1: Blur (clipped) — dark tint for dark theme */}
       <View
         style={[
           StyleSheet.absoluteFill,
@@ -75,13 +75,13 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
       >
         <BlurView
           intensity={intensity}
-          tint="light"
+          tint="dark"
           experimentalBlurMethod="dimezisBlurView"
           style={StyleSheet.absoluteFill}
         />
       </View>
 
-      {/* Layer 2: Refraction border only — NO fill */}
+      {/* Layer 2: Refraction border */}
       <View
         style={[
           StyleSheet.absoluteFill,
@@ -89,7 +89,7 @@ export function GlassCard({ children, style, intensity = 30 }: Props) {
             borderRadius: resolvedRadius,
             borderWidth: 1,
             borderColor: colors.glass.border,
-            backgroundColor: colors.glass.background, // 5% opacity
+            backgroundColor: colors.glass.background,
           },
         ]}
       />

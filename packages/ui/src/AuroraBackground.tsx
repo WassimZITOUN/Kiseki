@@ -17,41 +17,41 @@ const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get("window");
 
 const isWeb = Platform.OS === "web";
 
-// Orbs positioned to pass BEHIND content areas (center of screen)
-// This ensures glass cards have colorful blur behind them
+// Deep Glass neon orbs — high contrast on dark background
+// Positioned to pass behind content for visible glass refraction
 const ORB_CONFIG = [
   {
-    // Violet orb — top-center, passes behind header area
-    size: 320,
-    color: colors.orb.violet,
-    top: SCREEN_H * 0.08,
-    left: SCREEN_W * 0.2,
+    // Magenta orb — top-left, vivid pink glow
+    size: 350,
+    color: colors.orb.magenta,
+    top: SCREEN_H * 0.05,
+    left: -50,
     durationX: 25000,
     durationY: 28000,
-    opacityNative: 0.4,
-    opacityWeb: 0.55,
+    opacityNative: 0.5,
+    opacityWeb: 0.6,
   },
   {
-    // Yuzu orb — center-right, passes behind main content
-    size: 260,
-    color: colors.orb.yuzu,
+    // Violet orb — center-right, electric purple
+    size: 300,
+    color: colors.orb.violet,
     top: SCREEN_H * 0.35,
-    left: SCREEN_W * 0.55,
+    left: SCREEN_W * 0.5,
     durationX: 30000,
     durationY: 32000,
-    opacityNative: 0.35,
-    opacityWeb: 0.5,
+    opacityNative: 0.5,
+    opacityWeb: 0.6,
   },
   {
-    // Sakura orb — bottom-left, passes behind cards
+    // Cyan orb — bottom-center, teal glow
     size: 280,
-    color: colors.orb.sakura,
-    top: SCREEN_H * 0.55,
-    left: -40,
+    color: colors.orb.cyan,
+    top: SCREEN_H * 0.6,
+    left: SCREEN_W * 0.2,
     durationX: 22000,
     durationY: 26000,
-    opacityNative: 0.38,
-    opacityWeb: 0.55,
+    opacityNative: 0.4,
+    opacityWeb: 0.5,
   },
 ] as const;
 
@@ -137,7 +137,7 @@ const NOISE_SVG = `data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http:/
 export function AuroraBackground() {
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">
-      {/* Base cream surface */}
+      {/* Deep Space dark surface */}
       <View
         style={[
           StyleSheet.absoluteFill,

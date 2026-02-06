@@ -1,8 +1,8 @@
-# Charte Graphique Kiseki
+# Charte Graphique Kiseki — Deep Glass Dark Theme
 
 ## Direction artistique
 
-- **Style** : Pop-Japandi (glassmorphisme premium + orbes flottantes + texture grain)
+- **Style** : Deep Glass (glassmorphisme premium sur fond sombre + orbes neon)
 - **Principes UX** : validation positive, repos cognitif, speed-to-dopamine
 - **Police Serif** : DM Serif Display (questions, titres d'app)
 - **Police Sans-Serif** : Systeme par defaut (corps de texte)
@@ -26,92 +26,99 @@
 | `violet.800` | `#4B2D8A` |
 | `violet.900` | `#341B6E` |
 
-### Palette Orb (fond anime)
+### Palette Orb Neon (fond anime)
 
-| Token | Hex | Usage |
-|---|---|---|
-| `orb.violet` | `#A29BFE` | Orbe principale, ombre glass |
-| `orb.yuzu` | `#FFD93D` | Orbe chaude bas-droite |
-| `orb.sakura` | `#F0B4E0` | Orbe douce centre-haut |
+| Token | Hex | Opacite | Usage |
+|---|---|---|---|
+| `orb.magenta` | `#ff007a` | 0.5 | Orbe principale haut-gauche |
+| `orb.violet` | `#7a00ff` | 0.5 | Orbe centre-droite |
+| `orb.cyan` | `#00e5ff` | 0.4 | Orbe bas-centre |
 
-### Palette Aurora (heritage)
-
-| Token | Hex | Usage |
-|---|---|---|
-| `aurora.pink` | `#F0B4E0` | Accent confettis |
-| `aurora.blue` | `#A5C7F7` | Accent confettis |
-| `aurora.violet` | `#C9A6F5` | Accent confettis |
-| `aurora.mint` | `#A8E6CF` | Accent confettis |
-| `aurora.peach` | `#FFD3B6` | Accent confettis |
-
-### Neutres & surfaces
+### Surfaces sombres
 
 | Token | Valeur | Usage |
 |---|---|---|
-| `surface` / `cream` | `#F9F7F2` | Fond Kiseki Cream chaud |
-| `textPrimary` | `#1A1036` | Titres, texte principal |
-| `textSecondary` | `#6B6183` | Sous-titres, labels |
-| `textMuted` | `#9E97AD` | Placeholders, captions |
-| `glass.background` | `rgba(255,255,255,0.7)` | Fond des composants sans blur (VoteCard) |
-| `glass.border` | `rgba(255,255,255,0.5)` | Bordure "tranche de verre" lumineuse |
-| `overlay` | `rgba(26,16,54,0.4)` | Fond des modals |
-| `error` | `#E53E3E` | Messages d'erreur |
-| `success` | `#38A169` | Confirmations |
+| `surface` | `#120d26` | Fond Deep Space (violet tres sombre) |
+| `surfaceElevated` | `#1a1436` | Surfaces sureleves |
 
-### Ombre Glass (coloree, jamais noire)
+### Typographie (clair sur sombre)
+
+| Token | Valeur | Usage |
+|---|---|---|
+| `textPrimary` | `#FFFFFF` | Titres, texte principal |
+| `textSecondary` | `#A0A0A0` | Sous-titres, labels |
+| `textMuted` | `#6B6B6B` | Placeholders, captions |
+
+### Glass (pour fond sombre)
+
+| Token | Valeur | Usage |
+|---|---|---|
+| `glass.background` | `rgba(255,255,255,0.08)` | Fond leger givre |
+| `glass.border` | `rgba(255,255,255,0.15)` | Bord de refraction visible |
+
+### Ombre Glass (violet glow)
 
 | Propriete | Valeur |
 |---|---|
-| `shadow.color` | `#A29BFE` (violet) |
+| `shadow.color` | `#7a00ff` (violet electrique) |
 | `shadow.offset` | `{ width: 0, height: 8 }` |
-| `shadow.opacity` | `0.15` |
-| `shadow.radius` | `12` |
-| `elevation` (Android) | `8` |
+| `shadow.opacity` | `0.4` |
+| `shadow.radius` | `24` |
+| `elevation` (Android) | `12` |
+
+### Etats
+
+| Token | Valeur | Usage |
+|---|---|---|
+| `error` | `#FF6B6B` | Messages d'erreur |
+| `success` | `#4ADE80` | Confirmations |
+| `overlay` | `rgba(0,0,0,0.6)` | Fond des modals |
 
 ---
 
-## Glassmorphisme Premium — Sandwich optique 4 couches
+## Glassmorphisme Premium — Architecture 4 couches
 
-Chaque surface glass (GlassCard, GlassModal, GlassBottomSheet) est un sandwich de 4 couches :
+### Principe cle : CONTRASTE
 
-### Couche 1 — Ombre portee (Shadow Layer)
-- Vue externe, `overflow: visible` (pour que l'ombre ne soit pas clippee)
-- `shadowColor: #A29BFE` (violette, jamais noire)
-- `shadowOpacity: 0.15`, `shadowRadius: 12`, `elevation: 8`
+Le glassmorphisme ne fonctionne que si le contenu derriere le verre est colore/sombre.
+Fond sombre (#120d26) + orbes neon = les cartes glass captent la lumiere.
+
+### Couche 1 — Ombre portee (Violet Glow)
+- Vue externe, `overflow: visible`
+- `shadowColor: #7a00ff`, `shadowOpacity: 0.4`, `shadowRadius: 20`
+- `elevation: 12` (Android)
 
 ### Couche 2 — Flou (Blur Layer)
 - `BlurView` d'expo-blur en `StyleSheet.absoluteFill`
-- **Android** : `experimentalBlurMethod="dimezisBlurView"` (OBLIGATOIRE)
-- `tint="light"`, intensite : 30 (cartes), 80 (modals/sheets)
-- Vue clip avec `overflow: "hidden"` + `borderRadius`
+- **CRITIQUE Android** : `experimentalBlurMethod="dimezisBlurView"`
+- `tint="dark"` pour theme sombre
+- Intensite : 40 (cartes), 60 (modals/sheets)
+- Clip avec `overflow: "hidden"` + `borderRadius`
 
-### Couche 3 — Surface brillante (Glass Surface)
-- `LinearGradient` diagonal (135deg) en `absoluteFill`
-- Couleurs : `rgba(255,255,255,0.4)` → `rgba(255,255,255,0.1)`
-- `borderWidth: 1`, `borderColor: rgba(255,255,255,0.5)` (tranche de verre)
+### Couche 3 — Refraction (Border + Subtle Fill)
+- `borderWidth: 1`, `borderColor: rgba(255,255,255,0.15)`
+- `backgroundColor: rgba(255,255,255,0.08)` — tres subtil
+- PAS de remplissage blanc opaque
 
 ### Couche 4 — Contenu
-- Enfants avec padding par defaut (`spacing.md` pour cartes, `spacing.lg` pour modals)
+- Enfants avec padding (`spacing.md` cartes, `spacing.lg` modals)
 
 ### Web
-- CSS `backdrop-filter: blur(Npx)` + `WebkitBackdropFilter`
-- `backgroundImage: linear-gradient(...)` via LinearGradient.web.js
-- `boxShadow: 0 8px 24px rgba(162,155,254,0.15)`
+- CSS `backdrop-filter: blur(20px)` + `WebkitBackdropFilter`
+- `boxShadow: 0 8px 32px rgba(122,0,255,0.25)`
 
 ---
 
-## Background — Orbes flottantes + grain
+## Background — Orbes neon flottantes
 
-Le fond de l'application est compose de :
-1. **Base** : couleur cream `#F9F7F2`
-2. **3 orbes circulaires** animees en boucle infinie :
-   - **Orbe Violet** (280px) — haut-gauche, cycle 25s
-   - **Orbe Yuzu** (220px) — bas-droite, cycle 30s
-   - **Orbe Sakura** (200px) — centre-haut, cycle 22s
-3. Animation : `Easing.inOut(Easing.sin)`, amplitude +/-60px X / +/-40px Y
-4. **Natif** : opacite basse (0.25-0.35), pas de blur (la grande taille simule le flou)
-5. **Web** : opacite plus forte (0.5-0.7) + `filter: blur(80px)` CSS
-6. **Texture Grain** (web) : overlay SVG `feTurbulence` a `opacity: 0.03` pour touche Japandi
+1. **Base** : couleur Deep Space `#120d26`
+2. **3 orbes neon** animees en boucle infinie :
+   - **Orbe Magenta** (350px) — haut-gauche, cycle 25s, opacite 0.5
+   - **Orbe Violet** (300px) — centre-droite, cycle 30s, opacite 0.5
+   - **Orbe Cyan** (280px) — bas-centre, cycle 22s, opacite 0.4
+3. Animation : `Easing.inOut(Easing.sin)`, amplitude +/-80px X / +/-60px Y
+4. **Web** : `filter: blur(100px)` CSS pour diffusion douce
+5. **Texture Grain** : overlay SVG `feTurbulence` a `opacity: 0.04`
 
 ---
 
@@ -135,7 +142,7 @@ Le fond de l'application est compose de :
 | `sm` | 8px | Petits elements |
 | `md` | 12px | Inputs, boutons |
 | `lg` | 16px | Cartes glass |
-| `xl` | 24px | Modals, bottom sheets, cartes groupe |
+| `xl` | 24px | Modals, bottom sheets |
 | `superEllipse` | 28px | Cartes de vote |
 | `full` | 9999px | Avatars, pills, badges |
 
@@ -160,30 +167,47 @@ Le fond de l'application est compose de :
 
 ### Composants de base
 
-| Composant | Fichier | Role |
-|---|---|---|
-| `KText` | `KText.tsx` | Typographie avec prop `variant` |
-| `KButton` | `KButton.tsx` | Boutons solid/glass/ghost avec spring, prop `isPill` pour pilules |
-| `KInput` | `KInput.tsx` | TextInput glass avec animation focus |
-| `KAvatar` | `KAvatar.tsx` | Avatar avec fallback initiales, anneau glass |
-| `GlassCard` | `GlassCard.tsx` | Carte glassmorphisme 4 couches, blur reel + ombre violette |
-| `AuroraBackground` | `AuroraBackground.tsx` | 3 orbes circulaires flottantes + texture grain |
-| `AuroraScreenWrapper` | `AuroraScreenWrapper.tsx` | Aurora + KeyboardAvoidingView |
-| `KHeader` | `KHeader.tsx` | Header glass avec bouton retour rond 44x44, titre, action |
-| `ErrorBanner` | `ErrorBanner.tsx` | Banniere d'erreur animee slide-down |
+| Composant | Role |
+|---|---|
+| `KText` | Typographie avec prop `variant`, couleur par defaut blanche |
+| `KButton` | Boutons solid/glass/ghost avec spring snappy |
+| `KInput` | TextInput glass avec animation focus |
+| `KAvatar` | Avatar avec fallback initiales |
+| `GlassCard` | Carte glass 4 couches, tint="dark", intensity=40 |
+| `AuroraBackground` | Orbes neon flottantes sur fond Deep Space |
+| `AuroraScreenWrapper` | Aurora + KeyboardAvoidingView |
+| `KHeader` | Header glass, bouton retour rond 44x44, titre blanc |
+| `ErrorBanner` | Banniere d'erreur animee |
 
 ### Composants de vote
 
-| Composant | Fichier | Role |
-|---|---|---|
-| `VoteCard` | `VoteCard.tsx` | Carte super-ellipse, avatar 60px, spring damping 12 + haptic |
-| `VoteGrid` | `VoteGrid.tsx` | Grille 2 colonnes, widget-extractible |
-| `QuestionHeader` | `QuestionHeader.tsx` | Question DM Serif Display 34px, centree |
-| `ConfettiOverlay` | `ConfettiOverlay.tsx` | 30 particules Aurora, 1.5s |
-| `CountdownTimer` | `CountdownTimer.tsx` | Timer tabular-nums avec pulse |
-| `BlurredReveal` | `BlurredReveal.tsx` | Flou anime (expo-blur / CSS filter) |
-| `GlassModal` | `GlassModal.tsx` | Modal glass 4 couches, intensity=80 |
-| `GlassBottomSheet` | `GlassBottomSheet.tsx` | Bottom sheet glass 4 couches, intensity=80 |
+| Composant | Role |
+|---|---|
+| `VoteCard` | Carte super-ellipse, avatar 60px, spring snappy |
+| `VoteGrid` | Grille 2 colonnes |
+| `QuestionHeader` | Question DM Serif Display 34px blanc |
+| `ConfettiOverlay` | Particules Aurora |
+| `CountdownTimer` | Timer tabular-nums avec pulse |
+| `BlurredReveal` | Flou anime, tint="dark" |
+| `GlassModal` | Modal glass, intensity=60, tint="dark" |
+| `GlassBottomSheet` | Bottom sheet glass, intensity=60, tint="dark" |
+
+---
+
+## Animations — Spring Snappy iOS
+
+Toutes les animations utilisent le spring iOS premium :
+
+```typescript
+const SNAPPY_SPRING = {
+  damping: 40,
+  stiffness: 350,
+  mass: 1,
+  overshootClamping: true,
+};
+```
+
+Pas d'effet "jelly" — les elements se placent rapidement et precisement.
 
 ---
 
@@ -191,33 +215,10 @@ Le fond de l'application est compose de :
 
 | Effet | Natif (Expo) | Web (Next.js) |
 |---|---|---|
-| Orbes flottantes | Reanimated Animated.View (opacite basse) | Meme + CSS filter: blur(80px) |
-| Glassmorphisme | expo-blur BlurView + experimentalBlurMethod (Android) + LinearGradient | CSS backdrop-filter + linear-gradient + boxShadow |
-| Texture grain | (non implemente, imperceptible sur mobile) | SVG feTurbulence en overlay |
+| Fond Deep Space | View backgroundColor | Meme |
+| Orbes neon | Reanimated Animated.View | Meme + CSS filter: blur(100px) |
+| Glassmorphisme | expo-blur + experimentalBlurMethod + tint="dark" | backdrop-filter + boxShadow violet |
+| Texture grain | Image SVG | backgroundImage SVG |
 | Animations spring | Reanimated withSpring | Reanimated web |
-| Confetti | Reanimated Animated.View | Meme |
 | Haptics | expo-haptics | No-op stub |
-| Blur reveal | expo-blur anime | CSS filter: blur() |
-| Police serif | expo-font (DM Serif Display) | next/font/google |
-| Modal | Modal React Native | Overlay positionne |
-
----
-
-## Fichiers de tokens
-
-- **Source** : `packages/ui/src/tokens.ts`
-- **Tailwind** : replique dans `tailwind.config` (Expo, Next, packages/ui)
-- **Export barrel** : `packages/ui/src/index.ts`
-
----
-
-## Principes d'animation
-
-1. **Boutons** : spring scale 0.96 (damping 15, stiffness 300), ombre sur solid
-2. **Boutons pilules** : `isPill` = borderRadius 9999, padding ajuste
-3. **Cartes de vote** : spring scale 0.92, damping 12, avatar 60px + color fill violet.200
-4. **Orbes** : 3 orbes, cycles 22-30s, ease in-out sinusoidal, amplitude +/-60/+/-40px
-5. **Confetti** : 30 particules, 1.5s, couleurs Aurora
-6. **Countdown** : pulse subtil scale 1.02, cycle 2s
-7. **Entrees d'ecran** : FadeIn / SlideInUp Reanimated
-8. **Haptic feedback** : Light (vote tap), Success (confirmation), Selection (boutons)
+| Police serif | expo-font | next/font/google |
