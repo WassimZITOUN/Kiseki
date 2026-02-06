@@ -1,18 +1,18 @@
+import { View } from "react-native";
 import { Stack } from "expo-router";
-
-// Deep Space background color to prevent flash during transitions
-const SURFACE_COLOR = "#120d26";
+import { AuroraBackground } from "@repo/ui";
 
 export default function AuthLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: SURFACE_COLOR },
-        navigationBarColor: SURFACE_COLOR,
-        statusBarBackgroundColor: SURFACE_COLOR,
-        animation: "slide_from_right",
-      }}
-    />
+    <View style={{ flex: 1 }}>
+      <AuroraBackground />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: "transparent" },
+          animation: "fade",
+        }}
+      />
+    </View>
   );
 }

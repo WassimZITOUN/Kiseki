@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display } from "next/font/google";
 import { Registry } from "./registry";
 import { Providers } from "./providers";
+import { AuroraBackground } from "@repo/ui";
 import "./global.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -23,9 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={dmSerifDisplay.variable}>
-      <body>
+      <body style={{ backgroundColor: "#120d26" }}>
         <Registry>
-          <Providers>{children}</Providers>
+          <Providers>
+            <AuroraBackground />
+            {children}
+          </Providers>
         </Registry>
       </body>
     </html>
