@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   KeyboardAvoidingView,
@@ -15,6 +15,13 @@ type Props = {
 };
 
 export function AuroraScreenWrapper({ children, style }: Props) {
+  useEffect(() => {
+    console.log("[AuroraScreenWrapper] MOUNTED");
+    return () => console.log("[AuroraScreenWrapper] UNMOUNTED");
+  }, []);
+
+  console.log("[AuroraScreenWrapper] RENDER");
+
   return (
     <View style={{ flex: 1 }}>
       <AuroraBackground />
