@@ -27,7 +27,7 @@ export function createGroupsService(supabase: SupabaseClient) {
         .insert({
           name,
           created_by: user.id,
-          max_members: options?.maxMembers ?? 20,
+          max_members: options?.maxMembers ?? 12,
           question_time: options?.questionTime ?? "12:00",
           reveal_time: options?.revealTime ?? "20:00",
           allowed_intensities: options?.allowedIntensities ?? ["normal"],

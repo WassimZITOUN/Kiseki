@@ -25,9 +25,10 @@ export function VoteGrid({
   disabled = false,
 }: Props) {
   const { width } = useWindowDimensions();
-  const columns = 2;
+  const compact = members.length > 6;
+  const columns = compact ? 3 : 2;
   const gap = spacing.sm;
-  const cardWidth = (width - spacing.lg * 2 - gap) / columns;
+  const cardWidth = (width - spacing.lg * 2 - gap * (columns - 1)) / columns;
 
   return (
     <View
@@ -47,6 +48,7 @@ export function VoteGrid({
             selected={selectedUserId === member.userId}
             onPress={onSelectMember}
             disabled={disabled}
+            compact={compact}
           />
         </View>
       ))}

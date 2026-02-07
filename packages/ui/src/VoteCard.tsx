@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { TouchableOpacity, Platform } from "react-native";
+import { View, TouchableOpacity, Platform, StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  withTiming,
 } from "react-native-reanimated";
 import { colors, radii, spacing } from "./tokens";
 import { KAvatar } from "./KAvatar";
@@ -27,9 +26,12 @@ type Props = {
   selected?: boolean;
   onPress?: (userId: string) => void;
   disabled?: boolean;
+  compact?: boolean;
 };
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+
+const isWeb = Platform.OS === "web";
 
 export function VoteCard({
   userId,
@@ -38,23 +40,21 @@ export function VoteCard({
   selected = false,
   onPress,
   disabled = false,
+  compact = false,
 }: Props) {
+  const avatarSize = compact ? 40 : 60;
+  const cardPadding = compact ? spacing.md : spacing.lg;
+  const cardMinHeight = compact ? 88 : 120;
   const scale = useSharedValue(1);
-  const bgOpacity = useSharedValue(selected ? 1 : 0);
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const animatedScale = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
-    backgroundColor:
-      bgOpacity.value > 0.5
-        ? colors.violet[200]
-        : colors.glass.background, // 5% opacity — zero-fill
   }));
 
   const handlePressIn = () => {
     scale.value = withSpring(0.95, SNAPPY_SPRING);
-    bgOpacity.value = withTiming(1, { duration: 100 });
 
-    if (Platform.OS !== "web") {
+    if (!isWeb) {
       try {
         const Haptics = require("expo-haptics");
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -64,10 +64,65 @@ export function VoteCard({
 
   const handlePressOut = () => {
     scale.value = withSpring(1, SNAPPY_SPRING);
-    if (!selected) {
-      bgOpacity.value = withTiming(0, { duration: 100 });
-    }
   };
+
+  const borderColor = selected ? colors.violet[300] : colors.glass.border;
+  const resolvedRadius = radii.superEllipse;
+
+  if (isWeb) {
+    return (
+      <AnimatedTouchable
+        onPress={() => onPress?.(userId)}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        disabled={disabled}
+        activeOpacity={0.95}
+        style={[
+          {
+            borderRadius: resolvedRadius,
+            overflow: "hidden",
+            backgroundColor: selected
+              ? colors.violet[200]
+              : colors.glass.background,
+            borderWidth: 1,
+            borderColor,
+            minHeight: cardMinHeight,
+            // @ts-ignore web-only
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            boxShadow: selected
+              ? "0 8px 32px rgba(122, 0, 255, 0.35)"
+              : "0 8px 32px rgba(122, 0, 255, 0.15)",
+          },
+          animatedScale,
+        ]}
+      >
+        <View
+          style={{
+            padding: cardPadding,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <KAvatar uri={avatarUri} name={name} size={avatarSize} />
+          <KText
+            variant="bodySmall"
+            color={selected ? colors.violet[800] : colors.textPrimary}
+            style={{
+              marginTop: spacing.xs,
+              textAlign: "center",
+              fontWeight: "500",
+            }}
+          >
+            {name}
+          </KText>
+        </View>
+      </AnimatedTouchable>
+    );
+  }
+
+  // Native — glassmorphism layers
+  const BlurView = require("expo-blur").BlurView;
 
   return (
     <AnimatedTouchable
@@ -78,25 +133,68 @@ export function VoteCard({
       activeOpacity={0.95}
       style={[
         {
-          borderRadius: radii.superEllipse,
+          borderRadius: resolvedRadius,
+          minHeight: cardMinHeight,
+          shadowColor: colors.shadow.color,
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: selected ? 0.4 : 0.15,
+          shadowRadius: 12,
+          elevation: selected ? 8 : 4,
+        },
+        animatedScale,
+      ]}
+    >
+      {/* Layer 1: Blur */}
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          { borderRadius: resolvedRadius, overflow: "hidden" },
+        ]}
+      >
+        <BlurView
+          intensity={30}
+          tint="dark"
+          experimentalBlurMethod="dimezisBlurView"
+          style={StyleSheet.absoluteFill}
+        />
+      </View>
+
+      {/* Layer 2: Border + background */}
+      <View
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            borderRadius: resolvedRadius,
+            borderWidth: 1,
+            borderColor,
+            backgroundColor: selected
+              ? "rgba(149,114,207,0.2)"
+              : colors.glass.background,
+          },
+        ]}
+      />
+
+      {/* Layer 3: Content */}
+      <View
+        style={{
           padding: spacing.lg,
           alignItems: "center",
           justifyContent: "center",
-          borderWidth: 1,
-          borderColor: selected ? colors.violet[300] : colors.glass.border,
-          minHeight: 120,
-        },
-        animatedStyle,
-      ]}
-    >
-      <KAvatar uri={avatarUri} name={name} size={60} />
-      <KText
-        variant="bodySmall"
-        color={selected ? colors.violet[800] : colors.textPrimary}
-        style={{ marginTop: spacing.xs, textAlign: "center", fontWeight: "500" }}
+        }}
       >
-        {name}
-      </KText>
+        <KAvatar uri={avatarUri} name={name} size={60} />
+        <KText
+          variant="bodySmall"
+          color={selected ? colors.violet[200] : colors.textPrimary}
+          style={{
+            marginTop: spacing.xs,
+            textAlign: "center",
+            fontWeight: "500",
+          }}
+        >
+          {name}
+        </KText>
+      </View>
     </AnimatedTouchable>
   );
 }

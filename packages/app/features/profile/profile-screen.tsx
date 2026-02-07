@@ -11,6 +11,7 @@ import {
   GlassCard,
   colors,
   spacing,
+  radii,
 } from "@repo/ui";
 
 type Props = {
@@ -25,11 +26,12 @@ export function ProfileScreen({ onNavigateEdit }: Props) {
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, padding: spacing.lg }}
       >
-        <View
+        <GlassCard
           style={{
+            borderRadius: radii.xl,
             alignItems: "center",
             marginTop: spacing.lg,
-            marginBottom: spacing.xl,
+            marginBottom: spacing.md,
           }}
         >
           <KAvatar
@@ -37,7 +39,7 @@ export function ProfileScreen({ onNavigateEdit }: Props) {
             name={profile?.display_name ?? profile?.username}
             size={120}
           />
-        </View>
+        </GlassCard>
 
         <GlassCard style={{ marginBottom: spacing.md }}>
           <View style={{ marginBottom: spacing.md }}>
@@ -97,17 +99,23 @@ export function ProfileScreen({ onNavigateEdit }: Props) {
           </View>
         </GlassCard>
 
-        <KButton
-          title="Modifier le profil"
-          onPress={onNavigateEdit}
-          style={{ marginBottom: spacing.sm }}
-        />
+        <GlassCard
+          style={{
+            borderRadius: radii.xl,
+          }}
+        >
+          <KButton
+            title="Modifier le profil"
+            onPress={onNavigateEdit}
+            style={{ marginBottom: spacing.sm }}
+          />
 
-        <KButton
-          title="Se deconnecter"
-          onPress={signOut}
-          variant="glass"
-        />
+          <KButton
+            title="Se deconnecter"
+            onPress={signOut}
+            variant="glass"
+          />
+        </GlassCard>
       </ScrollView>
     </AuroraScreenWrapper>
   );

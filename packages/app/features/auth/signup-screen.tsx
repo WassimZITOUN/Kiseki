@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { TouchableOpacity, ScrollView } from "react-native";
+import { View, TouchableOpacity, ScrollView } from "react-native";
 import { useAuth } from "../../providers/auth-provider";
 import {
   AuroraScreenWrapper,
@@ -10,6 +10,7 @@ import {
   KButton,
   GlassCard,
   ErrorBanner,
+  GoogleLogo,
   colors,
   spacing,
 } from "@repo/ui";
@@ -20,13 +21,22 @@ type Props = {
 };
 
 export function SignupScreen({ onNavigateLogin, onSignupSuccess }: Props) {
-  const { signUp } = useAuth();
+  const { signUp, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  const handleGoogleSignup = async () => {
+    setError(null);
+    setGoogleLoading(true);
+    const { error: err } = await signInWithGoogle();
+    setGoogleLoading(false);
+    if (err) setError(err);
+  };
 
   const handleSignup = async () => {
     if (!email || !password || !username || !displayName) {
@@ -116,6 +126,37 @@ export function SignupScreen({ onNavigateLogin, onSignupSuccess }: Props) {
             title="S'inscrire"
             onPress={handleSignup}
             loading={loading}
+            style={{ marginBottom: spacing.md }}
+          />
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: spacing.md,
+            }}
+          >
+            <View
+              style={{ flex: 1, height: 1, backgroundColor: colors.glass.border }}
+            />
+            <KText
+              variant="caption"
+              color={colors.textMuted}
+              style={{ marginHorizontal: spacing.sm }}
+            >
+              ou
+            </KText>
+            <View
+              style={{ flex: 1, height: 1, backgroundColor: colors.glass.border }}
+            />
+          </View>
+
+          <KButton
+            title="Continuer avec Google"
+            onPress={handleGoogleSignup}
+            variant="glass"
+            loading={googleLoading}
+            leftIcon={<GoogleLogo size={20} source={require("../../../../apps/assets/logo-google.png")} />}
           />
         </GlassCard>
 

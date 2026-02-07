@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { DailyQuestion, Vote } from "@my-app/types";
+import type { DailyQuestion, Vote, Profile, QuestionWithResults, VoteResult } from "@my-app/types";
 
 export function createVotesService(supabase: SupabaseClient) {
   return {
@@ -10,8 +10,10 @@ export function createVotesService(supabase: SupabaseClient) {
         .from("daily_questions")
         .select("*")
         .eq("group_id", groupId)
-        .eq("status", "active")
+        .in("status", ["active", "revealed"])
         .gte("created_at", today)
+        .order("created_at", { ascending: false })
+        .limit(1)
         .single();
 
       if (error && error.code === "PGRST116") return null; // no rows
@@ -59,6 +61,75 @@ export function createVotesService(supabase: SupabaseClient) {
 
       if (error) throw error;
       return data as Vote;
+    },
+
+    async revealQuestion(questionId: string): Promise<void> {
+      await supabase.rpc("reveal_question", { p_question_id: questionId });
+    },
+
+    async getQuestionResults(questionId: string): Promise<QuestionWithResults> {
+      // 1. Fetch the question with its tag
+      const { data: question, error: qErr } = await supabase
+        .from("daily_questions")
+        .select("*, tags(*)")
+        .eq("id", questionId)
+        .single();
+      if (qErr) throw qErr;
+
+      // 2. Fetch all votes with voter and target profiles
+      const { data: votes, error: vErr } = await supabase
+        .from("votes")
+        .select("*, voter:profiles!votes_voter_id_fkey(*), target:profiles!votes_target_user_id_fkey(*)")
+        .eq("question_id", questionId);
+      if (vErr) throw vErr;
+
+      const totalVotes = votes?.length ?? 0;
+
+      // 3. Aggregate by target_user_id
+      const byTarget = new Map<string, { target: Profile; voters: Profile[]; notes: string[]; count: number }>();
+      for (const v of votes ?? []) {
+        const existing = byTarget.get(v.target_user_id);
+        const note = v.context_note as string | null;
+        if (existing) {
+          existing.count++;
+          existing.voters.push(v.voter as Profile);
+          if (note) existing.notes.push(note);
+        } else {
+          byTarget.set(v.target_user_id, {
+            target: v.target as Profile,
+            voters: [v.voter as Profile],
+            notes: note ? [note] : [],
+            count: 1,
+          });
+        }
+      }
+
+      // 4. Build sorted results
+      const results = Array.from(byTarget.values())
+        .sort((a, b) => b.count - a.count)
+        .map((entry) => ({
+          target_user_id: entry.target.id,
+          target: entry.target,
+          vote_count: entry.count,
+          percentage: totalVotes > 0 ? Math.round((entry.count / totalVotes) * 100) : 0,
+          voters: entry.voters,
+          context_notes: entry.notes,
+        }));
+
+      // 5. Build individual votes list
+      const individualVotes = (votes ?? []).map((v: any) => ({
+        voter: v.voter as Profile,
+        target: v.target as Profile,
+        context_note: (v.context_note as string | null) ?? null,
+      }));
+
+      return {
+        ...question,
+        tag: question.tags ?? null,
+        results,
+        total_votes: totalVotes,
+        votes: individualVotes,
+      } as QuestionWithResults & { votes: typeof individualVotes };
     },
 
   };

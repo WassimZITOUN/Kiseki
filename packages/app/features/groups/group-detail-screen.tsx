@@ -3,22 +3,27 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import {
   View,
+  ScrollView,
   TouchableOpacity,
   ActivityIndicator,
   Platform,
   StyleSheet,
 } from "react-native";
 import Animated, { FadeIn, SlideInUp } from "react-native-reanimated";
+import { Feather } from "@expo/vector-icons";
 import type {
   DailyQuestion,
   Vote,
   GroupMemberWithProfile,
   Group,
+  QuestionWithResults,
 } from "@my-app/types";
 import { getSupabase } from "../../utils/supabase";
 import { services } from "@my-app/core";
 import { GroupMenu } from "./components/group-menu";
 import { VoteConfirmModal } from "./components/vote-confirm-modal";
+import { VoteDetailsSheet } from "./components/vote-details-sheet";
+import { ShareResultSheet } from "./components/share-result-sheet";
 import {
   AuroraScreenWrapper,
   KText,
@@ -30,10 +35,14 @@ import {
   QuestionHeader,
   CountdownTimer,
   ConfettiOverlay,
-  BlurredReveal,
+  PodiumView,
+  ResultCard,
+  TomorrowTeaser,
   colors,
   spacing,
   type VoteMember,
+  type PodiumMember,
+  type ResultItem,
 } from "@repo/ui";
 
 const { createVotesService, createGroupsService } = services;
@@ -61,6 +70,10 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [showVoteReview, setShowVoteReview] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [questionResults, setQuestionResults] = useState<QuestionWithResults | null>(null);
+  const [voteDetailsVisible, setVoteDetailsVisible] = useState(false);
+  const [shareSheetVisible, setShareSheetVisible] = useState(false);
+  const [tomorrowCountdown, setTomorrowCountdown] = useState("");
 
   // Menu state
   const [menuVisible, setMenuVisible] = useState(false);
@@ -72,6 +85,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
   // Countdown
   const [countdown, setCountdown] = useState("");
+  const [timerExpired, setTimerExpired] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchData = useCallback(async () => {
@@ -96,6 +110,29 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       setQuestion(todayQuestion);
 
       if (todayQuestion) {
+        // Check if reveal time already passed (local time comparison)
+        let revealTimePassed = false;
+        if (detail.group.reveal_time && todayQuestion.status === "active") {
+          const now = new Date();
+          const [rh, rm] = detail.group.reveal_time.split(":").map(Number);
+          const revealTarget = new Date(now);
+          revealTarget.setHours(rh, rm, 0, 0);
+          if (now.getTime() >= revealTarget.getTime()) {
+            revealTimePassed = true;
+            setTimerExpired(true);
+          }
+        }
+
+        // Fetch results if revealed (DB status or client-side timer)
+        if (todayQuestion.status === "revealed" || revealTimePassed) {
+          // If timer expired but DB still "active", force reveal server-side
+          if (revealTimePassed && todayQuestion.status === "active") {
+            await votesService.revealQuestion(todayQuestion.id).catch(() => {});
+          }
+          const results = await votesService.getQuestionResults(todayQuestion.id);
+          setQuestionResults(results);
+        }
+
         const vote = await votesService.getMyVote(todayQuestion.id);
         setMyVote(vote);
       }
@@ -124,6 +161,8 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       if (diff <= 0) {
         setCountdown("00:00:00");
         if (timerRef.current) clearInterval(timerRef.current);
+        setTimerExpired(true);
+        fetchData();
         return;
       }
 
@@ -140,7 +179,43 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [group, question]);
+  }, [group, question, fetchData]);
+
+  // Tomorrow countdown — targets question_time the next day
+  useEffect(() => {
+    if (!group || !question) return;
+    if (question.status !== "revealed" && !timerExpired) return;
+
+    const tomorrowTimerRef: { current: ReturnType<typeof setInterval> | null } = { current: null };
+
+    const updateTomorrowCountdown = () => {
+      const now = new Date();
+      const [h, m] = group.question_time.split(":").map(Number);
+      const target = new Date(now);
+      target.setDate(target.getDate() + 1);
+      target.setHours(h, m, 0, 0);
+
+      const diff = target.getTime() - now.getTime();
+      if (diff <= 0) {
+        setTomorrowCountdown("00:00:00");
+        if (tomorrowTimerRef.current) clearInterval(tomorrowTimerRef.current);
+        return;
+      }
+
+      const hours = Math.floor(diff / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      setTomorrowCountdown(
+        `${String(hours).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`
+      );
+    };
+
+    updateTomorrowCountdown();
+    tomorrowTimerRef.current = setInterval(updateTomorrowCountdown, 1000);
+    return () => {
+      if (tomorrowTimerRef.current) clearInterval(tomorrowTimerRef.current);
+    };
+  }, [group, question, timerExpired]);
 
   const otherMembers: VoteMember[] = members
     .filter((m) => m.user_id !== currentUserId)
@@ -213,7 +288,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
   const handleRemoveMember = async (
     userId: string,
-    displayName: string
+    _displayName: string
   ) => {
     try {
       const service = createGroupsService(getSupabase());
@@ -374,8 +449,28 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
     );
   }
 
-  // --- State D: Question revealed ---
-  if (question && question.status === "revealed") {
+  // --- State D: Question revealed (or timer expired client-side) ---
+  if (question && (question.status === "revealed" || timerExpired)) {
+    const allResults: ResultItem[] = (questionResults?.results ?? []).map((r: any) => ({
+      userId: r.target_user_id,
+      name: r.target.display_name ?? r.target.username,
+      avatarUri: r.target.avatar_url,
+      voteCount: r.vote_count,
+      percentage: r.percentage,
+      comments: r.context_notes ?? [],
+    }));
+
+    const podiumMembers: PodiumMember[] = allResults.slice(0, 3).map(
+      (r) => ({
+        userId: r.userId,
+        name: r.name,
+        avatarUri: r.avatarUri,
+        voteCount: r.voteCount,
+      })
+    );
+
+    const restResults = allResults.slice(3);
+
     return (
       <AuroraScreenWrapper>
         <KHeader
@@ -383,27 +478,81 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           onBack={onBack}
           rightAction={headerRightAction}
         />
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: spacing.lg,
-          }}
+
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 60 }}
+          showsVerticalScrollIndicator={false}
         >
+          {/* Title */}
           <Animated.View entering={FadeIn.duration(600)}>
             <KText
               variant="questionLarge"
-              style={{ textAlign: "center", marginBottom: spacing.md }}
+              style={{
+                textAlign: "center",
+                marginTop: spacing.md,
+                marginBottom: spacing.xs,
+              }}
             >
-              Le grand gagnant est...
+              Le Verdict
             </KText>
-            <KText variant="h3" style={{ textAlign: "center" }}>
-              Resultats disponibles
+            <KText
+              variant="bodySmall"
+              color={colors.textSecondary}
+              style={{
+                textAlign: "center",
+                marginBottom: spacing.md,
+              }}
+            >
+              {question.question}
             </KText>
           </Animated.View>
-        </View>
+
+          {/* Podium — Top 3 */}
+          <PodiumView members={podiumMembers} />
+
+          {/* Rest of results */}
+          {restResults.length > 0 && (
+            <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.md }}>
+              {restResults.map((item, i) => (
+                <ResultCard
+                  key={item.userId}
+                  item={item}
+                  rank={i + 4}
+                  delay={600 + i * 100}
+                />
+              ))}
+            </View>
+          )}
+
+          {/* Vote details button */}
+          <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
+            <KButton
+              title="Detail des votes"
+              onPress={() => setVoteDetailsVisible(true)}
+              variant="glass"
+            />
+          </View>
+
+          {/* Share button */}
+          <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.sm }}>
+            <KButton
+              title="Partager"
+              onPress={() => setShareSheetVisible(true)}
+              variant="glass"
+              leftIcon={<Feather name="share-2" size={16} color={colors.textPrimary} />}
+            />
+          </View>
+
+          {/* Tomorrow teaser */}
+          {tomorrowCountdown !== "" && (
+            <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
+              <TomorrowTeaser countdown={tomorrowCountdown} />
+            </View>
+          )}
+        </ScrollView>
+
         {renderInviteCode()}
+
         <GroupMenu
           visible={menuVisible}
           onClose={() => setMenuVisible(false)}
@@ -415,6 +564,23 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           codeCopied={codeCopied}
           currentUserId={currentUserId}
           onRemoveMember={handleRemoveMember}
+        />
+
+        <VoteDetailsSheet
+          visible={voteDetailsVisible}
+          onClose={() => setVoteDetailsVisible(false)}
+          votes={(questionResults as any)?.votes ?? []}
+          question={question.question}
+        />
+
+        <ShareResultSheet
+          visible={shareSheetVisible}
+          onClose={() => setShareSheetVisible(false)}
+          question={question.question}
+          winnerName={allResults[0]?.name ?? ""}
+          winnerAvatarUri={allResults[0]?.avatarUri}
+          winnerVoteCount={allResults[0]?.voteCount ?? 0}
+          groupName={group.name}
         />
       </AuroraScreenWrapper>
     );
@@ -441,20 +607,27 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
             entering={FadeIn.duration(500)}
             style={{ alignItems: "center" }}
           >
-            <KText
-              variant="questionLarge"
-              color={colors.textMuted}
-              style={{ textAlign: "center", marginBottom: spacing.sm }}
+            <GlassCard
+              style={{
+                marginHorizontal: spacing.md,
+                alignItems: "center",
+              }}
             >
-              Pas de question aujourd'hui
-            </KText>
-            <KText
-              variant="bodySmall"
-              color={colors.textMuted}
-              style={{ textAlign: "center" }}
-            >
-              Reviens demain pour voter !
-            </KText>
+              <KText
+                variant="questionLarge"
+                color={colors.textMuted}
+                style={{ textAlign: "center", marginBottom: spacing.sm }}
+              >
+                Pas de question aujourd'hui
+              </KText>
+              <KText
+                variant="bodySmall"
+                color={colors.textMuted}
+                style={{ textAlign: "center" }}
+              >
+                Reviens demain pour voter !
+              </KText>
+            </GlassCard>
           </Animated.View>
         </View>
         {renderInviteCode()}
@@ -545,14 +718,21 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               entering={SlideInUp.duration(400)}
               style={{ alignItems: "center" }}
             >
-              <CountdownTimer countdown={countdown} />
+              <GlassCard
+                style={{
+                  marginHorizontal: spacing.md,
+                  alignItems: "center",
+                }}
+              >
+                <CountdownTimer countdown={countdown} />
 
-              <KButton
-                title="Revoir mon vote"
-                onPress={() => setShowVoteReview(true)}
-                variant="glass"
-                style={{ marginTop: spacing.xl }}
-              />
+                <KButton
+                  title="Revoir mon vote"
+                  onPress={() => setShowVoteReview(true)}
+                  variant="glass"
+                  style={{ marginTop: spacing.xl }}
+                />
+              </GlassCard>
             </Animated.View>
           )}
         </View>
@@ -586,19 +766,30 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
       <ErrorBanner message={error} />
 
-      <QuestionHeader
-        question={question!.question}
-        subtitle="Question du jour"
-      />
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 20 }}
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1 }}
+      >
+        <GlassCard
+          style={{
+            marginHorizontal: spacing.md,
+            marginBottom: spacing.md,
+          }}
+        >
+          <QuestionHeader
+            question={question!.question}
+            subtitle="Question du jour"
+          />
+        </GlassCard>
 
-      <View style={{ flex: 1, justifyContent: "center" }}>
         <VoteGrid
           members={otherMembers}
           selectedUserId={selectedUserId}
           onSelectMember={handleMemberTap}
           disabled={!!myVote}
         />
-      </View>
+      </ScrollView>
 
       {renderInviteCode()}
 

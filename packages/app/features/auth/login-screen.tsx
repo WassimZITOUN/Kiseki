@@ -10,6 +10,7 @@ import {
   KButton,
   GlassCard,
   ErrorBanner,
+  GoogleLogo,
   colors,
   spacing,
 } from "@repo/ui";
@@ -128,6 +129,7 @@ export function LoginScreen({ onNavigateSignup }: Props) {
             onPress={handleGoogleLogin}
             variant="glass"
             loading={googleLoading}
+            leftIcon={<GoogleLogo size={20} source={require("../../../../apps/assets/logo-google.png")} />}
           />
         </GlassCard>
 

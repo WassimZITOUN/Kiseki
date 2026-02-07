@@ -83,50 +83,64 @@ export function HomeScreen({
       {/* Header */}
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
           paddingHorizontal: spacing.md,
-          paddingBottom: spacing.sm,
           paddingTop: statusBarHeight + spacing.sm,
+          paddingBottom: spacing.md,
         }}
       >
-        <KText
-          variant="questionLarge"
-          style={{ fontSize: 28 }}
-        >
-          Kiseki
-        </KText>
-        <TouchableOpacity onPress={onNavigateProfile}>
-          <KAvatar
-            uri={profile?.avatar_url}
-            name={profile?.display_name ?? profile?.username}
-            size={40}
-          />
-        </TouchableOpacity>
+        <GlassCard style={{ borderRadius: radii.xl }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <KText
+              variant="questionLarge"
+              style={{ fontSize: 28 }}
+            >
+              Kiseki
+            </KText>
+            <TouchableOpacity onPress={onNavigateProfile}>
+              <KAvatar
+                uri={profile?.avatar_url}
+                name={profile?.display_name ?? profile?.username}
+                size={40}
+              />
+            </TouchableOpacity>
+          </View>
+        </GlassCard>
       </View>
 
       {/* Action buttons */}
       <View
         style={{
-          flexDirection: "row",
-          gap: spacing.sm,
           paddingHorizontal: spacing.md,
-          marginBottom: spacing.sm,
-          justifyContent: "center",
+          marginBottom: spacing.md,
         }}
       >
-        <KButton
-          title="Rejoindre"
-          onPress={onNavigateJoin}
-          variant="glass"
-          isPill
-        />
-        <KButton
-          title="Creer"
-          onPress={onNavigateCreate}
-          isPill
-        />
+        <GlassCard style={{ borderRadius: radii.xl }}>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: spacing.sm,
+              justifyContent: "center",
+            }}
+          >
+            <KButton
+              title="Rejoindre"
+              onPress={onNavigateJoin}
+              variant="glass"
+              isPill
+            />
+            <KButton
+              title="Creer"
+              onPress={onNavigateCreate}
+              isPill
+            />
+          </View>
+        </GlassCard>
       </View>
 
       <ErrorBanner message={error} />
@@ -153,8 +167,9 @@ export function HomeScreen({
             />
           }
           ListEmptyComponent={
-            <View
+            <GlassCard
               style={{
+                borderRadius: radii.xl,
                 alignItems: "center",
                 justifyContent: "center",
                 paddingVertical: 60,
@@ -170,7 +185,7 @@ export function HomeScreen({
               <KText variant="bodySmall" color={colors.textMuted}>
                 Cree ou rejoins un groupe pour commencer
               </KText>
-            </View>
+            </GlassCard>
           }
           renderItem={({ item, index }) => (
             <Animated.View entering={SlideInUp.delay(index * 80).duration(400)}>
