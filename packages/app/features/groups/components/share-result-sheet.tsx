@@ -4,6 +4,7 @@ import { useState } from "react";
 import { View, TouchableOpacity, Platform, Share, ActivityIndicator } from "react-native";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
+import * as Clipboard from "expo-clipboard";
 import { getSupabase } from "../../../utils/supabase";
 import {
   GlassBottomSheet,
@@ -34,35 +35,40 @@ export function ShareResultSheet({
   winnerVoteCount,
   groupName,
 }: Props) {
-  const [loading, setLoading] = useState(false);
+  const [loadingShare, setLoadingShare] = useState(false);
+  const [loadingCopy, setLoadingCopy] = useState(false);
+
+  // Common logic to get image data from the Supabase function
+  const getImageData = async () => {
+    const supabase = getSupabase();
+    const { data, error } = await supabase.functions.invoke("share-image", {
+      body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
+    });
+
+    if (error) {
+      console.error("Supabase function error:", error);
+      throw new Error("Erreur lors de la génération de l'image.");
+    }
+    if (!data) {
+      throw new Error("Aucune donnée d'image retournée.");
+    }
+    return data;
+  };
 
   const handleShareImage = async () => {
-    if (Platform.OS === "web") {
-      // On web, we can just open the image in a new tab for the user to save/share
-      const supabase = getSupabase();
-      const { data } = await supabase.functions.invoke("share-image", {
-        body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
-      });
-      if (data) {
-        const url = URL.createObjectURL(data);
-        window.open(url, "_blank");
-      }
-      return;
-    }
-
-    setLoading(true);
+    setLoadingShare(true);
     try {
-      const supabase = getSupabase();
-      const { data, error } = await supabase.functions.invoke("share-image", {
-        body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
-      });
+      const imageData = await getImageData();
 
-      if (error) throw error;
-      if (!data) throw new Error("No image data returned.");
+      if (Platform.OS === "web") {
+        const url = URL.createObjectURL(imageData);
+        window.open(url, "_blank");
+        return;
+      }
 
       const uri = FileSystem.cacheDirectory + "share-image.png";
       const reader = new FileReader();
-      reader.readAsDataURL(data);
+      reader.readAsDataURL(imageData);
       reader.onloadend = async () => {
         const base64data = (reader.result as string).split(",")[1];
         await FileSystem.writeAsStringAsync(uri, base64data, {
@@ -75,11 +81,40 @@ export function ShareResultSheet({
         }
         await Sharing.shareAsync(uri);
       };
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Erreur lors de la génération de l'image.");
+      alert(err.message);
     } finally {
-      setLoading(false);
+      setLoadingShare(false);
+    }
+  };
+
+  const handleCopyImage = async () => {
+    setLoadingCopy(true);
+    try {
+      const imageData = await getImageData();
+
+      if (Platform.OS === "web") {
+        // Web clipboard API for images is complex and requires user gesture
+        // For simplicity, we'll just open it in a new tab on web for copy
+        const url = URL.createObjectURL(imageData);
+        window.open(url, "_blank");
+        alert("Image ouverte dans un nouvel onglet. Vous pouvez la copier manuellement.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(imageData);
+      reader.onloadend = async () => {
+        const base64data = (reader.result as string); // Full base64 string including data:image/png;base64,
+        await Clipboard.setImageAsync({ base64: base64data });
+        alert("Image copiée dans le presse-papiers !");
+      };
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message);
+    } finally {
+      setLoadingCopy(false);
     }
   };
 
@@ -124,12 +159,27 @@ export function ShareResultSheet({
       {/* Share image button */}
       <View style={{ marginTop: spacing.md }}>
         <KButton
-          title="Partager en image"
+          title="Partager l'image"
           onPress={handleShareImage}
           variant="glass"
-          disabled={loading}
+          disabled={loadingShare || loadingCopy}
           leftIcon={
-            loading ? (
+            loadingShare ? (
+              <ActivityIndicator size="small" color={colors.textPrimary} />
+            ) : undefined
+          }
+        />
+      </View>
+
+      {/* Copy image button */}
+      <View style={{ marginTop: spacing.sm }}>
+        <KButton
+          title="Copier l'image"
+          onPress={handleCopyImage}
+          variant="glass"
+          disabled={loadingCopy || loadingShare}
+          leftIcon={
+            loadingCopy ? (
               <ActivityIndicator size="small" color={colors.textPrimary} />
             ) : undefined
           }
