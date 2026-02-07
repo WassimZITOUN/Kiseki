@@ -45,8 +45,19 @@ export function ShareResultSheet({
     const body = { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount };
     console.log("Invoking with body:", body);
 
+    // Explicitly get the session to ensure the Authorization header is set correctly
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    if (!session) {
+      throw new Error("No active user session found. Please log in.");
+    }
+
     const { data, error } = await supabase.functions.invoke("share-image", {
       body,
+      headers: {
+        Authorization: `Bearer ${session.access_token}`,
+      },
     });
 
     if (error) {
