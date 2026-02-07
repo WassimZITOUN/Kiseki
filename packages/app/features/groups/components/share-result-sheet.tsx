@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { View, TouchableOpacity, Platform, Share, ActivityIndicator } from "react-native";
-import * as FileSystem from "expo-file-system";
-import * as Sharing from "expo-sharing";
-import * as Clipboard from "expo-clipboard";
+import { View, TouchableOpacity, Platform, Share } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import { getSupabase } from "../../../utils/supabase";
 import {
   GlassBottomSheet,
@@ -38,69 +36,46 @@ export function ShareResultSheet({
   const [loadingShare, setLoadingShare] = useState(false);
   const [loadingCopy, setLoadingCopy] = useState(false);
 
-  // Common logic to get image data from the Supabase function
-  const getImageData = async () => {
-    console.log("Attempting to invoke share-image function...");
+  const shareMessage = `"${question}" — Le groupe ${groupName} a choisi ${winnerName} ! — Kiseki`;
+
+  /** Call edge function → returns base64 PNG string */
+  const generateImage = async (): Promise<string> => {
     const supabase = getSupabase();
-    const body = { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount };
-    console.log("Invoking with body:", body);
-
-    // Explicitly get the session to ensure the Authorization header is set correctly
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    if (!session) {
-      throw new Error("No active user session found. Please log in.");
-    }
-
     const { data, error } = await supabase.functions.invoke("share-image", {
-      body,
-      headers: {
-        Authorization: `Bearer ${session.access_token}`,
-      },
+      body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
     });
-
-    if (error) {
-      console.error("Supabase function invocation error:", error);
-      throw new Error(`Erreur lors de l'appel de la fonction: ${error.message}`);
-    }
-    if (!data) {
-      console.error("No image data returned from function.");
-      throw new Error("Aucune donnée d'image retournée.");
-    }
-    console.log("Successfully received image data from function.");
-    return data;
+    if (error) throw error;
+    if (!data?.image) throw new Error("Pas de donnees image");
+    return data.image;
   };
 
   const handleShareImage = async () => {
     setLoadingShare(true);
     try {
-      const imageData = await getImageData();
-
       if (Platform.OS === "web") {
-        const url = URL.createObjectURL(imageData);
-        window.open(url, "_blank");
+        try {
+          await navigator.clipboard.writeText(shareMessage);
+        } catch {}
         return;
       }
 
-      const uri = FileSystem.cacheDirectory + "share-image.png";
-      const reader = new FileReader();
-      reader.readAsDataURL(imageData);
-      reader.onloadend = async () => {
-        const base64data = (reader.result as string).split(",")[1];
-        await FileSystem.writeAsStringAsync(uri, base64data, {
-          encoding: FileSystem.EncodingType.Base64,
-        });
+      const base64 = await generateImage();
+      const FileSystem = require("expo-file-system");
+      const Sharing = require("expo-sharing");
 
-        if (!(await Sharing.isAvailableAsync())) {
-          alert("Le partage n'est pas disponible sur votre appareil.");
-          return;
-        }
-        await Sharing.shareAsync(uri);
-      };
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message);
+      const uri = `${FileSystem.cacheDirectory}kiseki-share.png`;
+      await FileSystem.writeAsStringAsync(uri, base64, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(uri, { mimeType: "image/png" });
+      }
+    } catch {
+      // Fallback: share text instead
+      try {
+        await Share.share({ message: shareMessage });
+      } catch {}
     } finally {
       setLoadingShare(false);
     }
@@ -109,27 +84,18 @@ export function ShareResultSheet({
   const handleCopyImage = async () => {
     setLoadingCopy(true);
     try {
-      const imageData = await getImageData();
-
       if (Platform.OS === "web") {
-        // Web clipboard API for images is complex and requires user gesture
-        // For simplicity, we'll just open it in a new tab on web for copy
-        const url = URL.createObjectURL(imageData);
-        window.open(url, "_blank");
-        alert("Image ouverte dans un nouvel onglet. Vous pouvez la copier manuellement.");
+        try {
+          await navigator.clipboard.writeText(shareMessage);
+        } catch {}
         return;
       }
 
-      const reader = new FileReader();
-      reader.readAsDataURL(imageData);
-      reader.onloadend = async () => {
-        const base64data = (reader.result as string); // Full base64 string including data:image/png;base64,
-        await Clipboard.setImageAsync({ base64: base64data });
-        alert("Image copiée dans le presse-papiers !");
-      };
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message);
+      const base64 = await generateImage();
+      const Clipboard = require("expo-clipboard");
+      await Clipboard.setImageAsync(base64);
+    } catch {
+      // Silent fail
     } finally {
       setLoadingCopy(false);
     }
@@ -178,13 +144,10 @@ export function ShareResultSheet({
         <KButton
           title="Partager l'image"
           onPress={handleShareImage}
-          variant="glass"
+          variant="solid"
+          loading={loadingShare}
           disabled={loadingShare || loadingCopy}
-          leftIcon={
-            loadingShare ? (
-              <ActivityIndicator size="small" color={colors.textPrimary} />
-            ) : undefined
-          }
+          leftIcon={!loadingShare ? <Feather name="share-2" size={16} color="#fff" /> : undefined}
         />
       </View>
 
@@ -194,12 +157,8 @@ export function ShareResultSheet({
           title="Copier l'image"
           onPress={handleCopyImage}
           variant="glass"
+          loading={loadingCopy}
           disabled={loadingCopy || loadingShare}
-          leftIcon={
-            loadingCopy ? (
-              <ActivityIndicator size="small" color={colors.textPrimary} />
-            ) : undefined
-          }
         />
       </View>
     </GlassBottomSheet>
