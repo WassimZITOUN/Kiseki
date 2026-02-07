@@ -2,12 +2,30 @@ import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import React from "https://esm.sh/react@18.2.0";
 import { ImageResponse } from "https://deno.land/x/og_edge@0.0.6/mod.ts";
 
-const font = fetch(
-  "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2K_c.ttf"
-).then((res) => res.arrayBuffer());
+// Try to fetch the custom font, with a fallback
+let fontData: ArrayBuffer | undefined;
+try {
+  const fontResponse = await fetch(
+    "https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2K_c.ttf"
+  );
+  if (!fontResponse.ok) {
+    console.error(`Failed to fetch font: ${fontResponse.statusText}`);
+    // Fallback to a generic sans-serif if font fails
+    fontData = undefined;
+  } else {
+    fontData = await fontResponse.arrayBuffer();
+    console.log("Custom font loaded successfully.");
+  }
+} catch (e) {
+  console.error("Error fetching custom font:", e);
+  // Fallback to a generic sans-serif
+  fontData = undefined;
+}
 
 serve(async (req) => {
+  console.log("Edge Function received request.");
   if (req.method === "OPTIONS") {
+    console.log("Handling OPTIONS request.");
     return new Response("ok", {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -24,7 +42,7 @@ serve(async (req) => {
       groupName = "Kiseki",
       winnerVoteCount = 0,
     } = await req.json();
-    const fontData = await font;
+    console.log("Request body parsed:", { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount });
 
     const response = new ImageResponse(
       (
@@ -38,7 +56,7 @@ serve(async (req) => {
             justifyContent: "center",
             backgroundColor: "#030014",
             color: "#fff",
-            fontFamily: '"DM Serif Display"',
+            fontFamily: fontData ? '"DM Serif Display"' : "sans-serif", // Use fallback if font not loaded
             padding: "40px",
           }}
         >
@@ -107,13 +125,7 @@ serve(async (req) => {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: "DM Serif Display",
-            data: fontData,
-            style: "normal",
-          },
-        ],
+        fonts: fontData ? [{ name: "DM Serif Display", data: fontData, style: "normal" }] : [],
         headers: {
           "Content-Type": "image/png",
           "Access-Control-Allow-Origin": "*",
@@ -122,9 +134,10 @@ serve(async (req) => {
         },
       }
     );
+    console.log("ImageResponse generated successfully.");
     return response;
   } catch (e) {
-    console.error(e);
-    return new Response("Failed to generate image", { status: 500 });
+    console.error("Error during Edge Function execution:", e);
+    return new Response(`Failed to generate image: ${e.message}`, { status: 500 });
   }
 });
