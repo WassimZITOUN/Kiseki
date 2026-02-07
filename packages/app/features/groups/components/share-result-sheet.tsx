@@ -40,18 +40,24 @@ export function ShareResultSheet({
 
   // Common logic to get image data from the Supabase function
   const getImageData = async () => {
+    console.log("Attempting to invoke share-image function...");
     const supabase = getSupabase();
+    const body = { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount };
+    console.log("Invoking with body:", body);
+
     const { data, error } = await supabase.functions.invoke("share-image", {
-      body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
+      body,
     });
 
     if (error) {
-      console.error("Supabase function error:", error);
-      throw new Error("Erreur lors de la génération de l'image.");
+      console.error("Supabase function invocation error:", error);
+      throw new Error(`Erreur lors de l'appel de la fonction: ${error.message}`);
     }
     if (!data) {
+      console.error("No image data returned from function.");
       throw new Error("Aucune donnée d'image retournée.");
     }
+    console.log("Successfully received image data from function.");
     return data;
   };
 
