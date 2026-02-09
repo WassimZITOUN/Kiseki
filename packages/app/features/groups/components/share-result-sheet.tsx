@@ -39,10 +39,17 @@ export function ShareResultSheet({
   /** Call edge function → returns base64 PNG string */
   const generateImage = async (): Promise<string> => {
     const supabase = getSupabase();
-    const { data, error } = await supabase.functions.invoke("share-card-v6", {
+    const { data, error } = await supabase.functions.invoke("share-card-v12", {
       body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
     });
-    if (error) throw error;
+    if (error) {
+      console.error("[share-image] invoke error", error);
+      throw error;
+    }
+    if (data?.error) {
+      console.error("[share-image] function error", data.error);
+      throw new Error(data.error);
+    }
     if (!data?.image) throw new Error("Pas de donnees image");
     return data.image;
   };
