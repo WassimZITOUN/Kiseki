@@ -39,24 +39,55 @@ Deno.serve(async (req: Request) => {
     const vs = winnerVoteCount + " vote" + (Number(winnerVoteCount) > 1 ? "s" : "");
     const foot = groupName + " \u00b7 kiseki.app";
     const ir = new ImageResponse(
-      (<div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", background: "linear-gradient(135deg, #5B21B6 0%, #8B5CF6 100%)", color: "#fff", fontFamily: "DM Serif Display", padding: "48px" }}>
-        <div style={{ display: "flex", alignSelf: "flex-start", fontSize: 18, opacity: 0.5 }}>Kiseki</div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1 }}>
-          <div style={{ display: "flex", fontSize: 34, lineHeight: 1.3, textAlign: "center", marginBottom: 28, maxWidth: 560 }}>{q}</div>
-          {avatarDataUri ? (
-            <img src={avatarDataUri} width={108} height={108} style={{ borderRadius: 54, border: "3px solid #FFD700", marginBottom: 12 }} />
-          ) : (
-            <div style={{ display: "flex", width: 108, height: 108, borderRadius: 54, border: "3px solid #FFD700", backgroundColor: "rgba(255,255,255,0.15)", alignItems: "center", justifyContent: "center", fontSize: 44, marginBottom: 12 }}>{ini}</div>
-          )}
-          <div style={{ display: "flex", fontSize: 28, fontWeight: 600, marginBottom: 4 }}>{winnerName}</div>
-          <div style={{ display: "flex", fontSize: 16, opacity: 0.7 }}>{vs}</div>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <div style={{ display: "flex", width: 60, height: 1, backgroundColor: "rgba(255,255,255,0.2)", marginBottom: 12 }} />
-          <div style={{ display: "flex", fontSize: 14, opacity: 0.4 }}>{foot}</div>
+      (<div style={{ height: "100%", width: "100%", display: "flex", position: "relative", overflow: "hidden", backgroundColor: "#120d26", color: "#fff", fontFamily: "DM Serif Display" }}>
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(1200px 800px at 20% 10%, rgba(149,114,207,0.45) 0%, rgba(18,13,38,0) 60%), radial-gradient(900px 700px at 85% 20%, rgba(94,234,212,0.35) 0%, rgba(18,13,38,0) 60%), radial-gradient(1000px 900px at 60% 90%, rgba(236,72,153,0.35) 0%, rgba(18,13,38,0) 65%)" }} />
+        <div style={{ position: "absolute", width: 620, height: 620, borderRadius: 999, background: "linear-gradient(135deg, rgba(149,114,207,0.35), rgba(94,234,212,0.25))", top: -160, left: -180 }} />
+        <div style={{ position: "absolute", width: 460, height: 460, borderRadius: 999, background: "linear-gradient(135deg, rgba(236,72,153,0.35), rgba(139,92,246,0.25))", top: 140, right: -180 }} />
+        <div style={{ position: "absolute", width: 620, height: 620, borderRadius: 999, background: "linear-gradient(135deg, rgba(34,211,238,0.25), rgba(16,185,129,0.2))", bottom: -220, right: 80 }} />
+        <div style={{ position: "absolute", fontSize: 260, lineHeight: 1, color: "rgba(255,255,255,0.06)", top: 120, left: 100 }}>?</div>
+        <div style={{ position: "absolute", fontSize: 320, lineHeight: 1, color: "rgba(255,255,255,0.04)", bottom: -40, right: 120 }}>?</div>
+
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", width: "100%", height: "100%", padding: "64px 64px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+            <div style={{ fontSize: 20, letterSpacing: 1, opacity: 0.6 }}>Kiseki</div>
+            <div style={{ display: "flex", opacity: 0.5 }}>
+              <div style={{ width: 6, height: 6, borderRadius: 999, backgroundColor: "rgba(255,255,255,0.5)", marginRight: 8 }} />
+              <div style={{ width: 6, height: 6, borderRadius: 999, backgroundColor: "rgba(255,255,255,0.35)", marginRight: 8 }} />
+              <div style={{ width: 6, height: 6, borderRadius: 999, backgroundColor: "rgba(255,255,255,0.2)" }} />
+            </div>
+          </div>
+
+          <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", padding: "40px 42px", borderRadius: 32, background: "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.06))", border: "1px solid rgba(255,255,255,0.28)", boxShadow: "0 32px 80px rgba(0,0,0,0.38)" }}>
+              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <div style={{ fontSize: 38, lineHeight: 1.25, marginBottom: 18 }}>{q}</div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ display: "flex", padding: "6px 12px", borderRadius: 999, backgroundColor: "rgba(255,255,255,0.12)", fontSize: 14, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.8, marginRight: 12 }}>Resultats</div>
+                  <div style={{ fontSize: 14, opacity: 0.7 }}>{vs}</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: 28 }}>
+                {avatarDataUri ? (
+                  <img src={avatarDataUri} width={160} height={160} style={{ borderRadius: 80, border: "3px solid rgba(255,255,255,0.75)", marginBottom: 16 }} />
+                ) : (
+                  <div style={{ display: "flex", width: 160, height: 160, borderRadius: 80, border: "3px solid rgba(255,255,255,0.75)", backgroundColor: "rgba(255,255,255,0.12)", alignItems: "center", justifyContent: "center", fontSize: 64, marginBottom: 16 }}>{ini}</div>
+                )}
+                <div style={{ fontSize: 28, fontWeight: 600, marginBottom: 6, textAlign: "center" }}>{winnerName}</div>
+                <div style={{ fontSize: 14, opacity: 0.7 }}>Gagnant du jour</div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", opacity: 0.5 }}>
+              <div style={{ width: 42, height: 1, backgroundColor: "rgba(255,255,255,0.25)" }} />
+              <div style={{ fontSize: 14, marginLeft: 10 }}>{groupName}</div>
+            </div>
+            <div style={{ fontSize: 14, opacity: 0.4 }}>{foot}</div>
+          </div>
         </div>
       </div>),
-      { width: 680, height: 680, fonts: [{ name: "DM Serif Display", data: fd, style: "normal" as const }] }
+      { width: 1080, height: 1920, fonts: [{ name: "DM Serif Display", data: fd, style: "normal" as const }] }
     );
     const ab = await ir.arrayBuffer();
     const by = new Uint8Array(ab);

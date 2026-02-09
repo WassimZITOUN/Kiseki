@@ -39,7 +39,7 @@ export function ShareResultSheet({
   /** Call edge function → returns base64 PNG string */
   const generateImage = async (): Promise<string> => {
     const supabase = getSupabase();
-    const { data, error } = await supabase.functions.invoke("share-card-v4", {
+    const { data, error } = await supabase.functions.invoke("share-card-v6", {
       body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
     });
     if (error) throw error;
