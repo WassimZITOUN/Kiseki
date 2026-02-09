@@ -259,8 +259,34 @@ L'approche edge function a necessite plusieurs iterations avant de fonctionner :
 | 3 | `npm:@vercel/og@0.6.4` | Echec deploy | Package trop volumineux / incompatible runtime Deno |
 | 4 | `og_edge@0.0.4` sur fonction `share-image` | 200 mais bloquee | Fonctionne, puis la fonction se bloque apres des redeploys |
 | 5 | `og_edge@0.0.4` sur **nouvelle** fonction `share-card` | 200 | Solution finale retenue |
+| 6 | `og_edge@0.0.4` sur **nouveau slug** | 500 | JSX/CSS non compatible satori (voir section "Problemes rencontres") |
+| 7 | `og_edge@0.0.4` sur **nouveau slug** (`share-card-v7`) | 200 | Correctifs satori + format 9:16 ✓ |
 
 **Lecon** : apres des deploiements echoues repetes, une edge function Supabase peut se retrouver dans un etat bloque permanent. La solution est de deployer sous un nouveau nom.
+
+## Problemes rencontres (2026-02)
+
+Cette iteration a introduit un nouveau design (format 9:16, fond aurora, glassmorphism). Les erreurs suivantes ont ete observees :
+
+- **Erreur `edge function returned a non-2xx status code`**  
+  Cause : 500 cote fonction. Le message exact etait `Missing comma before color stops`, declenche par `radial-gradient(1200px 800px at ...)` non supporte par satori/og_edge.
+  Solution : remplacer les gradients par une syntaxe compatible, par exemple `radial-gradient(circle at 20% 10%, ...)`.
+
+- **`gap` non pris en charge**  
+  Cause : satori ignore ou refuse `gap` dans certains contexts.
+  Solution : remplacer `gap` par `marginRight` / `marginTop` explicites.
+
+- **Erreurs masquees cote client**  
+  Cause : l'app ne loguait pas `data.error` renvoye par la fonction.
+  Solution : loguer `data.error` avant de throw pour voir l'erreur exacte.
+
+## Bonnes pratiques (a conserver)
+
+- Toujours tester l'endpoint avec `curl` pour recuperer le message d'erreur exact.
+- Eviter les syntaxes CSS ambiguës (ex. `radial-gradient(1200px 800px at ...)`) et preferer `radial-gradient(circle at ...)`.
+- Eviter `gap` dans le JSX satori. Utiliser `marginTop` / `marginRight`.
+- Si la fonction renvoie 503/500 apres un deploy casse, deployer sous un **nouveau slug** (ex. `share-card-v7`) et mettre a jour le client.
+- Cote app, loguer `data.error` et `error` de `supabase.functions.invoke()` pour diagnostic.
 
 ### Approche "use dom" (testee puis abandonnee)
 
