@@ -39,33 +39,27 @@ Deno.serve(async (req: Request) => {
     const vs = winnerVoteCount + " vote" + (Number(winnerVoteCount) > 1 ? "s" : "");
     const ir = new ImageResponse(
       (<div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", position: "relative", backgroundColor: "#120d26", color: "#fff", fontFamily: "DM Serif Display", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "radial-gradient(circle at 30% 40%, rgba(149,114,207,0.35) 0%, transparent 40%), radial-gradient(circle at 85% 20%, rgba(94,234,212,0.25) 0%, transparent 40%), radial-gradient(circle at 15% 85%, rgba(236,72,153,0.2) 0%, transparent 35%)" }} />
-        <div style={{ position: "absolute", width: 400, height: 400, borderRadius: 200, background: "rgba(149, 114, 207, 0.08)", top: "10%", left: "-5%" }} />
-        <div style={{ position: "absolute", width: 300, height: 300, borderRadius: 150, background: "rgba(94, 234, 212, 0.06)", bottom: "15%", right: "-3%" }} />
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 10, marginBottom: 40 }}>
-          <div style={{ fontSize: 120, fontWeight: "bold", color: "#9572CF", lineHeight: 1 }}>Kiseki</div>
-          <div style={{ display: "flex", flexDirection: "column", width: 880, height: 1173, padding: "60px", background: "linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))", border: "2px solid rgba(255, 255, 255, 0.2)", borderRadius: 40, boxShadow: "0 30px 80px rgba(0, 0, 0, 0.4)", justifyContent: "flex-start", marginTop: 40 }}>
-            <div style={{ textAlign: "center", marginBottom: 40 }}>
-              <div style={{ fontSize: 42, lineHeight: 1.2, marginBottom: 20 }}>{q}</div>
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div style={{ fontSize: 14, fontWeight: "600", marginRight: 12, background: "linear-gradient(135deg, #9572CF, #7B61B8)", padding: "8px 14px", borderRadius: 20 }}>🏆 Résultats</div>
-                <div style={{ fontSize: 16 }}>{vs}</div>
-              </div>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "radial-gradient(circle at 40% 60%, rgba(149,114,207,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(94,234,212,0.2) 0%, transparent 50%)" }} />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 10 }}>
+          <div style={{ fontSize: 120, fontWeight: "bold", color: "#9572CF", marginBottom: 60, lineHeight: 1 }}>Kiseki</div>
+          <div style={{ display: "flex", flexDirection: "column", width: 880, height: 1173, padding: "50px", background: "rgba(255, 255, 255, 0.1)", border: "2px solid rgba(255, 255, 255, 0.15)", borderRadius: 40, textAlign: "center", boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)" }}>
+            <div style={{ fontSize: 42, marginBottom: 24, lineHeight: 1.2 }}>{q}</div>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: 40 }}>
+              <div style={{ fontSize: 14, fontWeight: "600", marginRight: 12, background: "rgba(149, 114, 207, 0.3)", padding: "8px 14px", borderRadius: 20 }}>🏆 Résultats</div>
+              <div style={{ fontSize: 16 }}>{vs}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1 }}>
               {avatarDataUri ? (
                 <img src={avatarDataUri} width={200} height={200} style={{ borderRadius: 100, border: "5px solid rgba(255,255,255,0.8)", marginBottom: 24 }} />
               ) : (
-                <div style={{ display: "flex", width: 200, height: 200, borderRadius: 100, border: "5px solid rgba(255,255,255,0.8)", background: "rgba(149, 114, 207, 0.25)", alignItems: "center", justifyContent: "center", fontSize: 72, fontWeight: "bold", marginBottom: 24 }}>{ini}</div>
+                <div style={{ display: "flex", width: 200, height: 200, borderRadius: 100, border: "5px solid rgba(255,255,255,0.8)", background: "rgba(149, 114, 207, 0.2)", alignItems: "center", justifyContent: "center", fontSize: 72, fontWeight: "bold", marginBottom: 24 }}>{ini}</div>
               )}
-              <div style={{ fontSize: 36, fontWeight: "bold", marginBottom: 8, textAlign: "center" }}>{winnerName}</div>
+              <div style={{ fontSize: 36, fontWeight: "bold", marginBottom: 8 }}>{winnerName}</div>
               <div style={{ fontSize: 14, opacity: 0.75 }}>Gagnant du jour</div>
             </div>
-            <div style={{ textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: 20, marginTop: "auto" }}>
-              <div style={{ fontSize: 12, opacity: 0.6 }}>{groupName}</div>
-            </div>
+            <div style={{ fontSize: 12, opacity: 0.6, borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: 20, marginTop: "auto" }}>{groupName}</div>
           </div>
-          <div style={{ marginTop: 40, fontSize: 14, opacity: 0.5 }}>kiseki.app</div>
+          <div style={{ marginTop: 60, fontSize: 14, opacity: 0.5 }}>kiseki.app</div>
         </div>
       </div>),
       { width: 1080, height: 1920, fonts: [{ name: "DM Serif Display", data: fd, style: "normal" as const }] }
