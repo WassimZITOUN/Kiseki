@@ -271,12 +271,142 @@ Une approche purement client-side a ete testee entre les tentatives serveur :
 
 ---
 
+## Diagnostique et resolution : "Edge Function returned a non-2xx status code"
+
+Cette erreur generique (401, 500, 503, etc.) peut survenir pour plusieurs raisons. Voici comment diagnostiquer et corriger :
+
+### 1. Verifier le statut exact de la fonction
+
+```bash
+curl -v -X POST "https://<project>.supabase.co/functions/v1/share-card" \
+  -H "Content-Type: application/json" \
+  -H "apikey: <anon_key>" \
+  -d '{"question":"Test","winnerName":"Alice","winnerVoteCount":3,"groupName":"Test"}'
+```
+
+- **503 Service Unavailable** → `BOOT_ERROR` : la fonction ne demarre pas (voir section 3 ci-dessous)
+- **500 Internal Server Error** → crash dans la fonction (voir section 2)
+- **401 Unauthorized** → JWT rejet (voir section 4)
+
+### 2. Code incompatible Deno / satori
+
+**Symptome** : Deploy reussit, mais 500 sur appel.
+
+**Problemes courants** :
+- Imports invalides pour Deno (`import ... from "deno.land/std"`, top-level `await fetch()`, etc.)
+- JSX non compatible satori :
+  - Tags HTML (`<h1>`, `<p>`, `<img alt="...">`) au lieu de `<div>`
+  - `position: "absolute"` non supporte (satori utilise flexbox)
+  - `<img src="url">` avec URL externe (satori ne peut pas fetcher dynamiquement)
+  - Enfants implicites en JSX (interpolations string : `{groupName} · kiseki.app`) sans `display: "flex"`
+
+**Solution** :
+```tsx
+// ❌ Mauvais
+const ir = new ImageResponse(
+  <h1>{question}</h1>,  // satori n'aime pas les h1
+  ...
+);
+
+// ✅ Bon
+const q = question;  // Pre-calculer la string
+const ir = new ImageResponse(
+  <div style={{ display: "flex", fontSize: 34 }}>{q}</div>,
+  ...
+);
+```
+
+### 3. Fonction bloquee apres deploy echoue (BOOT_ERROR 503)
+
+**Symptome** : Premiere fois deploy OK, mais apres modification → `BOOT_ERROR` permanent sur l'ancien slug.
+
+**Cause** : Supabase Edge Functions se retrouve dans un etat bloque apres deploiement de code casse. Les tentatives suivantes retournent 503 sans executer le code.
+
+**Solution** : Deployer sous un **nouveau nom de fonction** :
+```bash
+share-card          → bloquee (ne redeploy pas sur ce slug)
+share-card-v2       → deploie, OK, puis bloquee apres modif
+share-card-v3       → deploie, OK, puis bloquee apres modif
+share-card-v4       → deploie, OK, stable ✓
+```
+
+**Mise a jour client** :
+```tsx
+// Ancien
+const { data } = await supabase.functions.invoke("share-card", { body });
+
+// Nouveau
+const { data } = await supabase.functions.invoke("share-card-v4", { body });
+```
+
+### 4. JWT rejet (401)
+
+**Symptome** : `verify_jwt: true` mais le relay Supabase rejette le JWT depuis `supabase.functions.invoke()`.
+
+**Cause** : `supabase.functions.invoke()` passe le JWT dans l'Authorization header, mais le relay n'accepte pas tous les formats.
+
+**Solution** : Desactiver JWT si la fonction n'accede pas a des donnees sensibles :
+```tsx
+// Dans supabase/functions/share-card/index.tsx
+// Deploy avec verify_jwt: false
+mcp__supabase__deploy_edge_function(
+  name: "share-card",
+  verify_jwt: false,  // ← Important
+  ...
+)
+```
+
+Et s'assurer que CORS autorise les headers JWT au cas ou :
+```tsx
+const CH = {
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
+};
+```
+
+### 5. Image fetche ne s'affiche pas
+
+**Symptome** : Deploy OK, fonction retourne 200, mais avatar manque dans l'image.
+
+**Cause** : satori ne peut pas fetcher dynamiquement les URLs externes. `<img src="https://...">` n'apparait pas.
+
+**Solution** : Fetcher l'image **dans la fonction**, convertir en `data:image/jpeg;base64,...`, puis passer au JSX :
+
+```tsx
+async function fetchAvatarDataUri(url: string): Promise<string | null> {
+  try {
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    const ct = r.headers.get("content-type") || "image/png";
+    const ab = await r.arrayBuffer();
+    const bytes = new Uint8Array(ab);
+    let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) {
+      bin += String.fromCharCode(...bytes.subarray(i, Math.min(i + 0x8000, bytes.length)));
+    }
+    return `data:${ct};base64,${btoa(bin)}`;
+  } catch {
+    return null;
+  }
+}
+
+// Dans le JSX
+const avatarDataUri = winnerAvatarUri ? await fetchAvatarDataUri(winnerAvatarUri) : null;
+{avatarDataUri ? (
+  <img src={avatarDataUri} width={108} height={108} style={{ borderRadius: 54 }} />
+) : (
+  <div>Fallback: {winnerName.charAt(0)}</div>
+)}
+```
+
+---
+
 ## Erreurs courantes et solutions
 
 | Erreur | Cause | Solution |
 |--------|-------|---------|
 | 401 Unauthorized | `verify_jwt: true` sur la fonction | Mettre `verify_jwt: false` (pas de donnees sensibles) |
-| 500 Internal Server Error | `og_edge` version incompatible | Utiliser `og_edge@0.0.4` exclusivement |
+| 500 Internal Server Error | Code Deno/satori invalide | Verifier imports, JSX tags, pre-calculer strings, ajouter `display: flex` |
+| 503 BOOT_ERROR | Fonction bloquee apres deploy casse | Deployer sous un nouveau slug (share-card-v2, v3, v4, etc.) |
+| Avatar ne s'affiche pas | Satori ne peut pas fetcher URLs externes | Fetcher dans la fonction, convertir en data URI |
 | `Expected <div> to have explicit "display: flex"` | satori exige `display: flex` sur les divs multi-enfants | Ajouter `display: "flex"` partout, pre-calculer les strings |
-| Deploy echoue en boucle | Fonction bloquee apres echecs | Deployer sous un nouveau nom de fonction |
 | `expo-file-system` import error | API deprecee SDK 54 | Utiliser `require("expo-file-system/legacy")` |
