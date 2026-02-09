@@ -4,14 +4,15 @@ import type { DailyQuestion, Vote, Profile, QuestionWithResults, VoteResult } fr
 export function createVotesService(supabase: SupabaseClient) {
   return {
     async getTodayQuestion(groupId: string): Promise<DailyQuestion | null> {
-      const today = new Date().toISOString().slice(0, 10);
+      // Look back 48h so yesterday's verdict stays visible until the next question arrives
+      const twoDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
 
       const { data, error } = await supabase
         .from("daily_questions")
         .select("*")
         .eq("group_id", groupId)
         .in("status", ["active", "revealed"])
-        .gte("created_at", today)
+        .gte("created_at", twoDaysAgo)
         .order("created_at", { ascending: false })
         .limit(1)
         .single();

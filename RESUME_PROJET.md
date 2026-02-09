@@ -7,220 +7,328 @@ Chaque jour, une question du type "Qui est le plus susceptible de..." est posee 
 Les membres votent, puis les resultats sont reveles le soir avec transparence totale.
 
 - **Plateformes** : Android (prioritaire), iOS, Web
-- **Stack** : React Native (Expo) + Next.js + Supabase
+- **Stack** : React Native (Expo SDK 54) + Next.js 15 + Supabase
 - **Architecture** : Monorepo avec npm workspaces + Turborepo
 
 ---
 
-## 2. Ce qui a ete fait
+## 2. Architecture du monorepo
 
-### Phase 0 : Infrastructure et Schema SQL
+### `apps/expo/` — Application mobile
 
-**Base de donnees Supabase** (`supabase/migrations/001_kiseki_schema.sql`) :
-- 8 tables : `profiles`, `tags`, `groups`, `group_members`, `question_bank`, `user_questions`, `daily_questions`, `votes`
-- 30 tags de traits predefinis (charismatique, gourmand, drole, sportif, etc.)
-- 10 questions de test dans la banque
-- Row Level Security (RLS) sur toutes les tables, dont anti-triche sur les votes
-- Triggers : auto-creation profil, auto-ajout admin, updated_at
-- Fonctions SQL : `assign_daily_questions()`, `reveal_due_questions()`, `join_group_by_code()`, `reveal_question()`
-- pg_cron : assignation quotidienne a 08:00 UTC, reveal toutes les 5 min
+- Expo SDK 54, React Native 0.81.5, React 19.1
+- Navigation : expo-router v4 (file-based routing)
+- 12 fichiers de route (auth + app + groupes)
 
-**Types TypeScript** (`packages/types/src/index.ts`) :
-- Types miroir du schema : Profile, Group, GroupMember, DailyQuestion, Vote, Tag, etc.
-- Types joins : GroupWithStatus, VoteResult, QuestionWithResults, WeeklyRecap
-- Types app : AuthState, WidgetData, NotificationPayload
+### `apps/next/` — Application web
 
-**Monorepo** :
-- `apps/expo/` : App mobile Expo SDK 54 + expo-router v4
-- `apps/next/` : App web Next.js 15 App Router
-- `packages/app/` : Ecrans partages, providers, utils
-- `packages/core/` : Services metier (structure prete, contenu template)
-- `packages/types/` : Types TypeScript partages
-- `packages/ui/` : Composants UI (structure prete, vide)
-- `turbo.json` : Config Turborepo avec globalEnv pour Supabase
+- Next.js 15.5.7, App Router, React 19.1
+- 11 fichiers de route (meme couverture que mobile)
+- 5 stubs pour modules natifs (`apps/next/stubs/`) :
+  - `expo-secure-store.js` : localStorage fallback
+  - `expo-image-picker.js` : input file web
+  - `expo-blur.js` : CSS backdrop-filter
+  - `expo-haptics.js` : no-op
+  - `empty.js` : google-signin
 
-### Phase 1 : Authentification
+### `packages/ui/` (`@repo/ui`) — Design System
 
-**Ecrans partages** (`packages/app/features/`) :
-- `auth/login-screen.tsx` : Connexion email/mot de passe + bouton Google
-- `auth/signup-screen.tsx` : Inscription avec email, mot de passe, username, display_name
-- `auth/profile-setup-screen.tsx` : Choix photo de profil (optionnel)
-- `home/screen.tsx` : Ecran d'accueil avec header "Kiseki" et avatar profil
-- `profile/profile-screen.tsx` : Vue profil (avatar, nom, username, email, date inscription, deconnexion)
-- `profile/edit-profile-screen.tsx` : Edition profil (nom, username, avatar)
+22 composants + 1 fichier de tokens, organises par categorie :
 
-**Provider** (`packages/app/providers/auth-provider.tsx`) :
-- Context React avec : user, profile, session, loading
-- Methodes : signIn, signUp, signInWithGoogle, signOut, refreshProfile
-- Google Sign-In natif (SDK) sur mobile, OAuth redirect (Supabase) sur web
-- Ecoute des changements d'auth via `onAuthStateChange`
+| Categorie | Composants |
+|-----------|-----------|
+| **Fondation** | `tokens`, `KText`, `KButton`, `KInput`, `KAvatar`, `KHeader`, `ErrorBanner`, `GoogleLogo` |
+| **Glassmorphisme** | `GlassCard`, `GlassModal`, `GlassBottomSheet` |
+| **Fond Aurora** | `AuroraBackground`, `AuroraScreenWrapper` |
+| **Vote** | `VoteCard`, `VoteGrid`, `QuestionHeader`, `ConfettiOverlay`, `CountdownTimer`, `BlurredReveal` |
+| **Resultats** | `PodiumView`, `ResultCard`, `ShareResultCard`, `TomorrowTeaser` |
 
-**Utilitaires** (`packages/app/utils/`) :
-- `supabase.ts` : Client Supabase singleton, SecureStore sur mobile, localStorage sur web
-- `avatar.ts` : `pickImage()` (expo-image-picker sur mobile, input file sur web) + `uploadAvatar()` vers Supabase Storage
+Types exportes : `VoteMember`, `PodiumMember`, `ResultItem`
 
-**Routes Expo** (`apps/expo/app/`) :
-```
-_layout.tsx            -> Verifie session, redirige vers (auth) ou (app)
-(auth)/_layout.tsx     -> Stack navigation
-(auth)/login.tsx
-(auth)/signup.tsx
-(auth)/profile-setup.tsx
-(app)/_layout.tsx      -> Tab navigator
-(app)/index.tsx        -> HomeScreen
-(app)/profile.tsx
-(app)/edit-profile.tsx
-```
+### `packages/app/` (`@repo/app`) — Ecrans et logique partagee
 
-**Routes Next.js** (`apps/next/app/`) :
-```
-layout.tsx             -> AuthProvider + Registry (react-native-web)
-providers.tsx          -> Wrapper client pour AuthProvider
-page.tsx               -> Home (redirige vers /login si pas connecte)
-login/page.tsx
-signup/page.tsx
-profile/page.tsx
-profile/edit/page.tsx
-```
+**9 ecrans** (`features/`) :
 
-**Configuration Next.js** :
-- `next.config.mjs` : transpilePackages pour tous les packages du monorepo
-- Mapping `env` pour exposer les variables `EXPO_PUBLIC_*` cote client
-- Webpack aliases : react-native -> react-native-web
-- Stubs pour modules natifs (`apps/next/stubs/`) : expo-secure-store, expo-image-picker, google-signin
+| Feature | Ecrans |
+|---------|--------|
+| **Auth** | `login-screen`, `signup-screen`, `profile-setup-screen` |
+| **Home** | `screen` (accueil avec liste des groupes, question du jour) |
+| **Groupes** | `create-group-screen`, `join-group-screen`, `group-detail-screen` |
+| **Profil** | `profile-screen`, `edit-profile-screen` |
 
----
+**4 composants groupes** (`features/groups/components/`) :
+- `vote-confirm-modal` : modal de confirmation de vote
+- `group-menu` : menu contextuel du groupe (quitter, exclure)
+- `vote-details-sheet` : bottom sheet detail des votes
+- `share-result-sheet` : bottom sheet de partage d'image
 
-## 3. Difficultes rencontrees et solutions
+**1 provider** (`providers/auth-provider.tsx`) : `AuthProvider`, `useAuth`
 
-### 3.1 Google Sign-In sur Expo Go
+**2 utilitaires** (`utils/`) : `supabase.ts` (client singleton), `avatar.ts` (pick + upload)
 
-**Probleme** : `@react-native-google-signin/google-signin` necessite du code natif. Expo Go est un bac a sable qui ne supporte que les modules JS purs. Message : "Google Sign-In n'est pas disponible sur cette plateforme".
+### `packages/core/` (`@my-app/core`) — Services metier
 
-**Solution** : Ce n'est pas un blocage pour la production. L'app compilee en dev build ou en production (via EAS Build) inclura le code natif et Google Sign-In fonctionnera. Pour tester en dev, on utilise la connexion email/mot de passe.
+**`groups.ts`** — `createGroupsService(supabase)` :
+- `createGroup()`, `joinGroupByCode()`, `getMyGroups()`, `getGroupDetail()`, `leaveGroup()`, `removeMember()`
 
-### 3.2 Google Sign-In sur Web
+**`votes.ts`** — `createVotesService(supabase)` :
+- `getTodayQuestion()`, `getMyVote()`, `submitVote()`, `revealQuestion()`, `getQuestionResults()`
 
-**Probleme** : Le meme code natif ne fonctionne pas sur web. Le message d'erreur "Google Sign-In n'est pas disponible sur cette plateforme" apparaissait aussi cote web.
+### `packages/types/` (`@my-app/types`) — Types TypeScript
 
-**Solution** : Detection de la plateforme dans `signInWithGoogle()`. Sur web (`Platform.OS === "web"`), on utilise `supabase.auth.signInWithOAuth({ provider: "google" })` qui redirige vers Google dans le navigateur. Sur mobile, on garde le SDK natif.
+Types miroir Supabase : `Profile`, `Group`, `GroupMember`, `DailyQuestion`, `Vote`, `Tag`, `QuestionBank`, `UserQuestion`
+Types joints : `GroupWithStatus`, `GroupWithMemberCount`, `GroupMemberWithProfile`, `VoteWithProfiles`, `VoteResult`, `QuestionWithResults`, `WeeklyRecap`
+Types app : `AuthState`, `WidgetData`, `NotificationPayload`, `QuestionIntensity`
 
-### 3.3 Erreur redirect_uri_mismatch (Google OAuth)
+### `supabase/` — Backend
 
-**Probleme** : Apres avoir configure Google Sign-In sur web, erreur 400 `redirect_uri_mismatch`. Google refusait le callback Supabase.
+- `migrations/001_kiseki_schema.sql` : schema complet (8 tables, RLS, triggers, fonctions, pg_cron)
+- `functions/share-image/` : edge function de generation de carte PNG
 
-**Solution** : Ajouter l'URI de callback de Supabase (`https://avjarksbgtltfmaqqwvd.supabase.co/auth/v1/callback`) dans les "URI de redirection autorises" du client OAuth Web dans Google Cloud Console. Aussi configurer `http://localhost:3000` dans Supabase > Authentication > URL Configuration.
+### `docs/` — Documentation technique
 
-### 3.4 Client OAuth Android deja utilise
-
-**Probleme** : Lors de la creation du client OAuth Android dans Google Cloud Console, erreur "le nom du package Android et son empreinte sont deja utilises". Le package `com.myapp.mobile` avec le SHA-1 de debug par defaut etait deja enregistre par quelqu'un d'autre.
-
-**Solution** : Changement du package Android de `com.myapp.mobile` a `com.kiseki.app` dans `app.json` (iOS bundleIdentifier inclus). Le nom generique etait en conflit car le SHA-1 du debug keystore est partage par tous les developpeurs.
-
-### 3.5 Build Next.js : expo-modules-core parse error
-
-**Probleme** : En lancant le serveur Next.js, erreur `Module parse failed: Unexpected token` sur `expo-modules-core/src/index.ts` a cause de la syntaxe `export type *` non supportee par webpack.
-
-**Solution** : Creation de fichiers stubs dans `apps/next/stubs/` pour remplacer les modules natifs cote web :
-- `expo-secure-store.js` : fonctions async vides
-- `expo-image-picker.js` : retourne toujours `{ canceled: true }`
-- `empty.js` : export vide pour google-signin
-
-Aliases webpack dans `next.config.mjs` pour rediriger les imports vers ces stubs.
-
-### 3.6 Variables d'environnement sur Next.js
-
-**Probleme** : Les variables `EXPO_PUBLIC_*` ne sont pas exposees cote client par Next.js (seules les `NEXT_PUBLIC_*` le sont). Le client Supabase ne recevait pas les URLs/cles.
-
-**Solution** : Ajout d'un bloc `env` dans `next.config.mjs` pour mapper explicitement les variables. Creation d'un symlink `.env.local` dans `apps/next/` pointant vers le `.env.local` racine.
-
-### 3.7 Upload photo de profil sur Web
-
-**Probleme** : Le stub `expo-image-picker` retournait toujours `{ canceled: true }`. Impossible de choisir une photo sur la version web.
-
-**Solution** : Detection de plateforme dans `pickImage()`. Sur web, utilisation d'un `<input type="file" accept="image/*">` natif du navigateur qui retourne un data URL (base64). Adaptation de `uploadAvatar()` pour extraire le type MIME depuis un data URL.
+- `partage-image-edge-function.md` : documentation de la feature de partage d'image
 
 ---
 
-## 4. Structure actuelle des fichiers
+## 3. Design System
+
+**Style** : Pop-Japandi — glassmorphisme premium a 4 couches sur fond fixe 3D.
+
+### Palette
+
+| Role | Couleur | Hex |
+|------|---------|-----|
+| Primary | Violet | `#9572CF` |
+| Deep Space (fond) | Bleu-noir | `#120d26` |
+| Surface glass | Blanc translucide | `rgba(255,255,255,0.08)` |
+| Orbes neon | Violet / Bleu / Rose | gradients Aurora |
+
+### Typographie
+
+- **Titres / questions** : DM Serif Display, 34px (expo-font sur mobile, next/font/google sur web)
+- **Body** : System sans-serif (par defaut React Native)
+
+### Glassmorphisme 4 couches
+
+1. **Shadow** : ombre portee
+2. **BlurView** : flou gaussien (expo-blur, `experimentalBlurMethod="dimezisBlurView"` sur Android)
+3. **LinearGradient** : surface semi-transparente
+4. **Content** : texte et icones
+
+Composants : `GlassCard` (intensity=30), `GlassModal` (intensity=80), `GlassBottomSheet` (intensity=80)
+
+### Fond Aurora
+
+`AuroraBackground` : gradient statique 3D avec formes colorees (LinearGradient), "?" decoratifs, overlay de bruit, sur fond Deep Space. Pas d'animation (pas de reanimated).
+
+`AuroraScreenWrapper` : wrapper KeyboardAvoidingView pour tous les ecrans.
+
+Ref : voir `CHARTE_GRAPHIQUE.md` pour la specification complete.
+
+---
+
+## 4. Backend Supabase
+
+### Tables (8)
+
+| Table | Description | Lignes |
+|-------|------------|--------|
+| `profiles` | Profils utilisateurs (miroir auth.users) | 16 |
+| `tags` | 30 traits predefinis (charismatique, drole, etc.) | 30 |
+| `groups` | Groupes avec code invite, horaires, intensites | 7 |
+| `group_members` | Membres (role admin/member) | 23 |
+| `question_bank` | 10 questions globales (normal + epice) | 10 |
+| `user_questions` | Questions creees par les utilisateurs | 0 |
+| `daily_questions` | Question du jour par groupe | 15 |
+| `votes` | Votes avec constraint unique (1 vote/personne) | 27 |
+
+### RLS (Row Level Security)
+
+20 politiques RLS actives sur toutes les tables :
+- Profils : lecture publique, ecriture propre
+- Groupes : visibles par membres, lookup par invite_code, CRUD admin
+- Membres : visibles entre membres, auto-insertion, suppression (leave/kick)
+- Votes : anti-triche (voter_id = auth.uid), transparence apres reveal
+- Questions : lecture membres, insertion admin
+
+### Triggers et fonctions SQL
+
+| Fonction | Role |
+|----------|------|
+| `handle_new_user()` | Auto-creation profil a l'inscription |
+| `handle_new_group()` | Auto-ajout du createur comme admin |
+| `handle_updated_at()` | Mise a jour du timestamp |
+| `join_group_by_code(code)` | Rejoindre un groupe par code invite (check max_members) |
+| `reveal_question(id)` | Reveal manuel d'une question |
+| `assign_daily_questions()` | Attribution quotidienne (pool bank + user, evite doublons 30j) |
+| `reveal_due_questions()` | Reveal auto selon l'horaire du groupe |
+
+### pg_cron
+
+| Job | Frequence | Action |
+|-----|-----------|--------|
+| `kiseki-assign-daily-questions` | Tous les jours a 08:00 UTC | `assign_daily_questions()` |
+| `kiseki-reveal-due-questions` | Toutes les 5 minutes | `reveal_due_questions()` |
+
+### Edge Functions deployees
+
+| Slug | Description | JWT |
+|------|------------|-----|
+| `share-card` | Generation carte PNG 1200x630 (og_edge) | Non |
+| `share-image` | Version anterieure de share-card | Non |
+
+### Storage
+
+- Bucket `avatars` : photos de profil utilisateur
+
+---
+
+## 5. Fonctionnalites implementees
+
+### Authentification
+- Connexion email/mot de passe
+- Inscription (email, mot de passe, username, display_name)
+- Google Sign-In natif (SDK) sur mobile, OAuth redirect sur web
+- Setup profil : choix de photo (expo-image-picker mobile, input file web)
+- Edition profil : nom, username, avatar
+- Upload avatar vers Supabase Storage
+
+### Groupes
+- Creation de groupe (nom, parametres)
+- Rejoindre un groupe par code invite (8 caracteres)
+- Detail du groupe : membres, question du jour, resultats
+- Quitter un groupe
+- Exclure un membre (admin)
+
+### Vote quotidien
+- Question du jour affichee avec `QuestionHeader`
+- Grille de vote (`VoteGrid`) avec avatars des membres
+- Modal de confirmation (`VoteConfirmModal`)
+- Animation confetti apres vote (`ConfettiOverlay`)
+- Countdown vers le reveal (`CountdownTimer`)
+- Guard : 1 seul vote par personne par question (constraint SQL)
+
+### Resultats / Verdict
+- Podium top 3 (`PodiumView`) avec couronnes
+- Classement complet (`ResultCard`)
+- Detail des votes : qui a vote pour qui (`VoteDetailsSheet`)
+- Gestion du verdict vide (aucun vote) : guard `allResults.length`
+- Transparence totale apres reveal (politique RLS)
+
+### Partage d'image
+- Carte violette 1200x630 generee par edge function `share-card` (og_edge v0.0.4)
+- Bottom sheet de partage (`ShareResultSheet`)
+- Copie dans le clipboard
+- Share natif (expo-sharing sur mobile)
+- Font DM Serif Display avec fallback sans-serif
+
+### Teaser retention
+- `TomorrowTeaser` : countdown "prochaine question dans..." avec GlassCard verrouillee
+- `BlurredReveal` : apercu floute des resultats avant le reveal
+
+---
+
+## 6. Routes
+
+### Expo (expo-router v4)
 
 ```
-template-monorepo-react/
-├── apps/
-│   ├── expo/                    # App mobile
-│   │   ├── app/                 # Routes expo-router
-│   │   ├── app.json             # Config Expo (com.kiseki.app)
-│   │   └── package.json
-│   └── next/                    # App web
-│       ├── app/                 # Routes Next.js App Router
-│       ├── stubs/               # Stubs pour modules natifs
-│       ├── next.config.mjs
-│       └── package.json
-├── packages/
-│   ├── app/                     # Ecrans partages + providers + utils
-│   │   ├── features/            # Ecrans (auth, home, profile)
-│   │   ├── providers/           # AuthProvider
-│   │   └── utils/               # supabase.ts, avatar.ts
-│   ├── core/                    # Services metier (a implementer)
-│   ├── types/                   # Types TypeScript
-│   └── ui/                      # Composants UI (a implementer)
-├── supabase/
-│   └── migrations/              # Schema SQL complet
-├── .env.local                   # Variables Supabase + Google
-├── turbo.json
-├── PRD.md                       # Product Requirements Document
-├── PLAN.md                      # Plan de developpement
-└── package.json                 # Racine monorepo
+_layout.tsx                         -> Auth guard, redirige (auth) ou (app)
+(auth)/_layout.tsx                  -> Stack navigation
+(auth)/login.tsx                    -> LoginScreen
+(auth)/signup.tsx                   -> SignupScreen
+(auth)/profile-setup.tsx            -> ProfileSetupScreen
+(app)/_layout.tsx                   -> Tab navigator
+(app)/index.tsx                     -> HomeScreen
+(app)/profile.tsx                   -> ProfileScreen
+(app)/edit-profile.tsx              -> EditProfileScreen
+(app)/groups/create.tsx             -> CreateGroupScreen
+(app)/groups/join.tsx               -> JoinGroupScreen
+(app)/groups/[id]/index.tsx         -> GroupDetailScreen
+```
+
+### Next.js (App Router)
+
+```
+layout.tsx                          -> AuthProvider + Registry
+providers.tsx                       -> Wrapper client
+page.tsx                            -> Home
+login/page.tsx                      -> LoginScreen
+signup/page.tsx                     -> SignupScreen
+profile/page.tsx                    -> ProfileScreen
+profile/edit/page.tsx               -> EditProfileScreen
+groups/create/page.tsx              -> CreateGroupScreen
+groups/join/page.tsx                -> JoinGroupScreen
+groups/[id]/page.tsx                -> GroupDetailScreen
 ```
 
 ---
 
-## 5. Ce qu'il reste a faire
+## 7. Difficultes rencontrees et solutions
 
-### Phase 2 : Groupes
-- **Ecrans** : Liste des groupes, creation de groupe, rejoindre par code invite, detail groupe
-- **Services** : `createGroup()`, `joinGroup()`, `leaveGroup()`, `getMyGroups()`, `getGroupMembers()`
-- **Config** : Categories autorisees par groupe (normal/epice), horaires question/reveal
+### Google Sign-In sur Expo Go
+**Probleme** : `@react-native-google-signin/google-signin` necessite du code natif, incompatible Expo Go.
+**Solution** : Fonctionne en dev build / production (EAS Build). En dev, connexion email/mot de passe.
 
-### Phase 3 : Vote quotidien
-- **Ecrans** : Question du jour (grille membres, tap pour voter), modal confirmation
-- **Services** : `getTodayQuestion()`, `submitVote()`, `hasVotedToday()`
-- **Multi-groupe** : Tabs swipeable, indicateur vote/pas vote par groupe
+### Google Sign-In sur Web
+**Probleme** : Le SDK natif ne fonctionne pas sur web.
+**Solution** : Detection de plateforme — `supabase.auth.signInWithOAuth({ provider: "google" })` sur web, SDK natif sur mobile.
 
-### Phase 4 : Resultats / Reveal
-- **Ecrans** : Classement (couronne vainqueur, qui a vote pour qui), historique 30 jours
-- **Logique** : Reveal automatique via `reveal_due_questions()` (pg_cron)
+### Erreur redirect_uri_mismatch (Google OAuth)
+**Probleme** : Erreur 400 au callback Supabase.
+**Solution** : Ajout de l'URI de callback Supabase dans Google Cloud Console + `http://localhost:3000` dans Supabase URL Configuration.
 
-### Phase 5 : Notifications push + Weekly Recap
-- **Setup** : expo-notifications + expo-device
-- **Types** : Question du matin, rappel, reveal, nouveau membre, weekly recap
-- **Edge Functions** : `send-notifications`, `send-weekly-recap` (dimanche 18h)
-- **Ecran** : Weekly recap (top 3 tags par groupe par semaine)
+### Client OAuth Android deja utilise
+**Probleme** : Conflit de package `com.myapp.mobile` avec SHA-1 debug partage.
+**Solution** : Changement du package a `com.kiseki.app`.
 
-### Phase 6 : Widget Android
-- **Package** : `react-native-android-widget`
-- **Widget** : Question active + mini-avatars membres, vote depuis le widget
+### Build Next.js : expo-modules-core parse error
+**Probleme** : `export type *` non supporte par webpack.
+**Solution** : Stubs dans `apps/next/stubs/` + aliases webpack dans `next.config.mjs`.
 
-### Phase 7 : Questions custom
-- **Ecrans** : Pool de questions (bank + custom), creation de question (texte + categorie + tag)
-- **Logique** : Auto-approuvees, pas de doublons 30 jours
+### Variables d'environnement Next.js
+**Probleme** : `EXPO_PUBLIC_*` non exposees cote client Next.js.
+**Solution** : Bloc `env` dans `next.config.mjs` pour mapper les variables + symlink `.env.local`.
 
-### Phase 8 : UI Components + Branding
-- **Composants** : Button, Input, Card, Avatar, Badge, Countdown, TagBadge, CategoryPicker
-- **Branding** : Icone, splash screen, palette de couleurs
+### Upload photo de profil sur Web
+**Probleme** : Stub expo-image-picker retournait `{ canceled: true }`.
+**Solution** : `<input type="file" accept="image/*">` natif sur web avec extraction du type MIME depuis data URL.
 
-### Phase 9 : Test + Deploy
-- **Test** : Emulateur Android + appareil physique, simulateur iOS
-- **Deploy** : EAS Build (APK), Supabase db push + functions deploy
-- **Demo BTS SIO** : Bouton dev pour forcer le reveal, test sur 2 telephones
+### expo-router non hoiste dans le monorepo
+**Probleme** : npm ne hoist pas expo-router (conflits de peer deps). `babel-preset-expo` ne trouve pas le module.
+**Solution** : Ajout manuel de `expoRouterBabelPlugin` dans `apps/expo/babel.config.js`.
+
+### Edge function og_edge bloquee
+**Probleme** : Les versions recentes de `og_edge` echouaient en production (import Deno incompatible).
+**Solution** : Nouvelle edge function `share-card` avec `og_edge@0.0.4` (version compatible Supabase Edge Runtime).
+
+### Android blur ne fonctionne pas
+**Probleme** : `expo-blur` BlurView ne rendait rien sur Android par defaut.
+**Solution** : Ajout de `experimentalBlurMethod="dimezisBlurView"` sur tous les BlurView.
+
+### Verdict vide sans votes
+**Probleme** : Crash quand aucun vote n'a ete soumis pour une question revelee.
+**Solution** : Guard `allResults.length > 0` avant d'acceder aux resultats.
 
 ---
 
-## 6. Configuration externe requise
+## 8. Ce qu'il reste a faire
 
-| Service | Ce qui est configure | Ce qui reste |
-|---------|---------------------|--------------|
-| Supabase | Projet cree, schema migre, Auth Google active, Storage avatars | Edge Functions (notifs) |
-| Google Cloud | Client OAuth Web + Android (com.kiseki.app) | Verifier la config en prod |
-| Expo | Projet initialise, expo-router, plugins configures | EAS Build pour dev builds |
-| Variables env | `.env.local` avec Supabase URL/Key + Google Web Client ID | Variables de prod |
+- **Notifications push** : expo-notifications + expo-device, edge function `send-notifications`
+- **Weekly Recap** : edge function `send-weekly-recap` (dimanche 18h) + ecran recap (top 3 tags par groupe)
+- **Widget Android** : react-native-android-widget, question active + mini-avatars
+- **Questions custom** : pool utilisateur, creation question (texte + categorie + tag), pas de doublons 30j
+- **Historique 30 jours** : ecran historique des questions/resultats passes
+- **Test + Deploy** : EAS Build (APK), Supabase db push + functions deploy, demo BTS SIO
+
+---
+
+## 9. Configuration externe
+
+| Service | Configure | Reste a faire |
+|---------|-----------|---------------|
+| Supabase | Projet cree, schema migre, Auth Google, Storage avatars, 4 edge functions deployees, pg_cron actif | Edge functions notifs/recap |
+| Google Cloud | Client OAuth Web + Android (com.kiseki.app) | Verifier config prod |
+| Expo | SDK 54, expo-router v4, plugins configures | EAS Build pour dev builds |
+| Variables env | `.env.local` (Supabase URL/Key + Google Web Client ID) | Variables de prod |

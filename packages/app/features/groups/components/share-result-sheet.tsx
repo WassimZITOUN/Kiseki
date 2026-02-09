@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { View, TouchableOpacity, Platform, Share } from "react-native";
+import { View, TouchableOpacity, Platform, Alert } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { getSupabase } from "../../../utils/supabase";
 import {
@@ -36,12 +36,10 @@ export function ShareResultSheet({
   const [loadingShare, setLoadingShare] = useState(false);
   const [loadingCopy, setLoadingCopy] = useState(false);
 
-  const shareMessage = `"${question}" — Le groupe ${groupName} a choisi ${winnerName} ! — Kiseki`;
-
   /** Call edge function → returns base64 PNG string */
   const generateImage = async (): Promise<string> => {
     const supabase = getSupabase();
-    const { data, error } = await supabase.functions.invoke("share-image", {
+    const { data, error } = await supabase.functions.invoke("share-card-v4", {
       body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
     });
     if (error) throw error;
@@ -50,52 +48,46 @@ export function ShareResultSheet({
   };
 
   const handleShareImage = async () => {
+    if (Platform.OS === "web") return;
     setLoadingShare(true);
     try {
-      if (Platform.OS === "web") {
-        try {
-          await navigator.clipboard.writeText(shareMessage);
-        } catch {}
-        return;
-      }
-
       const base64 = await generateImage();
-      const FileSystem = require("expo-file-system");
+
+      const FileSystem = require("expo-file-system/legacy");
       const Sharing = require("expo-sharing");
 
       const uri = `${FileSystem.cacheDirectory}kiseki-share.png`;
       await FileSystem.writeAsStringAsync(uri, base64, {
-        encoding: FileSystem.EncodingType.Base64,
+        encoding: "base64",
       });
 
-      if (await Sharing.isAvailableAsync()) {
-        await Sharing.shareAsync(uri, { mimeType: "image/png" });
+      const available = await Sharing.isAvailableAsync();
+      if (!available) {
+        Alert.alert("Erreur", "Le partage n'est pas disponible sur cet appareil.");
+        return;
       }
-    } catch {
-      // Fallback: share text instead
-      try {
-        await Share.share({ message: shareMessage });
-      } catch {}
+
+      await Sharing.shareAsync(uri, {
+        mimeType: "image/png",
+        dialogTitle: "Partager le resultat",
+      });
+    } catch (e: any) {
+      console.error("[share-image]", e);
+      Alert.alert("Erreur", e?.message ?? "Erreur inconnue");
     } finally {
       setLoadingShare(false);
     }
   };
 
   const handleCopyImage = async () => {
+    if (Platform.OS === "web") return;
     setLoadingCopy(true);
     try {
-      if (Platform.OS === "web") {
-        try {
-          await navigator.clipboard.writeText(shareMessage);
-        } catch {}
-        return;
-      }
-
       const base64 = await generateImage();
       const Clipboard = require("expo-clipboard");
       await Clipboard.setImageAsync(base64);
-    } catch {
-      // Silent fail
+    } catch (e: any) {
+      Alert.alert("Erreur", "Impossible de copier l'image.");
     } finally {
       setLoadingCopy(false);
     }
@@ -147,7 +139,11 @@ export function ShareResultSheet({
           variant="solid"
           loading={loadingShare}
           disabled={loadingShare || loadingCopy}
-          leftIcon={!loadingShare ? <Feather name="share-2" size={16} color="#fff" /> : undefined}
+          leftIcon={
+            !loadingShare ? (
+              <Feather name="share-2" size={16} color="#fff" />
+            ) : undefined
+          }
         />
       </View>
 

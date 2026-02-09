@@ -507,41 +507,56 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
             </KText>
           </Animated.View>
 
-          {/* Podium — Top 3 */}
-          <PodiumView members={podiumMembers} />
+          {allResults.length > 0 ? (
+            <>
+              {/* Podium — Top 3 */}
+              <PodiumView members={podiumMembers} />
 
-          {/* Rest of results */}
-          {restResults.length > 0 && (
-            <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.md }}>
-              {restResults.map((item, i) => (
-                <ResultCard
-                  key={item.userId}
-                  item={item}
-                  rank={i + 4}
-                  delay={600 + i * 100}
+              {/* Rest of results */}
+              {restResults.length > 0 && (
+                <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.md }}>
+                  {restResults.map((item, i) => (
+                    <ResultCard
+                      key={item.userId}
+                      item={item}
+                      rank={i + 4}
+                      delay={600 + i * 100}
+                    />
+                  ))}
+                </View>
+              )}
+
+              {/* Vote details button */}
+              <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
+                <KButton
+                  title="Detail des votes"
+                  onPress={() => setVoteDetailsVisible(true)}
+                  variant="glass"
                 />
-              ))}
-            </View>
+              </View>
+
+              {/* Share button */}
+              <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.sm }}>
+                <KButton
+                  title="Partager"
+                  onPress={() => setShareSheetVisible(true)}
+                  variant="glass"
+                  leftIcon={<Feather name="share-2" size={16} color={colors.textPrimary} />}
+                />
+              </View>
+            </>
+          ) : (
+            <Animated.View entering={FadeIn.duration(400)} style={{ paddingHorizontal: spacing.md }}>
+              <GlassCard style={{ alignItems: "center", paddingVertical: spacing.xl }}>
+                <KText variant="h3" style={{ marginBottom: spacing.sm }}>
+                  Personne n'a vote aujourd'hui
+                </KText>
+                <KText variant="bodySmall" color={colors.textMuted} style={{ textAlign: "center" }}>
+                  Reviens demain et sois le premier a voter !
+                </KText>
+              </GlassCard>
+            </Animated.View>
           )}
-
-          {/* Vote details button */}
-          <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
-            <KButton
-              title="Detail des votes"
-              onPress={() => setVoteDetailsVisible(true)}
-              variant="glass"
-            />
-          </View>
-
-          {/* Share button */}
-          <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.sm }}>
-            <KButton
-              title="Partager"
-              onPress={() => setShareSheetVisible(true)}
-              variant="glass"
-              leftIcon={<Feather name="share-2" size={16} color={colors.textPrimary} />}
-            />
-          </View>
 
           {/* Tomorrow teaser */}
           {tomorrowCountdown !== "" && (
