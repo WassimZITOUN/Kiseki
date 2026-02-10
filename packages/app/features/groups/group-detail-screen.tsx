@@ -255,7 +255,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       );
       setMyVote(vote);
       setVoteModalVisible(false);
-      setShowConfetti(true);
+      setShowConfetti(true)
       setSelectedUserId(null);
       setContextNote("");
 

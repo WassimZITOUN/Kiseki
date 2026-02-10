@@ -1,0 +1,4 @@
+[mcp_servers.supabase]
+url = "https://mcp.supabase.com/mcp?project_ref=avjarksbgtltfmaqqwvd"
+[features]
+rmcp_client = true
