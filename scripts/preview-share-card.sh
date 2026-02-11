@@ -3,7 +3,8 @@ set -euo pipefail
 
 PORT="${PORT:-54321}"
 OUT="${OUT:-/tmp/share-card.png}"
-URL="http://localhost:${PORT}/functions/v1/share-card"
+SLUG="${SHARE_CARD_SLUG:-share-card}"
+URL="http://localhost:${PORT}/functions/v1/${SLUG}"
 
 QUESTION="${QUESTION:-Test question}"
 WINNER_NAME="${WINNER_NAME:-Alice}"

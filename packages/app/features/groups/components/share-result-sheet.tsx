@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { View, TouchableOpacity, Platform, Alert } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { getSupabase } from "../../../utils/supabase";
+import { getSupabase, SHARE_CARD_FUNCTION_NAME } from "../../../utils/supabase";
 import {
   GlassBottomSheet,
   ShareResultCard,
@@ -39,9 +39,12 @@ export function ShareResultSheet({
   /** Call edge function → returns base64 PNG string */
   const generateImage = async (): Promise<string> => {
     const supabase = getSupabase();
-    const { data, error } = await supabase.functions.invoke("share-card-v21", {
+    const { data, error } = await supabase.functions.invoke(
+      SHARE_CARD_FUNCTION_NAME,
+      {
       body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
-    });
+      }
+    );
     if (error) {
       console.error("[share-image] invoke error", error);
       throw error;

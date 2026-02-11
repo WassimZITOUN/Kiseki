@@ -1,6 +1,9 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { Platform } from "react-native";
 
+export const SHARE_CARD_FUNCTION_NAME =
+  process.env.EXPO_PUBLIC_SHARE_CARD_FUNCTION ?? "share-card";
+
 /**
  * Adaptateur SecureStore pour persister la session Supabase sur mobile.
  * Importé dynamiquement pour ne pas crasher côté web.

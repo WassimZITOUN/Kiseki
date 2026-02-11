@@ -119,9 +119,12 @@ Quand l'utilisateur appuie sur "Partager l'image" ou "Copier l'image", la foncti
 ```tsx
 const generateImage = async (): Promise<string> => {
   const supabase = getSupabase();
-  const { data, error } = await supabase.functions.invoke("share-card", {
+  const { data, error } = await supabase.functions.invoke(
+    SHARE_CARD_FUNCTION_NAME,
+    {
     body: { question, winnerName, winnerAvatarUri, groupName, winnerVoteCount },
-  });
+    }
+  );
   if (error) throw error;
   if (!data?.image) throw new Error("Pas de donnees image");
   return data.image;   // base64 PNG
@@ -129,10 +132,11 @@ const generateImage = async (): Promise<string> => {
 ```
 
 L'appel passe par `supabase.functions.invoke()` qui envoie un POST a l'edge function.
+Le slug est centralise via `EXPO_PUBLIC_SHARE_CARD_FUNCTION` (defaut : `share-card`).
 
 ### 4. Edge function share-card (Deno)
 
-**URL** : `https://<project>.supabase.co/functions/v1/share-card`
+**URL** : `https://<project>.supabase.co/functions/v1/<slug>`
 **Methode** : POST (+ OPTIONS pour CORS)
 **JWT** : desactive (`verify_jwt: false`) — la fonction ne manipule aucune donnee sensible
 
