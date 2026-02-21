@@ -7,8 +7,8 @@ export function createGroupsService(supabase) {
             const { data, error } = await supabase.rpc("create_group", {
                 p_name: name,
                 p_max_members: options?.maxMembers ?? 12,
-                p_question_time: options?.questionTime ?? "09:00",
-                p_reveal_time: options?.revealTime ?? "20:00",
+                p_question_time: "09:00",
+                p_reveal_time: "20:00",
                 p_allowed_intensities: options?.allowedIntensities ?? ["normal"],
             });
             if (error)
