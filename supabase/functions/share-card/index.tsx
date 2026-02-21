@@ -75,8 +75,8 @@ Deno.serve(async (req: Request) => {
         <div style={{ position: "absolute", width: 720, height: 720, borderRadius: 999, background: "linear-gradient(135deg, rgba(149,114,207,0.4), rgba(94,234,212,0.25))", top: -180, left: -220 }} />
         <div style={{ position: "absolute", width: 540, height: 540, borderRadius: 999, background: "linear-gradient(135deg, rgba(236,72,153,0.38), rgba(139,92,246,0.25))", top: 220, right: -220 }} />
         <div style={{ position: "absolute", width: 760, height: 760, borderRadius: 999, background: "linear-gradient(135deg, rgba(34,211,238,0.25), rgba(16,185,129,0.2))", bottom: -260, right: 60 }} />
-        <div style={{ position: "absolute", fontSize: 260, lineHeight: 1, color: "rgba(255,255,255,0.06)", top: 140, left: 110 }}>?</div>
-        <div style={{ position: "absolute", fontSize: 320, lineHeight: 1, color: "rgba(255,255,255,0.04)", bottom: -20, right: 120 }}>?</div>
+        <div style={{ position: "absolute", top: 140, left: 110, fontSize: 260, lineHeight: 1, fontFamily: "DM Serif Display", color: "rgba(149,114,207,0.06)", transform: "rotate(-15deg)" }}>?</div>
+        <div style={{ position: "absolute", bottom: -20, right: 120, fontSize: 320, lineHeight: 1, fontFamily: "DM Serif Display", color: "rgba(0,229,255,0.05)", transform: "rotate(12deg)" }}>?</div>
 
         <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", height: "100%", justifyContent: "center" }}>
           <div style={{ marginBottom: 44, fontSize: 94, letterSpacing: 6, opacity: 0.92, fontFamily: "DM Serif Display" }}>KISEKI</div>
