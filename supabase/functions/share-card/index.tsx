@@ -75,8 +75,8 @@ Deno.serve(async (req: Request) => {
         <div style={{ position: "absolute", width: 720, height: 720, borderRadius: 999, background: "linear-gradient(135deg, rgba(149,114,207,0.4), rgba(94,234,212,0.25))", top: -180, left: -220 }} />
         <div style={{ position: "absolute", width: 540, height: 540, borderRadius: 999, background: "linear-gradient(135deg, rgba(236,72,153,0.38), rgba(139,92,246,0.25))", top: 220, right: -220 }} />
         <div style={{ position: "absolute", width: 760, height: 760, borderRadius: 999, background: "linear-gradient(135deg, rgba(34,211,238,0.25), rgba(16,185,129,0.2))", bottom: -260, right: 60 }} />
-        <div style={{ position: "absolute", fontSize: 260, lineHeight: 1, color: "rgba(255,255,255,0.06)", top: 140, left: 110 }}>?</div>
-        <div style={{ position: "absolute", fontSize: 320, lineHeight: 1, color: "rgba(255,255,255,0.04)", bottom: -20, right: 120 }}>?</div>
+        <div style={{ position: "absolute", top: 140, left: 110, fontSize: 260, lineHeight: 1, fontFamily: "DM Serif Display", color: "rgba(149,114,207,0.06)", transform: "rotate(-15deg)" }}>?</div>
+        <div style={{ position: "absolute", bottom: -20, right: 120, fontSize: 320, lineHeight: 1, fontFamily: "DM Serif Display", color: "rgba(0,229,255,0.05)", transform: "rotate(12deg)" }}>?</div>
 
         <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", height: "100%", justifyContent: "center" }}>
           <div style={{ marginBottom: 44, fontSize: 94, letterSpacing: 6, opacity: 0.92, fontFamily: "DM Serif Display" }}>KISEKI</div>
@@ -84,9 +84,13 @@ Deno.serve(async (req: Request) => {
           <div style={{ display: "flex", flexDirection: "column", width: 940, height: 1280, padding: "68px 76px", borderRadius: 48, background: "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06))", border: "1px solid rgba(255,255,255,0.28)", boxShadow: "0 48px 110px rgba(0,0,0,0.45)", position: "relative", overflow: "hidden" }}>
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 160, background: "linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0))" }} />
 
-            <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-              <div style={{ width: "100%", textAlign: "center", fontSize: qSize, lineHeight: 1.2, marginBottom: 28, overflow: "hidden", wordBreak: "break-word" }}>{question}</div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", justifyContent: "center" }}>
+              <div style={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: 28 }}>
+                <div style={{ display: "flex", width: 760, maxWidth: "100%", justifyContent: "center", alignItems: "center" }}>
+                  <div style={{ display: "flex", textAlign: "center", fontSize: qSize, lineHeight: 1.2, overflow: "hidden", wordBreak: "break-word" }}>{question}</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
                 <div style={{ display: "flex", padding: "14px 22px", borderRadius: 999, backgroundColor: "rgba(255,255,255,0.16)", fontSize: 34, letterSpacing: 0.9, textTransform: "uppercase", opacity: 0.92, marginRight: 18 }}>Resultats</div>
                 <div style={{ fontSize: 34, opacity: 0.85 }}>{vs}</div>
               </div>
