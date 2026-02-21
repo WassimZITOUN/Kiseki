@@ -84,9 +84,13 @@ Deno.serve(async (req: Request) => {
           <div style={{ display: "flex", flexDirection: "column", width: 940, height: 1280, padding: "68px 76px", borderRadius: 48, background: "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06))", border: "1px solid rgba(255,255,255,0.28)", boxShadow: "0 48px 110px rgba(0,0,0,0.45)", position: "relative", overflow: "hidden" }}>
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 160, background: "linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0))" }} />
 
-            <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-              <div style={{ width: "100%", textAlign: "center", fontSize: qSize, lineHeight: 1.2, marginBottom: 28, overflow: "hidden", wordBreak: "break-word" }}>{question}</div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", width: "100%", justifyContent: "center" }}>
+              <div style={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: 28 }}>
+                <div style={{ display: "flex", width: 760, maxWidth: "100%", justifyContent: "center", alignItems: "center" }}>
+                  <div style={{ display: "flex", textAlign: "center", fontSize: qSize, lineHeight: 1.2, overflow: "hidden", wordBreak: "break-word" }}>{question}</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
                 <div style={{ display: "flex", padding: "14px 22px", borderRadius: 999, backgroundColor: "rgba(255,255,255,0.16)", fontSize: 34, letterSpacing: 0.9, textTransform: "uppercase", opacity: 0.92, marginRight: 18 }}>Resultats</div>
                 <div style={{ fontSize: 34, opacity: 0.85 }}>{vs}</div>
               </div>
