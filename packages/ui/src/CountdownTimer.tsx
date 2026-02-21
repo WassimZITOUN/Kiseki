@@ -33,7 +33,7 @@ export function CountdownTimer({ countdown, label = "Resultats dans..." }: Props
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: pulse.value }],
-  }));
+  }), []);
 
   return (
     <View style={{ alignItems: "center" }}>

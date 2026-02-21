@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { HomeScreen, useAuth } from "@repo/app";
 import { ActivityIndicator, View } from "react-native";
 import { useEffect } from "react";
+import { WebShell } from "./web-shell";
 
 export default function HomePage() {
   const router = useRouter();
@@ -26,12 +27,14 @@ export default function HomePage() {
   if (!user) return null;
 
   return (
-    <HomeScreen
-      profile={profile}
-      onNavigateProfile={() => router.push("/profile")}
-      onNavigateGroup={(id) => router.push(`/groups/${id}`)}
-      onNavigateCreate={() => router.push("/groups/create")}
-      onNavigateJoin={() => router.push("/groups/join")}
-    />
+    <WebShell variant="wide">
+      <HomeScreen
+        profile={profile}
+        onNavigateProfile={() => router.push("/profile")}
+        onNavigateGroup={(id) => router.push(`/groups/${id}`)}
+        onNavigateCreate={() => router.push("/groups/create")}
+        onNavigateJoin={() => router.push("/groups/join")}
+      />
+    </WebShell>
   );
 }

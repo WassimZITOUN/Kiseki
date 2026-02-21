@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { ProfileScreen, useAuth } from "@repo/app";
 import { useEffect } from "react";
+import { WebShell } from "../web-shell";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -17,6 +18,8 @@ export default function ProfilePage() {
   if (loading || !user) return null;
 
   return (
-    <ProfileScreen onNavigateEdit={() => router.push("/profile/edit")} />
+    <WebShell>
+      <ProfileScreen onNavigateEdit={() => router.push("/profile/edit")} />
+    </WebShell>
   );
 }

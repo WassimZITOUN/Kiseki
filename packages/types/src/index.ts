@@ -35,6 +35,7 @@ export type Group = {
   question_time: string; // HH:MM format
   reveal_time: string;   // HH:MM format
   allowed_intensities: QuestionIntensity[];
+  current_cycle: number;
   created_at: string;
 };
 
@@ -44,6 +45,7 @@ export type GroupMember = {
   user_id: string;
   role: "admin" | "member";
   joined_at: string;
+  cycle_eligible_at: string;
 };
 
 export type DailyQuestion = {
@@ -87,6 +89,57 @@ export type QuestionBank = {
   intensity: QuestionIntensity;
   tag_id: string | null;
   is_active: boolean;
+};
+
+// ----- Daily Slots & Submissions -----
+
+export type DailySlotStatus = "scheduled" | "live" | "revealed" | "fallback";
+
+export type DailySlot = {
+  id: string;
+  group_id: string;
+  assigned_user_id: string;
+  target_date: string;
+  slot_order: number;
+  cycle_number: number;
+  status: DailySlotStatus;
+  final_question_text: string | null;
+  source_type: "submission" | "bank" | null;
+  source_id: string | null;
+  daily_question_id: string | null;
+  admin_replaced_at: string | null;
+  admin_replaced_by: string | null;
+  created_at: string;
+  activated_at: string | null;
+};
+
+export type UserSubmission = {
+  id: string;
+  slot_id: string;
+  group_id: string;
+  submitted_by: string;
+  question_text: string | null;
+  choose_bank: boolean;
+  intensity: QuestionIntensity;
+  tag_id: string | null;
+  submitted_at: string;
+  updated_at: string;
+};
+
+export type MyNextSlotResponse = {
+  has_upcoming_slot: boolean;
+  slot_id?: string;
+  target_date?: string;
+  cycle_submission_count?: number;
+  has_submission?: boolean;
+  submission?: {
+    id: string;
+    question_text: string | null;
+    choose_bank: boolean;
+    intensity: QuestionIntensity;
+    tag_id: string | null;
+    updated_at: string;
+  } | null;
 };
 
 // ----- Joined / computed types -----

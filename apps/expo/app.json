@@ -4,10 +4,12 @@
     "slug": "my-app",
     "scheme": "myapp",
     "version": "1.0.0",
+    "icon": "../assets/Icon/android/play_store_512.png",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
+      "image": "../assets/splash_screens/splash_screens/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,18 +20,28 @@
       "**/*"
     ],
     "ios": {
+      "icon": "../assets/Icon/android/play_store_512.png",
       "supportsTablet": true,
       "bundleIdentifier": "com.kiseki.app"
     },
     "android": {
       "package": "com.kiseki.app",
       "adaptiveIcon": {
+        "foregroundImage": "../assets/Icon/android/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+        "backgroundImage": "../assets/Icon/android/res/mipmap-xxxhdpi/ic_launcher_background.png",
+        "monochromeImage": "../assets/Icon/android/res/mipmap-xxxhdpi/ic_launcher_monochrome.png",
         "backgroundColor": "#ffffff"
       }
     },
     "plugins": [
       "expo-router",
       "@react-native-google-signin/google-signin"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "548c9d57-0a07-46f4-afeb-e2177f3c3fbf"
+      }
+    }
   }
 }

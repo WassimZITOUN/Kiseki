@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Test outputs
+coverage/
+*.log
+
+# Environment variables (optionnel)
+.env.test
+
+# Vitest cache
+.vitest/

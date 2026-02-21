@@ -1,0 +1,7 @@
+"use client";
+import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+import { View } from "react-native";
+import { GlassModal, KText, KInput, KButton, colors, spacing, } from "@repo/ui";
+export function VoteConfirmModal({ visible, targetName, contextNote, onChangeContextNote, onConfirm, onCancel, submitting, }) {
+    return (_jsxs(GlassModal, { visible: visible, onClose: onCancel, children: [_jsxs(KText, { variant: "h3", style: { textAlign: "center", marginBottom: spacing.md }, children: ["Voter pour ", targetName, " ?"] }), _jsx(KInput, { label: "Commentaire (optionnel)", value: contextNote, onChangeText: (t) => onChangeContextNote(t.slice(0, 140)), placeholder: "Pourquoi cette personne ?", multiline: true, maxLength: 140, style: { minHeight: 60, textAlignVertical: "top" }, containerStyle: { marginBottom: spacing.xs } }), _jsxs(KText, { variant: "caption", color: contextNote.length >= 130 ? colors.error : colors.textMuted, style: { textAlign: "right", marginBottom: spacing.md }, children: [contextNote.length, "/140"] }), _jsxs(View, { style: { flexDirection: "row", gap: spacing.sm, justifyContent: "center" }, children: [_jsx(KButton, { title: "Annuler", onPress: onCancel, variant: "glass", disabled: submitting, style: { minWidth: 110 } }), _jsx(KButton, { title: "Voter", onPress: onConfirm, loading: submitting, disabled: submitting, style: { minWidth: 110 } })] })] }));
+}

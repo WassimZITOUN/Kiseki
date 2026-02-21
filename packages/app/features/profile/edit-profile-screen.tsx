@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { View, TouchableOpacity, Image, Alert, ScrollView } from "react-native";
+import { View, TouchableOpacity, Image, Alert, ScrollView, Platform } from "react-native";
 import { useAuth } from "../../providers/auth-provider";
 import { getSupabase } from "../../utils/supabase";
 import { pickImage, uploadAvatar } from "../../utils/avatar";
@@ -23,6 +23,10 @@ type Props = {
 };
 
 export function EditProfileScreen({ onComplete, onCancel }: Props) {
+  const isWeb = Platform.OS === "web";
+  const contentWidth = isWeb
+    ? ({ width: "100%", maxWidth: 620, alignSelf: "center" } as const)
+    : null;
   const { user, profile, refreshProfile } = useAuth();
   const [displayName, setDisplayName] = useState(
     profile?.display_name ?? ""
@@ -106,7 +110,13 @@ export function EditProfileScreen({ onComplete, onCancel }: Props) {
   return (
     <AuroraScreenWrapper>
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, padding: spacing.lg }}
+        contentContainerStyle={[
+          {
+            flexGrow: 1,
+            padding: spacing.lg,
+          },
+          contentWidth,
+        ]}
         keyboardShouldPersistTaps="handled"
       >
         <TouchableOpacity

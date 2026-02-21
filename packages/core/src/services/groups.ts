@@ -22,18 +22,13 @@ export function createGroupsService(supabase: SupabaseClient) {
       } = await supabase.auth.getUser();
       if (!user) throw new Error("Non authentifié");
 
-      const { data, error } = await supabase
-        .from("groups")
-        .insert({
-          name,
-          created_by: user.id,
-          max_members: options?.maxMembers ?? 12,
-          question_time: options?.questionTime ?? "09:00",
-          reveal_time: options?.revealTime ?? "20:00",
-          allowed_intensities: options?.allowedIntensities ?? ["normal"],
-        })
-        .select()
-        .single();
+      const { data, error } = await supabase.rpc("create_group", {
+        p_name: name,
+        p_max_members: options?.maxMembers ?? 12,
+        p_question_time: options?.questionTime ?? "09:00",
+        p_reveal_time: options?.revealTime ?? "20:00",
+        p_allowed_intensities: options?.allowedIntensities ?? ["normal"],
+      });
 
       if (error) throw error;
       return data as Group;

@@ -17,7 +17,20 @@ export function createVotesService(supabase: SupabaseClient) {
         .limit(1)
         .single();
 
-      if (error && error.code === "PGRST116") return null; // no rows
+      if (error && error.code === "PGRST116") {
+        // No recent question: fall back to most recent question for this group
+        const { data: fallback, error: fbErr } = await supabase
+          .from("daily_questions")
+          .select("*")
+          .eq("group_id", groupId)
+          .in("status", ["active", "revealed"])
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .single();
+        if (fbErr && fbErr.code === "PGRST116") return null;
+        if (fbErr) throw fbErr;
+        return fallback as DailyQuestion;
+      }
       if (error) throw error;
       return data as DailyQuestion;
     },
@@ -62,10 +75,6 @@ export function createVotesService(supabase: SupabaseClient) {
 
       if (error) throw error;
       return data as Vote;
-    },
-
-    async revealQuestion(questionId: string): Promise<void> {
-      await supabase.rpc("reveal_question", { p_question_id: questionId });
     },
 
     async getQuestionResults(questionId: string): Promise<QuestionWithResults> {

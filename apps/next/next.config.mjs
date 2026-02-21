@@ -11,12 +11,16 @@ const nextConfig = {
     "@my-app/types",
     "@repo/app",
     "@repo/ui",
+    "@expo/vector-icons",
     "solito",
     "react-native",
     "react-native-web",
     "nativewind",
     "react-native-css-interop",
     "expo-linear-gradient",
+    "expo-file-system",
+    "expo-modules-core",
+    "expo-font",
     "react-native-reanimated",
   ],
   env: {
@@ -27,7 +31,12 @@ const nextConfig = {
     EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID:
       process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
   },
-  webpack: (config) => {
+  webpack: (config, { webpack }) => {
+    config.module.rules.push({
+      test: /\.(ttf|otf|woff|woff2|eot)$/i,
+      type: "asset/resource",
+    });
+
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       "react-native$": "react-native-web",
@@ -49,6 +58,11 @@ const nextConfig = {
       ".web.tsx",
       ...config.resolve.extensions,
     ];
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __DEV__: JSON.stringify(process.env.NODE_ENV !== "production"),
+      })
+    );
     return config;
   },
 };

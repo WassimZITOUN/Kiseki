@@ -16,6 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { colors, radii } from "./tokens";
 import { KText } from "./KText";
+import { getWebGlassStyle } from "./webGlass";
 
 // iOS Premium Spring — snappy, no jelly
 const SNAPPY_SPRING = {
@@ -52,11 +53,12 @@ export function KButton({
   leftIcon,
   style,
 }: Props) {
+  const [focused, setFocused] = React.useState(false);
   const scale = useSharedValue(1);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
-  }));
+  }), []);
 
   const handlePressIn = () => {
     scale.value = withSpring(0.97, SNAPPY_SPRING);
@@ -96,6 +98,19 @@ export function KButton({
     alignItems: "center",
     justifyContent: "center",
   };
+  const webFocusStyle =
+    isWeb && focused
+      ? ({
+          // @ts-ignore web-only
+          boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.42)",
+        } as ViewStyle)
+      : null;
+  const webCompactStyle =
+    isWeb
+      ? ({
+          alignSelf: "center",
+        } as ViewStyle)
+      : null;
 
   // ── Solid variant with glass effect ──
   if (variant === "solid") {
@@ -105,21 +120,26 @@ export function KButton({
           onPress={onPress}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           disabled={disabled || loading}
           activeOpacity={0.9}
           style={[
             {
               borderRadius: resolvedRadius,
-              backgroundColor: "rgba(139, 92, 246, 0.85)",
-              borderWidth: 1,
-              borderColor: "rgba(255,255,255,0.2)",
               opacity: disabled ? 0.5 : 1,
-              // @ts-ignore web-only
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-              boxShadow: "0 4px 16px rgba(139, 92, 246, 0.4)",
+              ...getWebGlassStyle({
+                blur: 7,
+                tintAlpha: 0.18,
+                borderAlpha: 0.36,
+                shadow: "none",
+              }),
+              backgroundColor: "rgba(139, 92, 246, 0.28)",
+              borderColor: "rgba(213, 194, 255, 0.46)",
             },
+            webCompactStyle,
             basePadding,
+            webFocusStyle,
             animatedStyle,
             style,
           ]}
@@ -137,6 +157,8 @@ export function KButton({
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
         disabled={disabled || loading}
         activeOpacity={0.9}
         style={[
@@ -149,6 +171,8 @@ export function KButton({
             shadowRadius: 12,
             elevation: 6,
           },
+          webCompactStyle,
+          webFocusStyle,
           animatedStyle,
           style,
         ]}
@@ -191,10 +215,19 @@ export function KButton({
   const bg: ViewStyle =
     variant === "glass"
       ? {
-          backgroundColor: colors.glass.background,
-          borderWidth: 1,
-          borderColor: colors.glass.border,
-        }
+              ...(isWeb
+                ? (getWebGlassStyle({
+                    blur: 8,
+                    tintAlpha: 0.08,
+                    borderAlpha: 0.34,
+                    shadow: "none",
+                  }) as any)
+                : {
+                    backgroundColor: colors.glass.background,
+                    borderWidth: 1,
+                    borderColor: colors.glass.border,
+                  }),
+          }
       : { backgroundColor: "transparent" };
 
   return (
@@ -202,6 +235,8 @@ export function KButton({
       onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       disabled={disabled || loading}
       activeOpacity={0.9}
       style={[
@@ -209,8 +244,10 @@ export function KButton({
           borderRadius: resolvedRadius,
           opacity: disabled ? 0.5 : 1,
         },
+        webCompactStyle,
         basePadding,
         bg,
+        webFocusStyle,
         animatedStyle,
         style,
       ]}

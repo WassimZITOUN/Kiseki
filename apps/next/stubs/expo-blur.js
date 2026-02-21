@@ -11,6 +11,12 @@ function BlurView({ children, intensity = 50, tint = "default", experimentalBlur
         ? `rgba(255,255,255,${opacity * 0.7})`
         : `rgba(255,255,255,${opacity * 0.55})`;
 
+  const isFirefox =
+    typeof navigator !== "undefined" && /firefox/i.test(navigator.userAgent);
+  const backdrop = isFirefox
+    ? `blur(${intensity * 0.22}px) saturate(145%) contrast(104%)`
+    : `url("#glass-distortion") blur(${intensity * 0.22}px) saturate(145%) contrast(104%)`;
+
   return React.createElement(
     View,
     {
@@ -18,8 +24,8 @@ function BlurView({ children, intensity = 50, tint = "default", experimentalBlur
       style: [
         {
           backgroundColor: bg,
-          backdropFilter: `blur(${intensity * 0.5}px)`,
-          WebkitBackdropFilter: `blur(${intensity * 0.5}px)`,
+          backdropFilter: backdrop,
+          WebkitBackdropFilter: backdrop,
         },
         style,
       ],

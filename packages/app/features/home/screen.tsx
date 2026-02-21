@@ -43,6 +43,12 @@ export function HomeScreen({
   onNavigateCreate,
   onNavigateJoin,
 }: Props) {
+  const isWeb = Platform.OS === "web";
+  const desktopContentStyle = isWeb
+    ? ({ width: "100%", maxWidth: 760, alignSelf: "center" } as const)
+    : null;
+  const horizontalPadding = isWeb ? spacing.lg : spacing.md;
+
   const [groups, setGroups] = useState<GroupWithMemberCount[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -82,11 +88,14 @@ export function HomeScreen({
     <AuroraScreenWrapper>
       {/* Header */}
       <View
-        style={{
-          paddingHorizontal: spacing.md,
-          paddingTop: statusBarHeight + spacing.sm,
-          paddingBottom: spacing.md,
-        }}
+        style={[
+          {
+            paddingHorizontal: horizontalPadding,
+            paddingTop: statusBarHeight + spacing.sm,
+            paddingBottom: isWeb ? spacing.lg : spacing.md,
+          },
+          desktopContentStyle,
+        ]}
       >
         <GlassCard style={{ borderRadius: radii.xl }}>
           <View
@@ -98,7 +107,7 @@ export function HomeScreen({
           >
             <KText
               variant="questionLarge"
-              style={{ fontSize: 28 }}
+              style={{ fontSize: isWeb ? 32 : 28 }}
             >
               Kiseki
             </KText>
@@ -115,10 +124,13 @@ export function HomeScreen({
 
       {/* Action buttons */}
       <View
-        style={{
-          paddingHorizontal: spacing.md,
-          marginBottom: spacing.md,
-        }}
+        style={[
+          {
+            paddingHorizontal: horizontalPadding,
+            marginBottom: isWeb ? spacing.lg : spacing.md,
+          },
+          desktopContentStyle,
+        ]}
       >
         <GlassCard style={{ borderRadius: radii.xl }}>
           <View
@@ -155,10 +167,14 @@ export function HomeScreen({
         <FlatList
           data={groups}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={{
-            padding: spacing.md,
-            paddingTop: spacing.xs,
-          }}
+          contentContainerStyle={[
+            {
+              paddingHorizontal: horizontalPadding,
+              paddingBottom: isWeb ? spacing.xl : spacing.md,
+              paddingTop: spacing.xs,
+            },
+            desktopContentStyle,
+          ]}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
@@ -168,13 +184,13 @@ export function HomeScreen({
           }
           ListEmptyComponent={
             <GlassCard
-              style={{
-                borderRadius: radii.xl,
-                alignItems: "center",
-                justifyContent: "center",
-                paddingVertical: 60,
-              }}
-            >
+                style={{
+                  borderRadius: radii.xl,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingVertical: isWeb ? 76 : 60,
+                }}
+              >
               <KText
                 variant="body"
                 color={colors.textMuted}
@@ -200,16 +216,37 @@ export function HomeScreen({
                     borderRadius: radii.xl,
                   }}
                 >
-                  <KText
-                    variant="h3"
-                    style={{ marginBottom: spacing.xs }}
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: spacing.sm,
+                    }}
                   >
-                    {item.name}
-                  </KText>
-                  <KText variant="caption" color={colors.textSecondary}>
-                    {item.member_count} membre
-                    {item.member_count > 1 ? "s" : ""}
-                  </KText>
+                    <KText
+                      variant="h3"
+                      style={{ flex: 1 }}
+                      numberOfLines={1}
+                    >
+                      {item.name}
+                    </KText>
+                    <View
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.2)",
+                        borderRadius: radii.md,
+                        paddingVertical: spacing.xs,
+                        paddingHorizontal: spacing.sm,
+                        minWidth: 88,
+                        alignItems: "center",
+                      }}
+                    >
+                      <KText variant="caption" color={colors.textPrimary}>
+                        {item.member_count} membre
+                        {item.member_count > 1 ? "s" : ""}
+                      </KText>
+                    </View>
+                  </View>
                 </GlassCard>
               </TouchableOpacity>
             </Animated.View>

@@ -11,6 +11,14 @@ type Props = TextProps & {
   color?: string;
 };
 
+function resolveWebTextColor(input: string) {
+  if (Platform.OS !== "web") return input;
+  if (input === colors.textPrimary) return "var(--app-text-primary)";
+  if (input === colors.textSecondary) return "var(--app-text-secondary)";
+  if (input === colors.textMuted) return "var(--app-text-muted)";
+  return input;
+}
+
 export function KText({
   variant = "body",
   color,
@@ -19,6 +27,7 @@ export function KText({
 }: Props) {
   const t = typography[variant];
   const isSerif = variant === "questionLarge";
+  const resolvedColor = resolveWebTextColor(color ?? colors.textPrimary);
 
   return (
     <Text
@@ -28,7 +37,7 @@ export function KText({
           fontSize: t.fontSize,
           lineHeight: t.lineHeight,
           fontWeight: t.fontWeight,
-          color: color ?? colors.textPrimary,
+          color: resolvedColor,
           ...(isSerif
             ? {
                 fontFamily:

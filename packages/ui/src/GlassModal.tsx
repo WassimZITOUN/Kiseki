@@ -10,6 +10,7 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { colors, radii, spacing } from "./tokens";
+import { getWebGlassStyle } from "./webGlass";
 
 // iOS Premium Spring — snappy, no jelly
 const SNAPPY_SPRING = {
@@ -34,7 +35,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
-  }));
+  }), []);
 
   if (Platform.OS === "web") {
     return (
@@ -50,13 +51,12 @@ function ModalCard({ children }: { children: React.ReactNode }) {
             alignSelf: "center",
             overflow: "hidden",
             padding: spacing.lg,
-            backgroundColor: colors.glass.background,
-            borderWidth: 1,
-            borderColor: colors.glass.border,
-            // @ts-ignore web-only
-            backdropFilter: "blur(40px)",
-            WebkitBackdropFilter: "blur(40px)",
-            boxShadow: "0 16px 48px rgba(122, 0, 255, 0.35)",
+            ...getWebGlassStyle({
+              blur: 10,
+              tintAlpha: 0.08,
+              borderAlpha: 0.34,
+              shadow: "0 22px 56px rgba(0, 0, 0, 0.34)",
+            }),
           },
           animatedStyle,
         ]}

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { LoginScreen, useAuth } from "@repo/app";
 import { useEffect } from "react";
+import { WebShell } from "../web-shell";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,5 +17,9 @@ export default function LoginPage() {
 
   if (loading || user) return null;
 
-  return <LoginScreen onNavigateSignup={() => router.push("/signup")} />;
+  return (
+    <WebShell variant="auth">
+      <LoginScreen onNavigateSignup={() => router.push("/signup")} />
+    </WebShell>
+  );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Platform } from "react-native";
 import { useAuth } from "../../providers/auth-provider";
 import {
   AuroraScreenWrapper,
@@ -19,12 +19,37 @@ type Props = {
 };
 
 export function ProfileScreen({ onNavigateEdit }: Props) {
+  const isWeb = Platform.OS === "web";
+  const contentWidth = isWeb
+    ? ({ width: "100%", maxWidth: 620, alignSelf: "center" } as const)
+    : null;
+  const [darkModeEnabled, setDarkModeEnabled] = React.useState(false);
   const { user, profile, signOut } = useAuth();
+
+  React.useEffect(() => {
+    if (!isWeb || typeof document === "undefined") return;
+    const theme = document.documentElement.dataset.theme;
+    setDarkModeEnabled(theme === "dark");
+  }, [isWeb]);
+
+  const toggleDarkMode = () => {
+    if (!isWeb || typeof window === "undefined") return;
+    const nextTheme = darkModeEnabled ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem("kiseki-web-theme", nextTheme);
+    setDarkModeEnabled(nextTheme === "dark");
+  };
 
   return (
     <AuroraScreenWrapper>
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, padding: spacing.lg }}
+        contentContainerStyle={[
+          {
+            flexGrow: 1,
+            padding: spacing.lg,
+          },
+          contentWidth,
+        ]}
       >
         <GlassCard
           style={{
@@ -98,6 +123,22 @@ export function ProfileScreen({ onNavigateEdit }: Props) {
             </KText>
           </View>
         </GlassCard>
+
+        {isWeb && (
+          <GlassCard style={{ marginBottom: spacing.md, borderRadius: radii.xl }}>
+            <KText
+              variant="h3"
+              style={{ marginBottom: spacing.sm }}
+            >
+              Apparence
+            </KText>
+            <KButton
+              title={darkModeEnabled ? "Desactiver le dark mode" : "Activer le dark mode"}
+              onPress={toggleDarkMode}
+              variant="glass"
+            />
+          </GlassCard>
+        )}
 
         <GlassCard
           style={{

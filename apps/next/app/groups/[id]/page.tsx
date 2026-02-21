@@ -3,6 +3,7 @@
 import { useRouter, useParams } from "next/navigation";
 import { GroupDetailScreen, useAuth } from "@repo/app";
 import { useEffect } from "react";
+import { WebShell } from "../../web-shell";
 
 export default function GroupDetailPage() {
   const router = useRouter();
@@ -18,10 +19,12 @@ export default function GroupDetailPage() {
   if (loading || !user) return null;
 
   return (
-    <GroupDetailScreen
-      groupId={id}
-      onLeft={() => router.replace("/")}
-      onBack={() => router.back()}
-    />
+    <WebShell variant="wide">
+      <GroupDetailScreen
+        groupId={id}
+        onLeft={() => router.replace("/")}
+        onBack={() => router.back()}
+      />
+    </WebShell>
   );
 }
