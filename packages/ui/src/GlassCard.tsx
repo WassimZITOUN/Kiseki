@@ -3,6 +3,7 @@
 import React from "react";
 import { View, Platform, StyleSheet, type ViewStyle } from "react-native";
 import { colors, radii, spacing } from "./tokens";
+import { getWebGlassStyle } from "./webGlass";
 
 type Props = {
   children: React.ReactNode;
@@ -14,16 +15,17 @@ type Props = {
  * GlassCard — Deep Glass Dark Theme
  *
  * Architecture:
- * 1. Shadow layer (violet glow, no clip)
+ * 1. Shadow layer (soft depth, no colored glow)
  * 2. Blur layer (expo-blur with experimentalBlurMethod, tint="dark")
  * 3. Refraction border (subtle white edge)
  * 4. Content
  *
- * Dark mode optimized — glass catches neon orb colors
+ * Dark mode optimized — neutral glass depth
  */
 export function GlassCard({ children, style, intensity = 40 }: Props) {
   const flatStyle = StyleSheet.flatten(style);
   const resolvedRadius = (flatStyle?.borderRadius as number) ?? radii.lg;
+  const webBlur = Math.min(10, Math.max(6, intensity * 0.25));
 
   if (Platform.OS === "web") {
     return (
@@ -33,13 +35,12 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
             borderRadius: resolvedRadius,
             padding: spacing.md,
             overflow: "hidden",
-            backgroundColor: colors.glass.background,
-            borderWidth: 1,
-            borderColor: colors.glass.border,
-            // @ts-ignore web-only
-            backdropFilter: `blur(${intensity * 0.5}px)`,
-            WebkitBackdropFilter: `blur(${intensity * 0.5}px)`,
-            boxShadow: "0 8px 32px rgba(122, 0, 255, 0.25)",
+            ...getWebGlassStyle({
+              blur: webBlur,
+              tintAlpha: 0.06,
+              borderAlpha: 0.3,
+              shadow: "none",
+            }),
           },
           style,
         ]}

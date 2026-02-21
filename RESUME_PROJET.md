@@ -33,7 +33,7 @@ Les membres votent, puis les resultats sont reveles le soir avec transparence to
 
 ### `packages/ui/` (`@repo/ui`) — Design System
 
-22 composants + 1 fichier de tokens, organises par categorie :
+**24 composants** + tokens, organises par categorie :
 
 | Categorie | Composants |
 |-----------|-----------|
@@ -42,6 +42,7 @@ Les membres votent, puis les resultats sont reveles le soir avec transparence to
 | **Fond Aurora** | `AuroraBackground`, `AuroraScreenWrapper` |
 | **Vote** | `VoteCard`, `VoteGrid`, `QuestionHeader`, `ConfettiOverlay`, `CountdownTimer`, `BlurredReveal` |
 | **Resultats** | `PodiumView`, `ResultCard`, `ShareResultCard`, `TomorrowTeaser` |
+| **Utilitaires** | Composants additionnels pour support cross-platform |
 
 Types exportes : `VoteMember`, `PodiumMember`, `ResultItem`
 
@@ -82,8 +83,15 @@ Types app : `AuthState`, `WidgetData`, `NotificationPayload`, `QuestionIntensity
 
 ### `supabase/` — Backend
 
-- `migrations/001_kiseki_schema.sql` : schema complet (8 tables, RLS, triggers, fonctions, pg_cron)
-- `functions/share-image/` : edge function de generation de carte PNG
+**Migrations** (5 fichiers) :
+- `001_kiseki_schema.sql` : schema complet (8 tables, RLS, triggers, fonctions, pg_cron)
+- `002_rls_hardening.sql` : renforcement des politiques de securite RLS
+- `003_rls_hardening_rollback.sql` : rollback optionnel
+- `004_rls_group_members_definer.sql` : fix pour fonctions RLS (group_members)
+- `005_create_group_rpc.sql` : creation de RPC pour operations de groupe
+
+**Edge Functions** :
+- `functions/share-card/` : generation de carte PNG 1080x1920 (format stories 9:16) avec Satori
 
 ### `docs/` — Documentation technique
 
@@ -173,10 +181,16 @@ Ref : voir `CHARTE_GRAPHIQUE.md` pour la specification complete.
 
 ### Edge Functions deployees
 
-| Slug | Description | JWT |
-|------|------------|-----|
-| `share-card` | Generation carte PNG 1200x630 (og_edge) | Non |
-| `share-image` | Version anterieure de share-card | Non |
+| Slug | Description | Format | Derniere version |
+|------|------------|--------|------------------|
+| `share-card-v35` | Generation carte PNG 1080x1920 (Satori) pour partage stories | 9:16 stories | v35 (2026-02-11) |
+
+**Features share-card** :
+- Validation input (400 sur JSON invalide)
+- Dynamic fontSize (46/42/36 selon nom length)
+- Truncation intelligente : noms 20 chars, groupe 28 (card) / 24 (footer)
+- Fond Aurora avec dégradés
+- Support font DM Serif Display (Roboto fallback)
 
 ### Storage
 
@@ -315,11 +329,17 @@ groups/[id]/page.tsx                -> GroupDetailScreen
 
 ## 8. Ce qu'il reste a faire
 
+### En cours / A optimiser
+- **Services metier** : amelioration des services groupes et votes (RLS hardening, RPC)
+- **Stability** : tests de la logique vote/reveal avec nouvelles migrations
+
+### A faire (post-MVP)
 - **Notifications push** : expo-notifications + expo-device, edge function `send-notifications`
 - **Weekly Recap** : edge function `send-weekly-recap` (dimanche 18h) + ecran recap (top 3 tags par groupe)
 - **Widget Android** : react-native-android-widget, question active + mini-avatars
 - **Questions custom** : pool utilisateur, creation question (texte + categorie + tag), pas de doublons 30j
 - **Historique 30 jours** : ecran historique des questions/resultats passes
+- **Animation + Polish** : transitions refined, micro-interactions, performance optimisation
 - **Test + Deploy** : EAS Build (APK), Supabase db push + functions deploy, demo BTS SIO
 
 ---
@@ -328,7 +348,32 @@ groups/[id]/page.tsx                -> GroupDetailScreen
 
 | Service | Configure | Reste a faire |
 |---------|-----------|---------------|
-| Supabase | Projet cree, schema migre, Auth Google, Storage avatars, 4 edge functions deployees, pg_cron actif | Edge functions notifs/recap |
-| Google Cloud | Client OAuth Web + Android (com.kiseki.app) | Verifier config prod |
-| Expo | SDK 54, expo-router v4, plugins configures | EAS Build pour dev builds |
-| Variables env | `.env.local` (Supabase URL/Key + Google Web Client ID) | Variables de prod |
+| Supabase | Projet cree, schema migre (5 migrations), Auth Google, Storage avatars, share-card edge function deployee (v35), pg_cron actif | Edge functions notifs/recap, tests RLS complexes |
+| Google Cloud | Client OAuth Web + Android (com.kiseki.app) | Verifier config prod, ajuster redirects si necessaire |
+| Expo | SDK 54, expo-router v4, plugins configures, babel fix applique | EAS Build pour dev builds, emulator tests |
+| Variables env | `.env.local` (Supabase URL/Key + Google Web Client ID + SHARE_CARD_FUNCTION) | Variables de prod, secrets CI/CD |
+| NPM Patches | Patches appliques pour compatibilite monorepo | Maintenir a jour |
+
+---
+
+## 10. Mises a jour recentes (2026-02)
+
+### Schema + RLS
+- **RLS Hardening** : 4 migrations additionnelles pour securiser les operations groupe
+- **New RPC** : `create_group()` pour simplifier creation groupe avec definer fix
+- **Group Members definer** : fix pour fonctions RLS sur group_members
+
+### Share Card Edge Function
+- **v35 Deployed** : Derniere version stabilitee (2026-02-11)
+- **Format 9:16** : Optimise pour Instagram Stories (1080x1920)
+- **Satori Compatibility** : Respect des regles strictes (no gap, inset:0, simple gradients)
+- **Dynamic Typography** : fontSize adapte au nom/groupe (46/42/36px)
+
+### Services Metier
+- Refactor en cours : `packages/core/src/services/groups.ts` et `votes.ts`
+- Amelioration des requetes Supabase + error handling
+
+### Monorepo Stabilite
+- Babel fix pour expo-router applique
+- Patches npm pour dependencies conflictantes
+- Cross-platform stubs pour web stable

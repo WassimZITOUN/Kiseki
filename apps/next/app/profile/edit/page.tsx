@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { EditProfileScreen, useAuth } from "@repo/app";
 import { useEffect } from "react";
+import { WebShell } from "../../web-shell";
 
 export default function EditProfilePage() {
   const router = useRouter();
@@ -17,9 +18,11 @@ export default function EditProfilePage() {
   if (loading || !user) return null;
 
   return (
-    <EditProfileScreen
-      onComplete={() => router.push("/profile")}
-      onCancel={() => router.back()}
-    />
+    <WebShell>
+      <EditProfileScreen
+        onComplete={() => router.push("/profile")}
+        onCancel={() => router.back()}
+      />
+    </WebShell>
   );
 }

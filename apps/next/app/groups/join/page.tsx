@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { JoinGroupScreen, useAuth } from "@repo/app";
 import { useEffect } from "react";
+import { WebShell } from "../../web-shell";
 
 export default function JoinGroupPage() {
   const router = useRouter();
@@ -17,9 +18,11 @@ export default function JoinGroupPage() {
   if (loading || !user) return null;
 
   return (
-    <JoinGroupScreen
-      onGroupJoined={(id) => router.replace(`/groups/${id}`)}
-      onBack={() => router.back()}
-    />
+    <WebShell>
+      <JoinGroupScreen
+        onGroupJoined={(id) => router.replace(`/groups/${id}`)}
+        onBack={() => router.back()}
+      />
+    </WebShell>
   );
 }

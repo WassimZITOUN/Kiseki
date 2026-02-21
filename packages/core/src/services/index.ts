@@ -12,3 +12,4 @@ export const greetService = (name: string) => {
 
 export { createGroupsService } from "./groups";
 export { createVotesService } from "./votes";
+export { createSubmissionsService } from "./submissions";

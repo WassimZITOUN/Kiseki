@@ -17,6 +17,7 @@ import type {
   GroupMemberWithProfile,
   Group,
   QuestionWithResults,
+  MyNextSlotResponse,
 } from "@my-app/types";
 import { getSupabase } from "../../utils/supabase";
 import { services } from "@my-app/core";
@@ -24,6 +25,8 @@ import { GroupMenu } from "./components/group-menu";
 import { VoteConfirmModal } from "./components/vote-confirm-modal";
 import { VoteDetailsSheet } from "./components/vote-details-sheet";
 import { ShareResultSheet } from "./components/share-result-sheet";
+import { SubmitQuestionCard } from "./components/submit-question-card";
+import { AdminModerateButton } from "./components/admin-moderate-button";
 import {
   AuroraScreenWrapper,
   KText,
@@ -45,7 +48,7 @@ import {
   type ResultItem,
 } from "@repo/ui";
 
-const { createVotesService, createGroupsService } = services;
+const { createVotesService, createGroupsService, createSubmissionsService } = services;
 
 type Props = {
   groupId: string;
@@ -75,6 +78,10 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
   const [shareSheetVisible, setShareSheetVisible] = useState(false);
   const [tomorrowCountdown, setTomorrowCountdown] = useState("");
 
+  // Submissions state
+  const [myNextSlot, setMyNextSlot] = useState<MyNextSlotResponse | null>(null);
+  const [adminReplacedToday, setAdminReplacedToday] = useState(false);
+
   // Menu state
   const [menuVisible, setMenuVisible] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -94,19 +101,35 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       const supabase = getSupabase();
       const votesService = createVotesService(supabase);
       const groupsService = createGroupsService(supabase);
+      const submissionsService = createSubmissionsService(supabase);
 
       const {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) setCurrentUserId(user.id);
 
-      const [todayQuestion, detail] = await Promise.all([
+      const [todayQuestion, detail, nextSlot] = await Promise.all([
         votesService.getTodayQuestion(groupId),
         groupsService.getGroupDetail(groupId),
+        submissionsService.getMyNextSlot(groupId),
       ]);
 
       setGroup(detail.group);
       setMembers(detail.members);
+      setMyNextSlot(nextSlot);
+
+      // Check if current user is admin for admin-specific data
+      const isAdmin = detail.members.some(
+        (m) => m.user_id === user?.id && m.role === "admin"
+      );
+      if (isAdmin) {
+        try {
+          const replaced = await submissionsService.hasAdminReplacedToday(groupId);
+          setAdminReplacedToday(replaced);
+        } catch {
+          // Non-critical, ignore
+        }
+      }
       setQuestion(todayQuestion);
 
       if (todayQuestion) {
@@ -123,12 +146,8 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           }
         }
 
-        // Fetch results if revealed (DB status or client-side timer)
-        if (todayQuestion.status === "revealed" || revealTimePassed) {
-          // If timer expired but DB still "active", force reveal server-side
-          if (revealTimePassed && todayQuestion.status === "active") {
-            await votesService.revealQuestion(todayQuestion.id).catch(() => {});
-          }
+        // Fetch results only when DB says revealed
+        if (todayQuestion.status === "revealed") {
           const results = await votesService.getQuestionResults(todayQuestion.id);
           setQuestionResults(results);
         }
@@ -183,8 +202,8 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
   // Tomorrow countdown — targets question_time the next day
   useEffect(() => {
-    if (!group || !question) return;
-    if (question.status !== "revealed" && !timerExpired) return;
+    if (!group) return;
+    if (question && question.status !== "revealed" && !timerExpired) return;
 
     const tomorrowTimerRef: { current: ReturnType<typeof setInterval> | null } = { current: null };
 
@@ -192,8 +211,10 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       const now = new Date();
       const [h, m] = group.question_time.split(":").map(Number);
       const target = new Date(now);
-      target.setDate(target.getDate() + 1);
       target.setHours(h, m, 0, 0);
+      if (target.getTime() <= now.getTime()) {
+        target.setDate(target.getDate() + 1);
+      }
 
       const diff = target.getTime() - now.getTime();
       if (diff <= 0) {
@@ -225,6 +246,35 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
         m.profiles?.display_name ?? m.profiles?.username ?? "Inconnu",
       avatarUri: m.profiles?.avatar_url,
     }));
+
+  const isCurrentUserAdmin = members.some(
+    (m) => m.user_id === currentUserId && m.role === "admin"
+  );
+  const shouldShowSubmitCard =
+    !!myNextSlot?.has_upcoming_slot &&
+    !!myNextSlot?.slot_id &&
+    !myNextSlot?.has_submission;
+  const shouldShowWaitingForOtherSubmission =
+    question === null && !!myNextSlot?.has_submission;
+
+  // Determine the waiting message based on context
+  const getWaitingMessage = (): string => {
+    const subCount = myNextSlot?.cycle_submission_count ?? 0;
+    if (subCount < 2) {
+      return "En attente qu'un autre joueur choisisse sa question.";
+    }
+    const targetDate = myNextSlot?.target_date;
+    if (targetDate) {
+      const today = new Date().toISOString().split("T")[0];
+      if (targetDate > today) {
+        const qTime = group?.question_time
+          ? group.question_time.slice(0, 5)
+          : "09:00";
+        return `Tout est prêt ! Première question demain à ${qTime}.`;
+      }
+    }
+    return "La question arrive bientôt...";
+  };
 
   const getTargetName = (targetId: string) => {
     const member = members.find((m) => m.user_id === targetId);
@@ -348,6 +398,10 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
   const isWeb = Platform.OS === "web";
   const BlurView = !isWeb ? require("expo-blur").BlurView : null;
+  const desktopContainer = isWeb
+    ? ({ width: "100%", maxWidth: 820, alignSelf: "center" } as const)
+    : null;
+  const horizontalPadding = isWeb ? spacing.lg : spacing.md;
 
   const headerRightAction = (
     <TouchableOpacity
@@ -449,8 +503,8 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
     );
   }
 
-  // --- State D: Question revealed (or timer expired client-side) ---
-  if (question && (question.status === "revealed" || timerExpired)) {
+  // --- State D: Question revealed ---
+  if (question && question.status === "revealed") {
     const allResults: ResultItem[] = (questionResults?.results ?? []).map((r: any) => ({
       userId: r.target_user_id,
       name: r.target.display_name ?? r.target.username,
@@ -480,7 +534,10 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
         />
 
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 60 }}
+          contentContainerStyle={[
+            { paddingBottom: isWeb ? 76 : 60 },
+            desktopContainer,
+          ]}
           showsVerticalScrollIndicator={false}
         >
           {/* Title */}
@@ -489,7 +546,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               variant="questionLarge"
               style={{
                 textAlign: "center",
-                marginTop: spacing.md,
+                marginTop: isWeb ? spacing.lg : spacing.md,
                 marginBottom: spacing.xs,
               }}
             >
@@ -500,7 +557,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               color={colors.textSecondary}
               style={{
                 textAlign: "center",
-                marginBottom: spacing.md,
+                marginBottom: isWeb ? spacing.lg : spacing.md,
               }}
             >
               {question.question}
@@ -514,7 +571,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
               {/* Rest of results */}
               {restResults.length > 0 && (
-                <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.md }}>
+                <View style={{ paddingHorizontal: horizontalPadding, marginTop: spacing.md }}>
                   {restResults.map((item, i) => (
                     <ResultCard
                       key={item.userId}
@@ -527,7 +584,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               )}
 
               {/* Vote details button */}
-              <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
+              <View style={{ paddingHorizontal: horizontalPadding, marginTop: spacing.lg }}>
                 <KButton
                   title="Detail des votes"
                   onPress={() => setVoteDetailsVisible(true)}
@@ -535,18 +592,29 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
                 />
               </View>
 
-              {/* Share button */}
-              <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.sm }}>
-                <KButton
-                  title="Partager"
-                  onPress={() => setShareSheetVisible(true)}
-                  variant="glass"
-                  leftIcon={<Feather name="share-2" size={16} color={colors.textPrimary} />}
+              {/* Share button (mobile only) */}
+              {!isWeb && (
+                <View style={{ paddingHorizontal: horizontalPadding, marginTop: spacing.sm }}>
+                  <KButton
+                    title="Partager"
+                    onPress={() => setShareSheetVisible(true)}
+                    variant="glass"
+                    leftIcon={<Feather name="share-2" size={16} color={colors.textPrimary} />}
+                  />
+                </View>
+              )}
+
+              {/* Submit question card (State D) */}
+              {shouldShowSubmitCard && myNextSlot?.slot_id && (
+                <SubmitQuestionCard
+                  groupId={groupId}
+                  slotId={myNextSlot.slot_id}
+                  onSubmitted={fetchData}
                 />
-              </View>
+              )}
             </>
           ) : (
-            <Animated.View entering={FadeIn.duration(400)} style={{ paddingHorizontal: spacing.md }}>
+            <Animated.View entering={FadeIn.duration(400)} style={{ paddingHorizontal: horizontalPadding }}>
               <GlassCard style={{ alignItems: "center", paddingVertical: spacing.xl }}>
                 <KText variant="h3" style={{ marginBottom: spacing.sm }}>
                   Personne n'a vote aujourd'hui
@@ -560,7 +628,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
 
           {/* Tomorrow teaser */}
           {tomorrowCountdown !== "" && (
-            <View style={{ paddingHorizontal: spacing.md, marginTop: spacing.lg }}>
+            <View style={{ paddingHorizontal: horizontalPadding, marginTop: spacing.lg }}>
               <TomorrowTeaser countdown={tomorrowCountdown} />
             </View>
           )}
@@ -588,20 +656,22 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           question={question.question}
         />
 
-        <ShareResultSheet
-          visible={shareSheetVisible}
-          onClose={() => setShareSheetVisible(false)}
-          question={question.question}
-          winnerName={allResults[0]?.name ?? ""}
-          winnerAvatarUri={allResults[0]?.avatarUri}
-          winnerVoteCount={allResults[0]?.voteCount ?? 0}
-          groupName={group.name}
-        />
+        {!isWeb && (
+          <ShareResultSheet
+            visible={shareSheetVisible}
+            onClose={() => setShareSheetVisible(false)}
+            question={question.question}
+            winnerName={allResults[0]?.name ?? ""}
+            winnerAvatarUri={allResults[0]?.avatarUri}
+            winnerVoteCount={allResults[0]?.voteCount ?? 0}
+            groupName={group.name}
+          />
+        )}
       </AuroraScreenWrapper>
     );
   }
 
-  // --- State C: No question today ---
+  // --- State C: No question available yet (show next question timer) ---
   if (question === null) {
     return (
       <AuroraScreenWrapper>
@@ -610,41 +680,50 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           onBack={onBack}
           rightAction={headerRightAction}
         />
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: spacing.lg,
-          }}
+        <ScrollView
+          contentContainerStyle={[
+            {
+              flexGrow: 1,
+              justifyContent: "center",
+              padding: isWeb ? spacing.xl : spacing.lg,
+            },
+            desktopContainer,
+          ]}
+          showsVerticalScrollIndicator={false}
         >
-          <Animated.View
-            entering={FadeIn.duration(500)}
-            style={{ alignItems: "center" }}
-          >
-            <GlassCard
-              style={{
-                marginHorizontal: spacing.md,
-                alignItems: "center",
-              }}
-            >
-              <KText
-                variant="questionLarge"
-                color={colors.textMuted}
-                style={{ textAlign: "center", marginBottom: spacing.sm }}
-              >
-                Pas de question aujourd'hui
-              </KText>
-              <KText
-                variant="bodySmall"
-                color={colors.textMuted}
-                style={{ textAlign: "center" }}
-              >
-                Reviens demain pour voter !
-              </KText>
-            </GlassCard>
-          </Animated.View>
-        </View>
+          {/* Submit question card (State C) */}
+          {shouldShowSubmitCard && myNextSlot?.slot_id && (
+            <SubmitQuestionCard
+              groupId={groupId}
+              slotId={myNextSlot.slot_id}
+              onSubmitted={fetchData}
+            />
+          )}
+
+          {shouldShowWaitingForOtherSubmission && (
+            <Animated.View entering={FadeIn.duration(300)} style={{ marginTop: spacing.md }}>
+              <GlassCard style={{ alignItems: "center" }}>
+                <KText variant="bodySmall" color={colors.textSecondary} style={{ textAlign: "center" }}>
+                  {getWaitingMessage()}
+                </KText>
+              </GlassCard>
+            </Animated.View>
+          )}
+
+          {!shouldShowSubmitCard && !shouldShowWaitingForOtherSubmission && (
+            <Animated.View entering={FadeIn.duration(250)}>
+              <GlassCard style={{ alignItems: "center" }}>
+                <KText
+                  variant="bodySmall"
+                  color={colors.textSecondary}
+                  style={{ textAlign: "center" }}
+                >
+                  Preparation de la rotation...
+                </KText>
+              </GlassCard>
+            </Animated.View>
+          )}
+        </ScrollView>
         {renderInviteCode()}
         <GroupMenu
           visible={menuVisible}
@@ -672,13 +751,17 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           rightAction={headerRightAction}
         />
 
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: spacing.lg,
-          }}
+        <ScrollView
+          contentContainerStyle={[
+            {
+              flexGrow: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              padding: isWeb ? spacing.xl : spacing.lg,
+            },
+            desktopContainer,
+          ]}
+          showsVerticalScrollIndicator={false}
         >
           {showVoteReview ? (
             <Animated.View
@@ -736,6 +819,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               <GlassCard
                 style={{
                   marginHorizontal: spacing.md,
+                  maxWidth: isWeb ? 560 : undefined,
                   alignItems: "center",
                 }}
               >
@@ -750,7 +834,18 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
               </GlassCard>
             </Animated.View>
           )}
-        </View>
+
+          {/* Submit question card (State B) */}
+          {shouldShowSubmitCard && myNextSlot?.slot_id && (
+            <View style={{ width: "100%" }}>
+              <SubmitQuestionCard
+                groupId={groupId}
+                slotId={myNextSlot.slot_id}
+                onSubmitted={fetchData}
+              />
+            </View>
+          )}
+        </ScrollView>
 
         {renderInviteCode()}
 
@@ -782,13 +877,16 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
       <ErrorBanner message={error} />
 
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={[
+          { paddingBottom: isWeb ? 28 : 20 },
+          desktopContainer,
+        ]}
         showsVerticalScrollIndicator={false}
         style={{ flex: 1 }}
       >
         <GlassCard
           style={{
-            marginHorizontal: spacing.md,
+            marginHorizontal: horizontalPadding,
             marginBottom: spacing.md,
           }}
         >
@@ -796,6 +894,17 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
             question={question!.question}
             subtitle="Question du jour"
           />
+
+          {/* Admin moderate button (State A) */}
+          {question && (
+            <AdminModerateButton
+              groupId={groupId}
+              dailyQuestionId={question.id}
+              isAdmin={isCurrentUserAdmin}
+              disabled={adminReplacedToday}
+              onReplaced={fetchData}
+            />
+          )}
         </GlassCard>
 
         <VoteGrid
@@ -804,6 +913,15 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
           onSelectMember={handleMemberTap}
           disabled={!!myVote}
         />
+
+        {/* Submit question card (State A) */}
+        {shouldShowSubmitCard && myNextSlot?.slot_id && (
+          <SubmitQuestionCard
+            groupId={groupId}
+            slotId={myNextSlot.slot_id}
+            onSubmitted={fetchData}
+          />
+        )}
       </ScrollView>
 
       {renderInviteCode()}

@@ -4,6 +4,7 @@ import React from "react";
 import { View, TouchableOpacity, Platform, StatusBar, StyleSheet } from "react-native";
 import { colors, spacing, radii } from "./tokens";
 import { KText } from "./KText";
+import { getWebGlassStyle } from "./webGlass";
 
 type Props = {
   title: string;
@@ -70,9 +71,12 @@ export function KHeader({ title, onBack, rightAction }: Props) {
               backgroundColor: colors.glass.background,
               ...(isWeb
                 ? {
-                    // @ts-ignore web-only
-                    backdropFilter: "blur(15px)",
-                    WebkitBackdropFilter: "blur(15px)",
+                    ...getWebGlassStyle({
+                      blur: 8,
+                      tintAlpha: 0.07,
+                      borderAlpha: 0.3,
+                      shadow: "0 12px 34px rgba(0,0,0,0.22)",
+                    }),
                   }
                 : {}),
             },
@@ -99,11 +103,15 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                   width: 44,
                   height: 44,
                   borderRadius: 22,
-                  shadowColor: colors.shadow.color,
-                  shadowOffset: { width: 0, height: 4 },
-                  shadowOpacity: 0.1,
-                  shadowRadius: 8,
-                  elevation: 4,
+                  ...(isWeb
+                    ? {}
+                    : {
+                        shadowColor: colors.shadow.color,
+                        shadowOffset: { width: 0, height: 4 },
+                        shadowOpacity: 0.1,
+                        shadowRadius: 8,
+                        elevation: 4,
+                      }),
                 }}
               >
                 {/* Blur layer */}
@@ -133,9 +141,12 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                       backgroundColor: colors.glass.background,
                       ...(isWeb
                         ? {
-                            // @ts-ignore web-only
-                            backdropFilter: "blur(12px)",
-                            WebkitBackdropFilter: "blur(12px)",
+                            ...getWebGlassStyle({
+                              blur: 7,
+                              tintAlpha: 0.08,
+                              borderAlpha: 0.34,
+                              shadow: "0 8px 22px rgba(0,0,0,0.22)",
+                            }),
                           }
                         : {}),
                     },

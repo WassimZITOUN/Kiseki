@@ -34,7 +34,7 @@ export function BlurredReveal({
     const animatedStyle = useAnimatedStyle(() => ({
       // @ts-ignore web-only
       filter: `blur(${blurAmount.value}px)`,
-    }));
+    }), []);
 
     return (
       <Animated.View
@@ -55,7 +55,7 @@ export function BlurredReveal({
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: blurAmount.value / 80,
-  }));
+  }), []);
 
   return (
     <View style={{ borderRadius: radii.lg, overflow: "hidden" }}>

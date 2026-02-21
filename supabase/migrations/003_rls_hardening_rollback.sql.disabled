@@ -1,0 +1,198 @@
+-- ============================================================
+-- Kiseki – RLS hardening rollback (revert 002)
+-- Migration 003
+-- ============================================================
+
+-- Drop public_votes_status view and helper
+DROP VIEW IF EXISTS public.public_votes_status;
+DROP FUNCTION IF EXISTS public.votes_status_for_member();
+
+-- Restore original reveal_question (no auth guard)
+create or replace function public.reveal_question(p_question_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  update public.daily_questions
+  set status = 'revealed', revealed_at = now()
+  where id = p_question_id
+    and status = 'active';
+end;
+$$;
+
+-- Drop helper functions
+DROP FUNCTION IF EXISTS public.is_member_of_user_in_question(uuid, uuid);
+DROP FUNCTION IF EXISTS public.is_question_active(uuid);
+DROP FUNCTION IF EXISTS public.is_question_revealed(uuid);
+DROP FUNCTION IF EXISTS public.is_member_of_question(uuid);
+DROP FUNCTION IF EXISTS public.is_group_admin(uuid);
+DROP FUNCTION IF EXISTS public.is_member_of(uuid);
+
+-- Drop helper index
+DROP INDEX IF EXISTS public.idx_group_members_user_group;
+
+-- Restore policies to original definitions
+
+-- groups
+DROP POLICY IF EXISTS "groups_select_member" ON public.groups;
+DROP POLICY IF EXISTS "groups_insert" ON public.groups;
+DROP POLICY IF EXISTS "groups_update_admin" ON public.groups;
+DROP POLICY IF EXISTS "groups_delete_admin" ON public.groups;
+DROP POLICY IF EXISTS "groups_select_by_invite" ON public.groups;
+
+create policy "groups_select_member"
+  on public.groups for select
+  to authenticated
+  using (
+    id in (select group_id from public.group_members where user_id = auth.uid())
+  );
+
+create policy "groups_select_by_invite"
+  on public.groups for select
+  to authenticated
+  using (true);
+
+create policy "groups_insert"
+  on public.groups for insert
+  to authenticated
+  with check (created_by = auth.uid());
+
+create policy "groups_update_admin"
+  on public.groups for update
+  to authenticated
+  using (
+    id in (select group_id from public.group_members where user_id = auth.uid() and role = 'admin')
+  );
+
+create policy "groups_delete_admin"
+  on public.groups for delete
+  to authenticated
+  using (
+    id in (select group_id from public.group_members where user_id = auth.uid() and role = 'admin')
+  );
+
+-- group_members
+DROP POLICY IF EXISTS "group_members_select" ON public.group_members;
+DROP POLICY IF EXISTS "group_members_insert" ON public.group_members;
+DROP POLICY IF EXISTS "group_members_delete" ON public.group_members;
+
+create policy "group_members_select"
+  on public.group_members for select
+  to authenticated
+  using (
+    group_id in (select group_id from public.group_members where user_id = auth.uid())
+  );
+
+create policy "group_members_insert"
+  on public.group_members for insert
+  to authenticated
+  with check (user_id = auth.uid());
+
+create policy "group_members_delete"
+  on public.group_members for delete
+  to authenticated
+  using (
+    user_id = auth.uid()
+    or group_id in (
+      select group_id from public.group_members where user_id = auth.uid() and role = 'admin'
+    )
+  );
+
+-- user_questions
+DROP POLICY IF EXISTS "user_questions_select" ON public.user_questions;
+DROP POLICY IF EXISTS "user_questions_insert" ON public.user_questions;
+DROP POLICY IF EXISTS "user_questions_delete_own" ON public.user_questions;
+
+create policy "user_questions_select"
+  on public.user_questions for select
+  to authenticated
+  using (
+    group_id in (select group_id from public.group_members where user_id = auth.uid())
+  );
+
+create policy "user_questions_insert"
+  on public.user_questions for insert
+  to authenticated
+  with check (
+    created_by = auth.uid()
+    and group_id in (select group_id from public.group_members where user_id = auth.uid())
+  );
+
+create policy "user_questions_delete_own"
+  on public.user_questions for delete
+  to authenticated
+  using (created_by = auth.uid());
+
+-- daily_questions
+DROP POLICY IF EXISTS "daily_questions_select" ON public.daily_questions;
+DROP POLICY IF EXISTS "daily_questions_insert_admin" ON public.daily_questions;
+DROP POLICY IF EXISTS "daily_questions_update_admin" ON public.daily_questions;
+
+create policy "daily_questions_select"
+  on public.daily_questions for select
+  to authenticated
+  using (
+    group_id in (select group_id from public.group_members where user_id = auth.uid())
+  );
+
+create policy "daily_questions_insert_admin"
+  on public.daily_questions for insert
+  to authenticated
+  with check (
+    group_id in (
+      select group_id from public.group_members where user_id = auth.uid() and role = 'admin'
+    )
+  );
+
+create policy "daily_questions_update_admin"
+  on public.daily_questions for update
+  to authenticated
+  using (
+    group_id in (
+      select group_id from public.group_members where user_id = auth.uid() and role = 'admin'
+    )
+  );
+
+-- votes
+DROP POLICY IF EXISTS "votes_insert_member" ON public.votes;
+DROP POLICY IF EXISTS "votes_select" ON public.votes;
+DROP POLICY IF EXISTS "votes_update_own" ON public.votes;
+
+create policy "votes_insert_member"
+  on public.votes for insert
+  to authenticated
+  with check (
+    voter_id = auth.uid()
+    and question_id in (
+      select dq.id from public.daily_questions dq
+      join public.group_members gm on gm.group_id = dq.group_id
+      where gm.user_id = auth.uid() and dq.status = 'active'
+    )
+  );
+
+create policy "votes_select"
+  on public.votes for select
+  to authenticated
+  using (
+    voter_id = auth.uid()
+    or
+    question_id in (
+      select dq.id from public.daily_questions dq
+      join public.group_members gm on gm.group_id = dq.group_id
+      where gm.user_id = auth.uid() and dq.status = 'revealed'
+    )
+  );
+
+create policy "votes_update_own"
+  on public.votes for update
+  to authenticated
+  using (voter_id = auth.uid())
+  with check (
+    voter_id = auth.uid()
+    and question_id in (
+      select dq.id from public.daily_questions dq
+      where dq.status = 'active'
+    )
+  );

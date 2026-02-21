@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {
   TextInput,
   View,
+  Platform,
   type TextInputProps,
   type ViewStyle,
 } from "react-native";
@@ -32,12 +33,13 @@ export function KInput({
   onBlur,
   ...props
 }: Props) {
+  const isWeb = Platform.OS === "web";
   const [focused, setFocused] = useState(false);
   const borderOpacity = useSharedValue(0.3);
 
   const animatedBorder = useAnimatedStyle(() => ({
     borderColor: `rgba(149, 114, 207, ${borderOpacity.value})`,
-  }));
+  }), []);
 
   const handleFocus = (e: any) => {
     setFocused(true);
@@ -65,16 +67,26 @@ export function KInput({
       <AnimatedView
         style={[
           {
-            backgroundColor: colors.glass.background,
+            backgroundColor: isWeb
+              ? "var(--app-input-bg)"
+              : colors.glass.background,
             borderWidth: 1,
             borderRadius: radii.md,
             overflow: "hidden",
+            ...(isWeb && focused
+              ? {
+                  // @ts-ignore web-only
+                  boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.35)",
+                }
+              : {}),
           },
           animatedBorder,
         ]}
       >
         <TextInput
-          placeholderTextColor={colors.textMuted}
+          placeholderTextColor={
+            isWeb ? "var(--app-text-muted)" : colors.textMuted
+          }
           {...props}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -82,7 +94,7 @@ export function KInput({
             {
               padding: spacing.md,
               fontSize: 16,
-              color: colors.textPrimary,
+              color: isWeb ? "var(--app-text-primary)" : colors.textPrimary,
             },
             style,
           ]}

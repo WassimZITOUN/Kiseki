@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display } from "next/font/google";
 import { Registry } from "./registry";
 import { Providers } from "./providers";
-import { AuroraBackground } from "@repo/ui";
+import { WebGlassDefs } from "./web-glass-defs";
 import "./global.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -24,11 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={dmSerifDisplay.variable}>
-      <body style={{ backgroundColor: "#120d26" }}>
+      <body>
         <Registry>
           <Providers>
-            <AuroraBackground />
-            {children}
+            <WebGlassDefs />
+            <div className="web-fixed-bg-image" aria-hidden />
+            <div className="web-app-layer">{children}</div>
           </Providers>
         </Registry>
       </body>

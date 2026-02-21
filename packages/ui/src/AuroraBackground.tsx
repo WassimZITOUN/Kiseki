@@ -3,15 +3,13 @@
 import {
   View,
   StyleSheet,
-  Dimensions,
   Platform,
   Image,
   Text,
+  useWindowDimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "./tokens";
-
-const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get("window");
 
 const isWeb = Platform.OS === "web";
 
@@ -40,77 +38,43 @@ type Shape = {
   };
 };
 
-const SHAPES: Shape[] = [
-  // ── Large magenta sphere — top-left, partially off-screen
-  {
-    width: 380,
-    height: 380,
-    top: -60,
-    left: -80,
-    borderRadius: 190,
-    gradientColors: ["#ff007a", "#c4005e", "transparent"],
-    start: { x: 0.3, y: 0.2 },
-    end: { x: 0.8, y: 0.95 },
-    opacity: 0.45,
-    blur: 80,
-    highlight: { top: 70, left: 90, size: 100, opacity: 0.2 },
-  },
-  // ── Electric violet sphere — center-right
-  {
-    width: 320,
-    height: 350,
-    top: SCREEN_H * 0.3,
-    left: SCREEN_W * 0.55,
-    borderRadius: 175,
-    gradientColors: ["#9572CF", "#7a00ff", "transparent"],
-    start: { x: 0.2, y: 0.1 },
-    end: { x: 0.85, y: 0.9 },
-    opacity: 0.5,
-    blur: 90,
-    highlight: { top: 55, left: 65, size: 90, opacity: 0.18 },
-  },
-  // ── Cyan elongated blob — bottom-left
-  {
-    width: 340,
-    height: 260,
-    top: SCREEN_H * 0.65,
-    left: -50,
-    borderRadius: 130,
-    gradientColors: ["#00e5ff", "#007a99", "transparent"],
-    start: { x: 0.35, y: 0.1 },
-    end: { x: 0.75, y: 0.95 },
-    opacity: 0.35,
-    blur: 70,
-    rotate: "-12deg",
-    highlight: { top: 40, left: 80, size: 80, opacity: 0.15 },
-  },
-  // ── Small violet accent — top-right
-  {
-    width: 180,
-    height: 180,
-    top: SCREEN_H * 0.12,
-    left: SCREEN_W * 0.72,
-    borderRadius: 90,
-    gradientColors: ["#BBA3EF", "#7a00ff", "transparent"],
-    start: { x: 0.3, y: 0.15 },
-    end: { x: 0.8, y: 0.9 },
-    opacity: 0.4,
-    blur: 60,
-  },
-  // ── Subtle magenta-pink glow — bottom-right corner
-  {
-    width: 220,
-    height: 220,
-    top: SCREEN_H * 0.78,
-    left: SCREEN_W * 0.6,
-    borderRadius: 110,
-    gradientColors: ["#ff007a", "#7a00ff", "transparent"],
-    start: { x: 0.5, y: 0.2 },
-    end: { x: 0.5, y: 1 },
-    opacity: 0.25,
-    blur: 80,
-  },
-];
+function getShapes(W: number, H: number): Shape[] {
+  return [
+    {
+      width: 380, height: 380, top: -60, left: -80, borderRadius: 190,
+      gradientColors: ["#ff007a", "#c4005e", "transparent"],
+      start: { x: 0.3, y: 0.2 }, end: { x: 0.8, y: 0.95 },
+      opacity: 0.45, blur: 80,
+      highlight: { top: 70, left: 90, size: 100, opacity: 0.2 },
+    },
+    {
+      width: 320, height: 350, top: H * 0.3, left: W * 0.55, borderRadius: 175,
+      gradientColors: ["#9572CF", "#7a00ff", "transparent"],
+      start: { x: 0.2, y: 0.1 }, end: { x: 0.85, y: 0.9 },
+      opacity: 0.5, blur: 90,
+      highlight: { top: 55, left: 65, size: 90, opacity: 0.18 },
+    },
+    {
+      width: 340, height: 260, top: H * 0.65, left: -50, borderRadius: 130,
+      gradientColors: ["#00e5ff", "#007a99", "transparent"],
+      start: { x: 0.35, y: 0.1 }, end: { x: 0.75, y: 0.95 },
+      opacity: 0.35, blur: 70, rotate: "-12deg",
+      highlight: { top: 40, left: 80, size: 80, opacity: 0.15 },
+    },
+    {
+      width: 180, height: 180, top: H * 0.12, left: W * 0.72, borderRadius: 90,
+      gradientColors: ["#BBA3EF", "#7a00ff", "transparent"],
+      start: { x: 0.3, y: 0.15 }, end: { x: 0.8, y: 0.9 },
+      opacity: 0.4, blur: 60,
+    },
+    {
+      width: 220, height: 220, top: H * 0.78, left: W * 0.6, borderRadius: 110,
+      gradientColors: ["#ff007a", "#7a00ff", "transparent"],
+      start: { x: 0.5, y: 0.2 }, end: { x: 0.5, y: 1 },
+      opacity: 0.25, blur: 80,
+    },
+  ];
+}
 
 // ─── GlassShape ───────────────────────────────────────────────────
 // Renders a single gradient sphere with optional 3D highlight spot.
@@ -169,6 +133,9 @@ const NOISE_SVG = `data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http:/
 // ─── AuroraBackground ─────────────────────────────────────────────
 
 export function AuroraBackground() {
+  const { width: W, height: H } = useWindowDimensions();
+  const shapes = getShapes(W, H);
+
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">
       {/* Layer 0 — Deep Space dark surface */}
@@ -180,7 +147,7 @@ export function AuroraBackground() {
       />
 
       {/* Layer 1 — Static 3D gradient shapes */}
-      {SHAPES.map((shape, i) => (
+      {shapes.map((shape, i) => (
         <GlassShape key={i} shape={shape} />
       ))}
 
@@ -188,8 +155,8 @@ export function AuroraBackground() {
       <Text
         style={{
           position: "absolute",
-          top: SCREEN_H * 0.15,
-          left: SCREEN_W * 0.06,
+          top: H * 0.15,
+          left: W * 0.06,
           fontSize: 140,
           fontFamily: "DMSerifDisplay",
           color: "rgba(149,114,207,0.06)",
@@ -201,8 +168,8 @@ export function AuroraBackground() {
       <Text
         style={{
           position: "absolute",
-          top: SCREEN_H * 0.52,
-          left: SCREEN_W * 0.75,
+          top: H * 0.52,
+          left: W * 0.75,
           fontSize: 100,
           fontFamily: "DMSerifDisplay",
           color: "rgba(0,229,255,0.05)",
@@ -214,8 +181,8 @@ export function AuroraBackground() {
       <Text
         style={{
           position: "absolute",
-          top: SCREEN_H * 0.82,
-          left: SCREEN_W * 0.3,
+          top: H * 0.82,
+          left: W * 0.3,
           fontSize: 80,
           fontFamily: "DMSerifDisplay",
           color: "rgba(255,0,122,0.04)",

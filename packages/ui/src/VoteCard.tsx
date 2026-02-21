@@ -10,6 +10,7 @@ import Animated, {
 import { colors, radii, spacing } from "./tokens";
 import { KAvatar } from "./KAvatar";
 import { KText } from "./KText";
+import { getWebGlassStyle } from "./webGlass";
 
 // iOS Premium Spring — snappy, no jelly
 const SNAPPY_SPRING = {
@@ -49,7 +50,7 @@ export function VoteCard({
 
   const animatedScale = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
-  }));
+  }), []);
 
   const handlePressIn = () => {
     scale.value = withSpring(0.95, SNAPPY_SPRING);
@@ -87,12 +88,18 @@ export function VoteCard({
             borderWidth: 1,
             borderColor,
             minHeight: cardMinHeight,
-            // @ts-ignore web-only
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            boxShadow: selected
-              ? "0 8px 32px rgba(122, 0, 255, 0.35)"
-              : "0 8px 32px rgba(122, 0, 255, 0.15)",
+            ...getWebGlassStyle({
+              blur: 8,
+              tintAlpha: selected ? 0.22 : 0.08,
+              borderAlpha: selected ? 0.42 : 0.3,
+              shadow: selected
+                ? "0 14px 34px rgba(38, 20, 76, 0.34)"
+                : "0 10px 24px rgba(0, 0, 0, 0.2)",
+            }),
+            backgroundColor: selected
+              ? "rgba(192, 161, 255, 0.28)"
+              : "rgba(255,255,255,0.08)",
+            borderColor: selected ? "rgba(213,194,255,0.52)" : borderColor,
           },
           animatedScale,
         ]}

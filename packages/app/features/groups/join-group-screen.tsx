@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 import { getSupabase } from "../../utils/supabase";
 import { services } from "@my-app/core";
 import {
@@ -23,6 +23,11 @@ type Props = {
 };
 
 export function JoinGroupScreen({ onGroupJoined, onBack }: Props) {
+  const isWeb = Platform.OS === "web";
+  const contentWidth = isWeb
+    ? ({ width: "100%", maxWidth: 560, alignSelf: "center" } as const)
+    : null;
+
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -61,11 +66,14 @@ export function JoinGroupScreen({ onGroupJoined, onBack }: Props) {
   return (
     <AuroraScreenWrapper>
       <View
-        style={{
-          flex: 1,
-          padding: spacing.lg,
-          justifyContent: "center",
-        }}
+        style={[
+          {
+            flex: 1,
+            padding: spacing.lg,
+            justifyContent: "center",
+          },
+          contentWidth,
+        ]}
       >
         <KText
           variant="h1"

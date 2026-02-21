@@ -56,7 +56,7 @@ function Particle({ index, onDone }: { index: number; onDone?: () => void }) {
       ],
       opacity,
     };
-  });
+  }, [endX, index, startX]);
 
   return (
     <Animated.View

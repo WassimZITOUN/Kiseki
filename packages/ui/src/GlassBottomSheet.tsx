@@ -4,6 +4,7 @@ import React from "react";
 import { View, TouchableOpacity, Modal, Platform, ScrollView, StyleSheet } from "react-native";
 import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
 import { colors, radii, spacing } from "./tokens";
+import { getWebGlassStyle } from "./webGlass";
 
 // iOS Premium Spring — snappy, no jelly
 const SNAPPY_SPRING_CONFIG = {
@@ -30,14 +31,13 @@ function SheetContent({ children }: { children: React.ReactNode }) {
           overflow: "hidden",
           padding: spacing.lg,
           maxHeight: "80%",
-          backgroundColor: colors.glass.background,
-          borderWidth: 1,
+          ...getWebGlassStyle({
+            blur: 10,
+            tintAlpha: 0.08,
+            borderAlpha: 0.32,
+            shadow: "0 -18px 50px rgba(0, 0, 0, 0.34)",
+          }),
           borderBottomWidth: 0,
-          borderColor: colors.glass.border,
-          // @ts-ignore web-only
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          boxShadow: "0 -12px 40px rgba(122, 0, 255, 0.3)",
         }}
       >
         <View

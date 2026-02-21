@@ -4,7 +4,7 @@ import { useState } from "react";
 import { View, TouchableOpacity, Platform } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { getSupabase } from "../../utils/supabase";
-import { services } from "@my-app/core";
+import { services, validators } from "@my-app/core";
 import {
   AuroraScreenWrapper,
   KText,
@@ -17,6 +17,7 @@ import {
 } from "@repo/ui";
 
 const { createGroupsService } = services;
+const { GROUP_NAME_MAX_LENGTH } = validators;
 
 type Props = {
   onGroupCreated?: (groupId: string) => void;
@@ -24,8 +25,13 @@ type Props = {
 };
 
 export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
+  const isWeb = Platform.OS === "web";
+  const contentWidth = isWeb
+    ? ({ width: "100%", maxWidth: 560, alignSelf: "center" } as const)
+    : null;
+
   const [name, setName] = useState("");
-  const [maxMembers, setMaxMembers] = useState("20");
+  const [maxMembers, setMaxMembers] = useState("12");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [inviteCode, setInviteCode] = useState<string | null>(null);
@@ -33,8 +39,16 @@ export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
   const [copied, setCopied] = useState(false);
 
   const handleCreate = async () => {
-    if (!name.trim()) {
+    const trimmedName = name.trim();
+
+    if (!trimmedName) {
       setError("Le nom du groupe est obligatoire");
+      return;
+    }
+    if (trimmedName.length > GROUP_NAME_MAX_LENGTH) {
+      setError(
+        `Le nom du groupe ne doit pas depasser ${GROUP_NAME_MAX_LENGTH} caracteres`
+      );
       return;
     }
 
@@ -43,7 +57,7 @@ export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
 
     try {
       const service = createGroupsService(getSupabase());
-      const group = await service.createGroup(name.trim(), {
+      const group = await service.createGroup(trimmedName, {
         maxMembers: parseInt(maxMembers, 10) || 20,
       });
       setInviteCode(group.invite_code);
@@ -73,11 +87,14 @@ export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
     return (
       <AuroraScreenWrapper>
         <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            padding: spacing.lg,
-          }}
+          style={[
+            {
+              flex: 1,
+              justifyContent: "center",
+              padding: spacing.lg,
+            },
+            contentWidth,
+          ]}
         >
           <Animated.View entering={FadeIn.duration(400)}>
             <KText
@@ -141,11 +158,14 @@ export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
   return (
     <AuroraScreenWrapper>
       <View
-        style={{
-          flex: 1,
-          padding: spacing.lg,
-          justifyContent: "center",
-        }}
+        style={[
+          {
+            flex: 1,
+            padding: spacing.lg,
+            justifyContent: "center",
+          },
+          contentWidth,
+        ]}
       >
         <KText
           variant="h1"
@@ -159,12 +179,13 @@ export function CreateGroupScreen({ onGroupCreated, onBack }: Props) {
             label="Nom du groupe"
             value={name}
             onChangeText={setName}
-            placeholder="Ex: La bande du lycee"
+            placeholder="Ex: La team Nasdas"
+            maxLength={GROUP_NAME_MAX_LENGTH}
             containerStyle={{ marginBottom: spacing.md }}
           />
 
           <KInput
-            label="Nombre max de membres"
+            label="Nombre max de membres (2-12)"
             value={maxMembers}
             onChangeText={setMaxMembers}
             keyboardType="numeric"
