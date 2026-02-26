@@ -6,7 +6,7 @@ import { Slot, useRouter, useSegments } from "expo-router";
 import { AuthProvider, useAuth } from "@repo/app";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import type { NotificationPayload } from "@repo/types";
+import type { NotificationPayload } from "@my-app/types";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -16,15 +16,17 @@ SplashScreen.preventAutoHideAsync();
 // la voir en foreground renforce la boucle FOMO.
 if (Platform.OS !== "web") {
   try {
-    const Notifications = require("expo-notifications");
-    Notifications.setNotificationHandler({
+    const NotificationsModule = require("expo-notifications");
+    NotificationsModule.setNotificationHandler({
       handleNotification: async () => ({
         shouldShowAlert: true,
         shouldPlaySound: true,
         shouldSetBadge: true,
       }),
     });
-  } catch {}
+  } catch (e) {
+    console.log("Notifications init skipped:", e);
+  }
 }
 
 function AuthGate() {
