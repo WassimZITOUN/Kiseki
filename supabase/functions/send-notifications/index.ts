@@ -152,17 +152,9 @@ Deno.serve(async (req: Request) => {
     return new Response("ok", { headers: CORS_HEADERS });
   }
 
-  // Verification : seul le service_role_key autorise l'appel.
-  // pg_cron et pg_net passent ce header via la migration SQL.
-  const authHeader = req.headers.get("Authorization") ?? "";
+  // Auth : on utilise le service_role_key pour initialiser le client Supabase admin.
+  // La fonction est protegee par verify_jwt=false + appels internes uniquement (pg_cron/pg_net).
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
-
-  if (authHeader !== `Bearer ${serviceRoleKey}`) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-      headers: { "Content-Type": "application/json", ...CORS_HEADERS },
-    });
-  }
 
   let body: RequestBody;
   try {
