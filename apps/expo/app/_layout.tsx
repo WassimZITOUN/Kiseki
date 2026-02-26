@@ -6,28 +6,8 @@ import { Slot, useRouter, useSegments } from "expo-router";
 import { AuthProvider, useAuth } from "@repo/app";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import type { NotificationPayload } from "@my-app/types";
 
 SplashScreen.preventAutoHideAsync();
-
-// Configure le comportement des notifications en premier plan.
-// On affiche toujours l'alerte meme si l'app est ouverte —
-// la notif "Social Proof" est concue pour creer de la curiosite,
-// la voir en foreground renforce la boucle FOMO.
-if (Platform.OS !== "web") {
-  try {
-    const NotificationsModule = require("expo-notifications");
-    NotificationsModule.setNotificationHandler({
-      handleNotification: async () => ({
-        shouldShowAlert: true,
-        shouldPlaySound: true,
-        shouldSetBadge: true,
-      }),
-    });
-  } catch (e) {
-    console.log("Notifications init skipped:", e);
-  }
-}
 
 function AuthGate() {
   const { user, loading } = useAuth();
@@ -47,11 +27,10 @@ function AuthGate() {
     }
   }, [user, loading, segments]);
 
-  // Deep-link handler : se declenche quand l'utilisateur tape sur une notif.
-  // Gere aussi le cold-start (app tuee) via getLastNotificationResponseAsync.
+  // Configure le foreground handler + deep-link listener
+  // Tout est dans un useEffect pour eviter les crashes au niveau module
   useEffect(() => {
     if (Platform.OS === "web") return;
-    if (!user) return;
 
     let Notifications: any;
     try {
@@ -60,14 +39,22 @@ function AuthGate() {
       return;
     }
 
+    // Foreground : afficher les notifs meme quand l'app est ouverte
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+      }),
+    });
+
+    // Deep-link : uniquement si l'utilisateur est connecte
+    if (!user) return;
+
     const handleNotificationResponse = (response: any) => {
-      const data = response?.notification?.request?.content?.data as
-        | NotificationPayload
-        | undefined;
+      const data = response?.notification?.request?.content?.data;
       if (!data?.group_id) return;
 
-      // Route vers l'ecran du groupe — le composant detecte l'etat
-      // (vote/results/waiting) en fonction de la DB.
       switch (data.screen) {
         case "vote":
         case "results":
@@ -85,8 +72,7 @@ function AuthGate() {
         handleNotificationResponse
       );
 
-    // Cold-start : l'app a ete tuee et une notif l'a relancee.
-    // getLastNotificationResponseAsync retourne la notif tapee au demarrage.
+    // Cold-start : app tuee puis relancee via tap sur notif
     Notifications.getLastNotificationResponseAsync().then((response: any) => {
       if (response) handleNotificationResponse(response);
     });
