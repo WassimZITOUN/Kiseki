@@ -62,6 +62,7 @@ export function ResultCard({ item, rank, delay = 0 }: Props) {
               {
                 borderRadius: radii.lg,
                 overflow: "hidden",
+                backgroundColor: "transparent",
               },
             ]}
           >

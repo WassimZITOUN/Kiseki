@@ -73,6 +73,7 @@ export function KInput({
             borderWidth: 1,
             borderRadius: radii.md,
             overflow: "hidden",
+            backgroundColor: "transparent",
             ...(isWeb && focused
               ? {
                   // @ts-ignore web-only

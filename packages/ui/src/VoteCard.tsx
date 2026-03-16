@@ -82,6 +82,7 @@ export function VoteCard({
           {
             borderRadius: resolvedRadius,
             overflow: "hidden",
+            backgroundColor: "transparent",
             backgroundColor: selected
               ? colors.violet[200]
               : colors.glass.background,
@@ -142,6 +143,7 @@ export function VoteCard({
         {
           borderRadius: resolvedRadius,
           overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
           minHeight: cardMinHeight,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 4 },

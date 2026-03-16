@@ -42,6 +42,7 @@ export function BlurredReveal({
           {
             borderRadius: radii.lg,
             overflow: "hidden",
+            backgroundColor: "transparent",
           },
           animatedStyle,
         ]}

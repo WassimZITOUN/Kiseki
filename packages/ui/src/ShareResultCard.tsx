@@ -90,6 +90,7 @@ export function ShareResultCard({
         alignSelf: "center",
         borderRadius: radii.xl,
         overflow: "hidden",
+        backgroundColor: "transparent",
       }}
     >
       <LinearGradient

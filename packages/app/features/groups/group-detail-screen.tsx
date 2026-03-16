@@ -423,7 +423,7 @@ export function GroupDetailScreen({ groupId, onLeft, onBack }: Props) {
         <View
           style={[
             StyleSheet.absoluteFill,
-            { borderRadius: 22, overflow: "hidden" },
+            { borderRadius: 22, overflow: "hidden", backgroundColor: "transparent" },
           ]}
         >
           <BlurView

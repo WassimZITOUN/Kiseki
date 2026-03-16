@@ -37,6 +37,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
         style={{
           borderRadius: radii.lg,
           overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.15,
@@ -49,7 +50,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
           <View
             style={[
               StyleSheet.absoluteFill,
-              { borderRadius: radii.lg, overflow: "hidden" },
+              { borderRadius: radii.lg, overflow: "hidden", backgroundColor: "transparent" },
             ]}
           >
             <BlurView
@@ -106,6 +107,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                   height: 44,
                   borderRadius: 22,
                   overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
                   ...(isWeb
                     ? {}
                     : {
@@ -122,7 +124,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                   <View
                     style={[
                       StyleSheet.absoluteFill,
-                      { borderRadius: 22, overflow: "hidden" },
+                      { borderRadius: 22, overflow: "hidden", backgroundColor: "transparent" },
                     ]}
                   >
                     <BlurView

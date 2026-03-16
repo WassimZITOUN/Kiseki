@@ -165,6 +165,7 @@ export function KButton({
           {
             borderRadius: resolvedRadius,
             overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
             opacity: disabled ? 0.5 : 1,
             shadowColor: colors.violet[600],
             shadowOffset: { width: 0, height: 4 },

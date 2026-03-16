@@ -53,12 +53,12 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
   const BlurView = require("expo-blur").BlurView;
 
   return (
-    // Layer 0: Shadow caster — violet glow
+    // Layer 0: Shadow + layout — receives user style, NO overflow:hidden
+    // (avoids Android APK clip bug: asymmetric border + overflow:hidden + borderRadius breaks clip path)
     <View
       style={[
         {
           borderRadius: resolvedRadius,
-          overflow: Platform.OS === "android" ? "hidden" : undefined,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.4,
@@ -68,38 +68,47 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
         style,
       ]}
     >
-      {/* Layer 1: Blur (clipped) — dark tint for dark theme */}
+      {/* Glass clip container — isolated from user style, safe overflow:hidden on Android */}
       <View
-        style={[
-          StyleSheet.absoluteFill,
-          { borderRadius: resolvedRadius, overflow: "hidden" },
-        ]}
+        style={{
+          borderRadius: resolvedRadius,
+          overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
+        }}
       >
-        <BlurView
-          intensity={intensity}
-          tint="dark"
-          experimentalBlurMethod="dimezisBlurView"
-          clipBorderRadius={resolvedRadius}
-          style={StyleSheet.absoluteFill}
+        {/* Layer 1: Blur (clipped) — dark tint for dark theme */}
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            { borderRadius: resolvedRadius, overflow: "hidden", backgroundColor: "transparent" },
+          ]}
+        >
+          <BlurView
+            intensity={intensity}
+            tint="dark"
+            experimentalBlurMethod="dimezisBlurView"
+            clipBorderRadius={resolvedRadius}
+            style={StyleSheet.absoluteFill}
+          />
+        </View>
+
+        {/* Layer 2: Refraction border */}
+        <View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              borderRadius: resolvedRadius,
+              borderWidth: 1,
+              borderColor: colors.glass.border,
+              backgroundColor: colors.glass.background,
+            },
+          ]}
         />
-      </View>
 
-      {/* Layer 2: Refraction border */}
-      <View
-        style={[
-          StyleSheet.absoluteFill,
-          {
-            borderRadius: resolvedRadius,
-            borderWidth: 1,
-            borderColor: colors.glass.border,
-            backgroundColor: colors.glass.background,
-          },
-        ]}
-      />
-
-      {/* Layer 3: Content with padding */}
-      <View style={{ padding: spacing.md }}>
-        {children}
+        {/* Layer 3: Content with padding */}
+        <View style={{ padding: spacing.md }}>
+          {children}
+        </View>
       </View>
     </View>
   );

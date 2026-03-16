@@ -76,6 +76,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
         {
           borderRadius: radii.xl,
           overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
           marginHorizontal: spacing.lg,
           maxWidth: 400,
           alignSelf: "center",

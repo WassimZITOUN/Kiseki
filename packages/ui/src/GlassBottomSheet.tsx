@@ -67,6 +67,7 @@ function SheetContent({ children }: { children: React.ReactNode }) {
         borderTopLeftRadius: radii.xl,
         borderTopRightRadius: radii.xl,
         overflow: Platform.OS === "android" ? "hidden" : undefined,
+          backgroundColor: Platform.OS === "android" ? "transparent" : undefined,
         maxHeight: "80%",
         shadowColor: colors.shadow.color,
         shadowOffset: { width: 0, height: -12 },
