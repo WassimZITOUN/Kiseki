@@ -75,6 +75,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
       style={[
         {
           borderRadius: radii.xl,
+          overflow: Platform.OS === "android" ? "hidden" : undefined,
           marginHorizontal: spacing.lg,
           maxWidth: 400,
           alignSelf: "center",
@@ -83,7 +84,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
           shadowOffset: { width: 0, height: 16 },
           shadowOpacity: 0.25,
           shadowRadius: 24,
-          elevation: 16,
+          elevation: Platform.OS === "android" ? 0 : 16,
         },
         animatedStyle,
       ]}
@@ -99,6 +100,7 @@ function ModalCard({ children }: { children: React.ReactNode }) {
           intensity={60}
           tint="dark"
           experimentalBlurMethod="dimezisBlurView"
+          clipBorderRadius={radii.xl}
           style={StyleSheet.absoluteFill}
         />
       </View>

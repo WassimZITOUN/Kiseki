@@ -58,7 +58,9 @@ export async function uploadAvatar(
   } else {
     ext = uri.split(".").pop()?.toLowerCase() ?? "jpg";
   }
-  const filePath = `${userId}/avatar.${ext}`;
+  const now = Date.now();
+  const randomSuffix = Math.random().toString(36).slice(2, 8);
+  const filePath = `${userId}/avatar-${now}-${randomSuffix}.${ext}`;
 
   const response = await fetch(uri);
   const blob = await response.blob();
@@ -66,14 +68,67 @@ export async function uploadAvatar(
 
   const { error } = await supabase.storage.from("avatars").upload(filePath, arrayBuffer, {
     contentType: `image/${ext === "jpg" ? "jpeg" : ext}`,
-    upsert: true,
+    cacheControl: "0",
+    upsert: false,
   });
 
   if (error) {
-    console.error("Upload error:", error.message);
+    console.error("Upload error:", { message: error.message, error });
     return null;
   }
 
   const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
   return data.publicUrl;
+}
+
+function extractAvatarPathFromPublicUrl(publicUrl: string): string | null {
+  try {
+    const url = new URL(publicUrl);
+    const marker = "/storage/v1/object/public/avatars/";
+    const markerIndex = url.pathname.indexOf(marker);
+    if (markerIndex === -1) return null;
+    const fullPath = url.pathname.slice(markerIndex + marker.length);
+    return decodeURIComponent(fullPath);
+  } catch {
+    return null;
+  }
+}
+
+export async function deleteAvatarByPublicUrl(publicUrl: string): Promise<void> {
+  const filePath = extractAvatarPathFromPublicUrl(publicUrl);
+  if (!filePath) return;
+
+  const supabase = getSupabase();
+  const { error } = await supabase.storage.from("avatars").remove([filePath]);
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function cleanupUserAvatarDuplicates(
+  userId: string,
+  keepPublicUrl?: string | null
+): Promise<void> {
+  const keepPath = keepPublicUrl ? extractAvatarPathFromPublicUrl(keepPublicUrl) : null;
+  const supabase = getSupabase();
+  const { data, error } = await supabase.storage.from("avatars").list(userId, {
+    limit: 100,
+    sortBy: { column: "name", order: "desc" },
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const toDelete = (data ?? [])
+    .filter((file) => file.name)
+    .map((file) => `${userId}/${file.name}`)
+    .filter((path) => path !== keepPath);
+
+  if (toDelete.length === 0) return;
+
+  const { error: removeError } = await supabase.storage.from("avatars").remove(toDelete);
+  if (removeError) {
+    throw new Error(removeError.message);
+  }
 }

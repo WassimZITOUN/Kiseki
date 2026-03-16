@@ -76,6 +76,7 @@ export function BlurredReveal({
           intensity={80}
           tint="dark"
           experimentalBlurMethod="dimezisBlurView"
+          clipBorderRadius={radii.lg}
           style={{ flex: 1 }}
         />
       </Animated.View>

@@ -9,3 +9,4 @@ export { JoinGroupScreen } from "./groups/join-group-screen";
 export { GroupDetailScreen } from "./groups/group-detail-screen";
 export { getSupabase, createSupabaseClient } from "../utils/supabase";
 export { AuthProvider, useAuth } from "../providers/auth-provider";
+export { usePushNotifications } from "../hooks/usePushNotifications";

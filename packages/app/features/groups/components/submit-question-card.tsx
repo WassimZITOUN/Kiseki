@@ -136,7 +136,7 @@ export function SubmitQuestionCard({ groupId, slotId, onSubmitted }: Props) {
                 variant="body"
                 color={mode === "bank" ? colors.textPrimary : colors.textSecondary}
               >
-                Banque auto
+                Auto
               </KText>
             </TouchableOpacity>
           </View>
@@ -232,7 +232,7 @@ export function SubmitQuestionCard({ groupId, slotId, onSubmitted }: Props) {
                 variant="body"
                 color={intensity === "epice" ? colors.textPrimary : colors.textSecondary}
               >
-                Epice
+                Méchante
               </KText>
             </TouchableOpacity>
           </View>

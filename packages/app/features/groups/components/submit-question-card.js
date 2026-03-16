@@ -81,7 +81,7 @@ export function SubmitQuestionCard({ groupId, slotId, onSubmitted }) {
             borderColor: mode === "bank" ? colors.success : "rgba(255, 255, 255, 0.1)",
         }}>
               <KText variant="body" color={mode === "bank" ? colors.textPrimary : colors.textSecondary}>
-                Banque auto
+                Auto
               </KText>
             </TouchableOpacity>
           </View>

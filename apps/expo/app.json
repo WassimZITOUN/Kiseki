@@ -22,7 +22,10 @@
     "ios": {
       "icon": "../assets/Icon/android/play_store_512.png",
       "supportsTablet": true,
-      "bundleIdentifier": "com.kiseki.app"
+      "bundleIdentifier": "com.kiseki.app",
+      "infoPlist": {
+        "NSUserNotificationsUsageDescription": "Kiseki t'envoie des notifications pour te rappeler de voter et decouvrir les resultats."
+      }
     },
     "android": {
       "package": "com.kiseki.app",
@@ -35,8 +38,19 @@
     },
     "plugins": [
       "expo-router",
-      "@react-native-google-signin/google-signin"
+      "@react-native-google-signin/google-signin",
+      [
+        "expo-notifications",
+        {
+          "icon": "../assets/Icon/ios/AppIcon-20@2x.png",
+          "color": "#9572CF",
+          "iosDisplayInForeground": true
+        }
+      ]
     ],
+    "autolinking": {
+      "buildFromSource": ["expo-blur"]
+    },
     "extra": {
       "router": {},
       "eas": {

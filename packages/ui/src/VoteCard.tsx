@@ -141,12 +141,13 @@ export function VoteCard({
       style={[
         {
           borderRadius: resolvedRadius,
+          overflow: Platform.OS === "android" ? "hidden" : undefined,
           minHeight: cardMinHeight,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 4 },
           shadowOpacity: selected ? 0.4 : 0.15,
           shadowRadius: 12,
-          elevation: selected ? 8 : 4,
+          elevation: Platform.OS === "android" ? 0 : (selected ? 8 : 4),
         },
         animatedScale,
       ]}
@@ -162,6 +163,7 @@ export function VoteCard({
           intensity={30}
           tint="dark"
           experimentalBlurMethod="dimezisBlurView"
+          clipBorderRadius={resolvedRadius}
           style={StyleSheet.absoluteFill}
         />
       </View>

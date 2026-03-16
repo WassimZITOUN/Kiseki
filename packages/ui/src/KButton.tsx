@@ -164,12 +164,13 @@ export function KButton({
         style={[
           {
             borderRadius: resolvedRadius,
+            overflow: Platform.OS === "android" ? "hidden" : undefined,
             opacity: disabled ? 0.5 : 1,
             shadowColor: colors.violet[600],
             shadowOffset: { width: 0, height: 4 },
             shadowOpacity: 0.35,
             shadowRadius: 12,
-            elevation: 6,
+            elevation: Platform.OS === "android" ? 0 : 6,
           },
           webCompactStyle,
           webFocusStyle,
@@ -188,6 +189,7 @@ export function KButton({
             intensity={15}
             tint="dark"
             experimentalBlurMethod="dimezisBlurView"
+            clipBorderRadius={resolvedRadius}
             style={StyleSheet.absoluteFill}
           />
         </View>

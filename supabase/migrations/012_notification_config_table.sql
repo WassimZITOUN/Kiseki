@@ -12,9 +12,12 @@ CREATE TABLE IF NOT EXISTS public.notification_config (
   CHECK (id = 1)  -- Ensure only one row
 );
 
--- Insert the service role key (replace with actual key when needed)
+-- Insert the service role key
+-- NOTE: Replace the placeholder below with the actual service_role_key
+-- when applying this migration (via Dashboard SQL or supabase db push).
+-- Never commit the real key to version control.
 INSERT INTO public.notification_config (service_role_key)
-VALUES ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2amFya3NiZ3RsdGZtYXFxd3ZkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2OTk5MjQ2NSwiZXhwIjoyMDg1NTY4NDY1fQ.dplKnRlNeBwlbeh-8ZH0jcP0Vr5BPHm4ZlK0VcG-BMg')
+VALUES ('REPLACE_WITH_SERVICE_ROLE_KEY')
 ON CONFLICT (id) DO UPDATE
 SET service_role_key = EXCLUDED.service_role_key;
 

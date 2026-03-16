@@ -1,0 +1,2793 @@
+diff --git a/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/results.bin b/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/results.bin
+new file mode 100644
+index 0000000..0d259dd
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/results.bin
+@@ -0,0 +1 @@
++o/classes
+diff --git a/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/transformed/classes/classes_dex/classes.dex b/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/transformed/classes/classes_dex/classes.dex
+new file mode 100644
+index 0000000..2b1be4c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/9749e4da7cf7faf8e442d4f0dd0a83f6/transformed/classes/classes_dex/classes.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/results.bin b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/results.bin
+new file mode 100644
+index 0000000..e1640c9
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/results.bin
+@@ -0,0 +1 @@
++o/bundleLibRuntimeToDirRelease
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$1.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$1.dex
+new file mode 100644
+index 0000000..3867024
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$1.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$2.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$2.dex
+new file mode 100644
+index 0000000..dd52850
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$2.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$3.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$3.dex
+new file mode 100644
+index 0000000..78e20f0
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$3.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$4.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$4.dex
+new file mode 100644
+index 0000000..532f588
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$1$1$4.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.dex
+new file mode 100644
+index 0000000..8e340f8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.dex
+new file mode 100644
+index 0000000..4d328fd
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.dex
+new file mode 100644
+index 0000000..22de2e9
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.dex
+new file mode 100644
+index 0000000..110653e
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.dex
+new file mode 100644
+index 0000000..ac158ac
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.dex
+new file mode 100644
+index 0000000..c592f27
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule.dex
+new file mode 100644
+index 0000000..0357db1
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BlurModule.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BuildConfig.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BuildConfig.dex
+new file mode 100644
+index 0000000..0fefc46
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/BuildConfig.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView$WhenMappings.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView$WhenMappings.dex
+new file mode 100644
+index 0000000..611075c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView$WhenMappings.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView.dex
+new file mode 100644
+index 0000000..afff964
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/ExpoBlurView.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/InvalidTintValueException.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/InvalidTintValueException.dex
+new file mode 100644
+index 0000000..f536c20
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/InvalidTintValueException.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/BlurMethod.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/BlurMethod.dex
+new file mode 100644
+index 0000000..41ab26a
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/BlurMethod.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle$WhenMappings.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle$WhenMappings.dex
+new file mode 100644
+index 0000000..eee5ec3
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle$WhenMappings.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle.dex b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle.dex
+new file mode 100644
+index 0000000..302315b
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/bundleLibRuntimeToDirRelease_dex/expo/modules/blur/enums/TintStyle.dex differ
+diff --git a/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/desugar_graph.bin b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/desugar_graph.bin
+new file mode 100644
+index 0000000..601f245
+Binary files /dev/null and b/node_modules/expo-blur/android/build/.transforms/dea32b3a0732bddba98c465bd5243c1b/transformed/bundleLibRuntimeToDirRelease/desugar_graph.bin differ
+diff --git a/node_modules/expo-blur/android/build/generated/source/buildConfig/release/expo/modules/blur/BuildConfig.java b/node_modules/expo-blur/android/build/generated/source/buildConfig/release/expo/modules/blur/BuildConfig.java
+new file mode 100644
+index 0000000..7d1fb4b
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/generated/source/buildConfig/release/expo/modules/blur/BuildConfig.java
+@@ -0,0 +1,10 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package expo.modules.blur;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = false;
++  public static final String LIBRARY_PACKAGE_NAME = "expo.modules.blur";
++  public static final String BUILD_TYPE = "release";
++}
+diff --git a/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/AndroidManifest.xml b/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..d8065fc
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="expo.modules.blur" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/output-metadata.json b/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/output-metadata.json
+new file mode 100644
+index 0000000..7e3437a
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/aapt_friendly_merged_manifests/release/processReleaseManifest/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "expo.modules.blur",
++  "variantName": "release",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar b/node_modules/expo-blur/android/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar
+new file mode 100644
+index 0000000..3292e2c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/aar_metadata/release/writeReleaseAarMetadata/aar-metadata.properties b/node_modules/expo-blur/android/build/intermediates/aar_metadata/release/writeReleaseAarMetadata/aar-metadata.properties
+new file mode 100644
+index 0000000..1211b1e
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/aar_metadata/release/writeReleaseAarMetadata/aar-metadata.properties
+@@ -0,0 +1,6 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
++coreLibraryDesugaringEnabled=false
+diff --git a/node_modules/expo-blur/android/build/intermediates/annotation_processor_list/release/javaPreCompileRelease/annotationProcessors.json b/node_modules/expo-blur/android/build/intermediates/annotation_processor_list/release/javaPreCompileRelease/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/annotation_processor_list/release/javaPreCompileRelease/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/annotations_typedef_file/release/extractReleaseAnnotations/typedefs.txt b/node_modules/expo-blur/android/build/intermediates/annotations_typedef_file/release/extractReleaseAnnotations/typedefs.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/expo-blur/android/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar b/node_modules/expo-blur/android/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar
+new file mode 100644
+index 0000000..1fa6375
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/compile_library_classes_jar/release/bundleLibCompileToJarRelease/classes.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar b/node_modules/expo-blur/android/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar
+new file mode 100644
+index 0000000..c76b502
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/compile_symbol_list/release/generateReleaseRFile/R.txt b/node_modules/expo-blur/android/build/intermediates/compile_symbol_list/release/generateReleaseRFile/R.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.11.0 b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.11.0
+new file mode 100644
+index 0000000..5a3e3a5
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.11.0
+@@ -0,0 +1,89 @@
++# This is a configuration file for ProGuard.
++# http://proguard.sourceforge.net/index.html#manual/usage.html
++#
++# Starting with version 2.2 of the Android plugin for Gradle, this file is distributed together with
++# the plugin and unpacked at build-time. The files in $ANDROID_HOME are no longer maintained and
++# will be ignored by new version of the Android plugin for Gradle.
++
++# Optimizations: If you don't want to optimize, use the proguard-android.txt configuration file
++# instead of this one, which turns off the optimization flags.
++-allowaccessmodification
++
++# Preserve some attributes that may be required for reflection.
++-keepattributes AnnotationDefault,
++                EnclosingMethod,
++                InnerClasses,
++                RuntimeVisibleAnnotations,
++                RuntimeVisibleParameterAnnotations,
++                RuntimeVisibleTypeAnnotations,
++                Signature
++
++-keep public class com.google.vending.licensing.ILicensingService
++-keep public class com.android.vending.licensing.ILicensingService
++-keep public class com.google.android.vending.licensing.ILicensingService
++-dontnote com.android.vending.licensing.ILicensingService
++-dontnote com.google.vending.licensing.ILicensingService
++-dontnote com.google.android.vending.licensing.ILicensingService
++
++# For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
++-keepclasseswithmembernames,includedescriptorclasses class * {
++    native <methods>;
++}
++
++# Keep setters in Views so that animations can still work.
++-keepclassmembers public class * extends android.view.View {
++    void set*(***);
++    *** get*();
++}
++
++# We want to keep methods in Activity that could be used in the XML attribute onClick.
++-keepclassmembers class * extends android.app.Activity {
++    public void *(android.view.View);
++}
++
++# For enumeration classes, see https://www.guardsquare.com/manual/configuration/examples#enumerations
++-keepclassmembers enum * {
++    public static **[] values();
++    public static ** valueOf(java.lang.String);
++}
++
++-keepclassmembers class * implements android.os.Parcelable {
++    public static final ** CREATOR;
++}
++
++# Preserve annotated Javascript interface methods.
++-keepclassmembers class * {
++    @android.webkit.JavascriptInterface <methods>;
++}
++
++# The support libraries contains references to newer platform versions.
++# Don't warn about those in case this app is linking against an older
++# platform version. We know about them, and they are safe.
++-dontnote android.support.**
++-dontnote androidx.**
++-dontwarn android.support.**
++-dontwarn androidx.**
++
++# Understand the @Keep support annotation.
++-keep class android.support.annotation.Keep
++
++-keep @android.support.annotation.Keep class * {*;}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <methods>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <fields>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <init>(...);
++}
++
++# These classes are duplicated between android.jar and org.apache.http.legacy.jar.
++-dontnote org.apache.http.**
++-dontnote android.net.http.**
++
++# These classes are duplicated between android.jar and core-lambda-stubs.jar.
++-dontnote java.lang.invoke.**
+diff --git a/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0 b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0
+new file mode 100644
+index 0000000..6f7e4ef
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0
+@@ -0,0 +1,95 @@
++# This is a configuration file for ProGuard.
++# http://proguard.sourceforge.net/index.html#manual/usage.html
++#
++# Starting with version 2.2 of the Android plugin for Gradle, this file is distributed together with
++# the plugin and unpacked at build-time. The files in $ANDROID_HOME are no longer maintained and
++# will be ignored by new version of the Android plugin for Gradle.
++
++# Optimization is turned off by default. Dex does not like code run
++# through the ProGuard optimize steps (and performs some
++# of these optimizations on its own).
++# Note that if you want to enable optimization, you cannot just
++# include optimization flags in your own project configuration file;
++# instead you will need to point to the
++# "proguard-android-optimize.txt" file instead of this one from your
++# project.properties file.
++-dontoptimize
++
++# Preserve some attributes that may be required for reflection.
++-keepattributes AnnotationDefault,
++                EnclosingMethod,
++                InnerClasses,
++                RuntimeVisibleAnnotations,
++                RuntimeVisibleParameterAnnotations,
++                RuntimeVisibleTypeAnnotations,
++                Signature
++
++-keep public class com.google.vending.licensing.ILicensingService
++-keep public class com.android.vending.licensing.ILicensingService
++-keep public class com.google.android.vending.licensing.ILicensingService
++-dontnote com.android.vending.licensing.ILicensingService
++-dontnote com.google.vending.licensing.ILicensingService
++-dontnote com.google.android.vending.licensing.ILicensingService
++
++# For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
++-keepclasseswithmembernames,includedescriptorclasses class * {
++    native <methods>;
++}
++
++# Keep setters in Views so that animations can still work.
++-keepclassmembers public class * extends android.view.View {
++    void set*(***);
++    *** get*();
++}
++
++# We want to keep methods in Activity that could be used in the XML attribute onClick.
++-keepclassmembers class * extends android.app.Activity {
++    public void *(android.view.View);
++}
++
++# For enumeration classes, see https://www.guardsquare.com/manual/configuration/examples#enumerations
++-keepclassmembers enum * {
++    public static **[] values();
++    public static ** valueOf(java.lang.String);
++}
++
++-keepclassmembers class * implements android.os.Parcelable {
++    public static final ** CREATOR;
++}
++
++# Preserve annotated Javascript interface methods.
++-keepclassmembers class * {
++    @android.webkit.JavascriptInterface <methods>;
++}
++
++# The support libraries contains references to newer platform versions.
++# Don't warn about those in case this app is linking against an older
++# platform version. We know about them, and they are safe.
++-dontnote android.support.**
++-dontnote androidx.**
++-dontwarn android.support.**
++-dontwarn androidx.**
++
++# Understand the @Keep support annotation.
++-keep class android.support.annotation.Keep
++
++-keep @android.support.annotation.Keep class * {*;}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <methods>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <fields>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <init>(...);
++}
++
++# These classes are duplicated between android.jar and org.apache.http.legacy.jar.
++-dontnote org.apache.http.**
++-dontnote android.net.http.**
++
++# These classes are duplicated between android.jar and core-lambda-stubs.jar.
++-dontnote java.lang.invoke.**
+diff --git a/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-defaults.txt-8.11.0 b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-defaults.txt-8.11.0
+new file mode 100644
+index 0000000..7bbb228
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/default_proguard_files/global/proguard-defaults.txt-8.11.0
+@@ -0,0 +1,89 @@
++# This is a configuration file for ProGuard.
++# http://proguard.sourceforge.net/index.html#manual/usage.html
++#
++# Starting with version 2.2 of the Android plugin for Gradle, this file is distributed together with
++# the plugin and unpacked at build-time. The files in $ANDROID_HOME are no longer maintained and
++# will be ignored by new version of the Android plugin for Gradle.
++
++# Optimizations can be turned on and off in the 'postProcessing' DSL block.
++# The configuration below is applied if optimizations are enabled.
++-allowaccessmodification
++
++# Preserve some attributes that may be required for reflection.
++-keepattributes AnnotationDefault,
++                EnclosingMethod,
++                InnerClasses,
++                RuntimeVisibleAnnotations,
++                RuntimeVisibleParameterAnnotations,
++                RuntimeVisibleTypeAnnotations,
++                Signature
++
++-keep public class com.google.vending.licensing.ILicensingService
++-keep public class com.android.vending.licensing.ILicensingService
++-keep public class com.google.android.vending.licensing.ILicensingService
++-dontnote com.android.vending.licensing.ILicensingService
++-dontnote com.google.vending.licensing.ILicensingService
++-dontnote com.google.android.vending.licensing.ILicensingService
++
++# For native methods, see https://www.guardsquare.com/manual/configuration/examples#native
++-keepclasseswithmembernames,includedescriptorclasses class * {
++    native <methods>;
++}
++
++# Keep setters in Views so that animations can still work.
++-keepclassmembers public class * extends android.view.View {
++    void set*(***);
++    *** get*();
++}
++
++# We want to keep methods in Activity that could be used in the XML attribute onClick.
++-keepclassmembers class * extends android.app.Activity {
++    public void *(android.view.View);
++}
++
++# For enumeration classes, see https://www.guardsquare.com/manual/configuration/examples#enumerations
++-keepclassmembers enum * {
++    public static **[] values();
++    public static ** valueOf(java.lang.String);
++}
++
++-keepclassmembers class * implements android.os.Parcelable {
++    public static final ** CREATOR;
++}
++
++# Preserve annotated Javascript interface methods.
++-keepclassmembers class * {
++    @android.webkit.JavascriptInterface <methods>;
++}
++
++# The support libraries contains references to newer platform versions.
++# Don't warn about those in case this app is linking against an older
++# platform version. We know about them, and they are safe.
++-dontnote android.support.**
++-dontnote androidx.**
++-dontwarn android.support.**
++-dontwarn androidx.**
++
++# Understand the @Keep support annotation.
++-keep class android.support.annotation.Keep
++
++-keep @android.support.annotation.Keep class * {*;}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <methods>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <fields>;
++}
++
++-keepclasseswithmembers class * {
++    @android.support.annotation.Keep <init>(...);
++}
++
++# These classes are duplicated between android.jar and org.apache.http.legacy.jar.
++-dontnote org.apache.http.**
++-dontnote android.net.http.**
++
++# These classes are duplicated between android.jar and core-lambda-stubs.jar.
++-dontnote java.lang.invoke.**
+diff --git a/node_modules/expo-blur/android/build/intermediates/full_jar/release/createFullJarRelease/full.jar b/node_modules/expo-blur/android/build/intermediates/full_jar/release/createFullJarRelease/full.jar
+new file mode 100644
+index 0000000..d3fef98
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/full_jar/release/createFullJarRelease/full.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/module.xml b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/module.xml
+new file mode 100644
+index 0000000..b2f958c
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/module.xml
+@@ -0,0 +1,18 @@
++<lint-module
++    format="1"
++    dir="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android"
++    name=":expo-blur"
++    type="LIBRARY"
++    maven="host.exp.exponent:expo-blur:15.0.8"
++    agpVersion="8.11.0"
++    buildFolder="build"
++    bootClassPath="/Users/wassim/Library/Android/sdk/platforms/android-36/android.jar:/Users/wassim/Library/Android/sdk/build-tools/35.0.0/core-lambda-stubs.jar"
++    javaSourceLevel="17"
++    compileTarget="android-36"
++    neverShrinking="true">
++  <lintOptions
++      absolutePaths="true"
++      checkReleaseBuilds="true"
++      explainIssues="true"/>
++  <variant name="release"/>
++</lint-module>
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-dependencies.xml b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-dependencies.xml
+new file mode 100644
+index 0000000..eae3173
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-dependencies.xml
+@@ -0,0 +1,74 @@
++<dependencies>
++  <compile
++      roots=":@@:expo-modules-core::release,androidx.core:core-ktx:1.13.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar,androidx.core:core:1.13.1@aar,androidx.lifecycle:lifecycle-runtime:2.6.2@aar,androidx.lifecycle:lifecycle-common:2.6.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar,androidx.annotation:annotation-experimental:1.4.0@aar,org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,org.jetbrains:annotations:13.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.arch.core:core-common:2.2.0@jar,androidx.collection:collection:1.0.0@jar,androidx.annotation:annotation:1.3.0@jar">
++    <dependency
++        name=":@@:expo-modules-core::release"
++        simpleName="host.exp.exponent:expo-modules-core"/>
++    <dependency
++        name="androidx.core:core-ktx:1.13.1@aar"
++        simpleName="androidx.core:core-ktx"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"/>
++    <dependency
++        name="androidx.core:core:1.13.1@aar"
++        simpleName="androidx.core:core"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++        simpleName="androidx.lifecycle:lifecycle-runtime"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++        simpleName="androidx.lifecycle:lifecycle-common"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-android"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk8"/>
++    <dependency
++        name="androidx.annotation:annotation-experimental:1.4.0@aar"
++        simpleName="androidx.annotation:annotation-experimental"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++    <dependency
++        name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++        simpleName="androidx.versionedparcelable:versionedparcelable"/>
++    <dependency
++        name="androidx.arch.core:core-common:2.2.0@jar"
++        simpleName="androidx.arch.core:core-common"/>
++    <dependency
++        name="androidx.collection:collection:1.0.0@jar"
++        simpleName="androidx.collection:collection"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++  </compile>
++  <package
++      roots="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,androidx.annotation:annotation:1.3.0@jar,org.jetbrains:annotations:13.0@jar">
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++  </package>
++</dependencies>
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-libraries.xml b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-libraries.xml
+new file mode 100644
+index 0000000..0cf6772
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release-artifact-libraries.xml
+@@ -0,0 +1,145 @@
++<libraries>
++  <library
++      name=":@@:expo-modules-core::release"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/34cee3126a04e09a2a29efac28b5756a/transformed/out/jars/classes.jar:/Users/wassim/.gradle/caches/8.14.3/transforms/34cee3126a04e09a2a29efac28b5756a/transformed/out/jars/libs/R.jar"
++      resolved="host.exp.exponent:expo-modules-core:3.0.29"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/34cee3126a04e09a2a29efac28b5756a/transformed/out"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.core:core-ktx:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core-ktx:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.7.3/2b09627576f0989a436a00a4a54b55fa5026fb86/kotlinx-coroutines-core-jvm-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3"
++      provided="true"/>
++  <library
++      name="androidx.core:core:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2/jars/classes.jar"
++      resolved="androidx.lifecycle:lifecycle-runtime:2.6.2"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.6.2/10f354fdb64868baecd67128560c5a0d6312c495/lifecycle-common-2.6.2.jar"
++      resolved="androidx.lifecycle:lifecycle-common:2.6.2"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.7.3/38d9cad3a0b03a10453b56577984bdeb48edeed5/kotlinx-coroutines-android-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.20/73576ddf378c5b4f1f6b449fe6b119b8183fc078/kotlin-stdlib-jdk8-1.8.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation-experimental:1.4.0@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0/jars/classes.jar"
++      resolved="androidx.annotation:annotation-experimental:1.4.0"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.20/aa8ca79cd50578314f6d1180c47cbe14c0fee567/kotlin-stdlib-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.20"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/2.1.20/72672df5e83231744c00550955b10acb71ed49d6/kotlin-stdlib-jdk7-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20"/>
++  <library
++      name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6/jars/classes.jar"
++      resolved="com.github.Dimezis:BlurView:version-2.0.6"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains:annotations:13.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
++      resolved="org.jetbrains:annotations:13.0"/>
++  <library
++      name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1/jars/classes.jar"
++      resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.arch.core:core-common:2.2.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar"
++      resolved="androidx.arch.core:core-common:2.2.0"
++      provided="true"/>
++  <library
++      name="androidx.collection:collection:1.0.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.0.0/42858b26cafdaa69b6149f45dfc2894007bc2c7a/collection-1.0.0.jar"
++      resolved="androidx.collection:collection:1.0.0"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation:1.3.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.3.0/21f49f5f9b85fc49de712539f79123119740595/annotation-1.3.0.jar"
++      resolved="androidx.annotation:annotation:1.3.0"/>
++</libraries>
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release.xml b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release.xml
+new file mode 100644
+index 0000000..d2c9666
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/lintVitalAnalyzeRelease/release.xml
+@@ -0,0 +1,31 @@
++<variant
++    name="release"
++    package="expo.modules.blur"
++    minSdkVersion="24"
++    targetSdkVersion="36.0"
++    mergedManifest="build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
++    proguardFiles="build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0"
++    partialResultsDir="build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
++    desugaredMethodsFiles="/Users/wassim/.gradle/caches/8.14.3/transforms/e95c373bd39b19e9f17e1e1b74501ca6/transformed/D8BackportedDesugaredMethods.txt">
++  <buildFeatures
++      namespacing="REQUIRED"/>
++  <sourceProviders>
++    <sourceProvider
++        manifests="src/main/AndroidManifest.xml"
++        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
++        resDirectories="src/main/res:src/release/res"
++        assetsDirectories="src/main/assets:src/release/assets"/>
++  </sourceProviders>
++  <testSourceProviders>
++  </testSourceProviders>
++  <testFixturesSourceProviders>
++  </testFixturesSourceProviders>
++  <artifact
++      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
++      type="MAIN"
++      applicationId="expo.modules.blur"
++      generatedSourceFolders="build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release"
++      generatedResourceFolders="build/generated/res/resValues/release"
++      desugaredMethodsFiles="/Users/wassim/.gradle/caches/8.14.3/transforms/e95c373bd39b19e9f17e1e1b74501ca6/transformed/D8BackportedDesugaredMethods.txt">
++  </artifact>
++</variant>
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseAssets/merger.xml b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseAssets/merger.xml
+new file mode 100644
+index 0000000..0c50d9a
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/assets"/></dataSet><dataSet config="release" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/release/assets"/></dataSet><dataSet config="generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/build/intermediates/shader_assets/release/compileReleaseShaders/out"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..ca023e9
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/jniLibs"/></dataSet><dataSet config="release" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/release/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseShaders/merger.xml b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseShaders/merger.xml
+new file mode 100644
+index 0000000..daa9781
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/mergeReleaseShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/shaders"/></dataSet><dataSet config="release" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/release/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/release-mergeJavaRes/merge-state b/node_modules/expo-blur/android/build/intermediates/incremental/release-mergeJavaRes/merge-state
+new file mode 100644
+index 0000000..ae48dc2
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/incremental/release-mergeJavaRes/merge-state differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/compile-file-map.properties b/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/compile-file-map.properties
+new file mode 100644
+index 0000000..b9d30e3
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/compile-file-map.properties
+@@ -0,0 +1 @@
++#Sun Mar 15 13:24:52 CET 2026
+diff --git a/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/merger.xml b/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/merger.xml
+new file mode 100644
+index 0000000..93443da
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/incremental/release/packageReleaseResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release" generated-set="release$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/build/generated/res/resValues/release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/build/generated/res/resValues/release"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/java_res/release/processReleaseJavaRes/out/META-INF/expo-blur_release.kotlin_module b/node_modules/expo-blur/android/build/intermediates/java_res/release/processReleaseJavaRes/out/META-INF/expo-blur_release.kotlin_module
+new file mode 100644
+index 0000000..9dbc290
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/java_res/release/processReleaseJavaRes/out/META-INF/expo-blur_release.kotlin_module differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/expo/modules/blur/BuildConfig.class b/node_modules/expo-blur/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/expo/modules/blur/BuildConfig.class
+new file mode 100644
+index 0000000..758d2b6
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/expo/modules/blur/BuildConfig.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/lint-cache-version.txt b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/lint-cache-version.txt
+new file mode 100644
+index 0000000..f34882b
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/lint-cache-version.txt
+@@ -0,0 +1 @@
++Cache for Android Lint31.11.0
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/maven.google/master-index.xml b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/maven.google/master-index.xml
+new file mode 100644
+index 0000000..81fa30e
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/maven.google/master-index.xml
+@@ -0,0 +1,325 @@
++<?xml version='1.0' encoding='UTF-8'?>
++<metadata>
++  <android.arch.core/>
++  <android.arch.lifecycle/>
++  <android.arch.navigation/>
++  <android.arch.paging/>
++  <android.arch.persistence/>
++  <android.arch.persistence.room/>
++  <android.arch.work/>
++  <androidx.activity/>
++  <androidx.ads/>
++  <androidx.annotation/>
++  <androidx.appcompat/>
++  <androidx.appfunctions/>
++  <androidx.appsearch/>
++  <androidx.arch.core/>
++  <androidx.asynclayoutinflater/>
++  <androidx.autofill/>
++  <androidx.baselineprofile/>
++  <androidx.baselineprofile.apptarget/>
++  <androidx.baselineprofile.consumer/>
++  <androidx.baselineprofile.producer/>
++  <androidx.benchmark/>
++  <androidx.biometric/>
++  <androidx.bluetooth/>
++  <androidx.browser/>
++  <androidx.camera/>
++  <androidx.camera.featurecombinationquery/>
++  <androidx.camera.media3/>
++  <androidx.camera.viewfinder/>
++  <androidx.car/>
++  <androidx.car.app/>
++  <androidx.cardview/>
++  <androidx.collection/>
++  <androidx.compose/>
++  <androidx.compose.animation/>
++  <androidx.compose.compiler/>
++  <androidx.compose.foundation/>
++  <androidx.compose.material/>
++  <androidx.compose.material3/>
++  <androidx.compose.material3.adaptive/>
++  <androidx.compose.remote/>
++  <androidx.compose.runtime/>
++  <androidx.compose.ui/>
++  <androidx.concurrent/>
++  <androidx.constraintlayout/>
++  <androidx.contentpager/>
++  <androidx.coordinatorlayout/>
++  <androidx.core/>
++  <androidx.core.uwb/>
++  <androidx.credentials/>
++  <androidx.credentials.providerevents/>
++  <androidx.credentials.registry/>
++  <androidx.cursoradapter/>
++  <androidx.customview/>
++  <androidx.databinding/>
++  <androidx.datastore/>
++  <androidx.documentfile/>
++  <androidx.draganddrop/>
++  <androidx.drawerlayout/>
++  <androidx.dynamicanimation/>
++  <androidx.emoji/>
++  <androidx.emoji2/>
++  <androidx.enterprise/>
++  <androidx.exifinterface/>
++  <androidx.fragment/>
++  <androidx.games/>
++  <androidx.gaming/>
++  <androidx.glance/>
++  <androidx.glance.wear/>
++  <androidx.gradle/>
++  <androidx.graphics/>
++  <androidx.gridlayout/>
++  <androidx.health/>
++  <androidx.health.connect/>
++  <androidx.heifwriter/>
++  <androidx.hilt/>
++  <androidx.ink/>
++  <androidx.input/>
++  <androidx.interpolator/>
++  <androidx.javascriptengine/>
++  <androidx.leanback/>
++  <androidx.legacy/>
++  <androidx.lifecycle/>
++  <androidx.lint/>
++  <androidx.loader/>
++  <androidx.localbroadcastmanager/>
++  <androidx.media/>
++  <androidx.media2/>
++  <androidx.media3/>
++  <androidx.mediarouter/>
++  <androidx.metrics/>
++  <androidx.multidex/>
++  <androidx.navigation/>
++  <androidx.navigation.safeargs/>
++  <androidx.navigation.safeargs.kotlin/>
++  <androidx.navigation3/>
++  <androidx.navigationevent/>
++  <androidx.paging/>
++  <androidx.palette/>
++  <androidx.pdf/>
++  <androidx.percentlayout/>
++  <androidx.performance/>
++  <androidx.photopicker/>
++  <androidx.preference/>
++  <androidx.print/>
++  <androidx.privacysandbox.activity/>
++  <androidx.privacysandbox.ads/>
++  <androidx.privacysandbox.library/>
++  <androidx.privacysandbox.plugins/>
++  <androidx.privacysandbox.sdkruntime/>
++  <androidx.privacysandbox.tools/>
++  <androidx.privacysandbox.ui/>
++  <androidx.profileinstaller/>
++  <androidx.recommendation/>
++  <androidx.recyclerview/>
++  <androidx.remotecallback/>
++  <androidx.resourceinspection/>
++  <androidx.room/>
++  <androidx.room3/>
++  <androidx.savedstate/>
++  <androidx.security/>
++  <androidx.sharetarget/>
++  <androidx.slice/>
++  <androidx.slidingpanelayout/>
++  <androidx.sqlite/>
++  <androidx.startup/>
++  <androidx.swiperefreshlayout/>
++  <androidx.test/>
++  <androidx.test.espresso/>
++  <androidx.test.espresso.idling/>
++  <androidx.test.ext/>
++  <androidx.test.janktesthelper/>
++  <androidx.test.services/>
++  <androidx.test.uiautomator/>
++  <androidx.text/>
++  <androidx.textclassifier/>
++  <androidx.tracing/>
++  <androidx.transition/>
++  <androidx.tv/>
++  <androidx.tvprovider/>
++  <androidx.ui/>
++  <androidx.vectordrawable/>
++  <androidx.versionedparcelable/>
++  <androidx.viewpager/>
++  <androidx.viewpager2/>
++  <androidx.wear/>
++  <androidx.wear.compose/>
++  <androidx.wear.protolayout/>
++  <androidx.wear.tiles/>
++  <androidx.wear.watchface/>
++  <androidx.wear.watchfacepush/>
++  <androidx.webgpu/>
++  <androidx.webkit/>
++  <androidx.window/>
++  <androidx.window.extensions.core/>
++  <androidx.work/>
++  <androidx.xr.arcore/>
++  <androidx.xr.compose/>
++  <androidx.xr.compose.material3/>
++  <androidx.xr.glimmer/>
++  <androidx.xr.projected/>
++  <androidx.xr.runtime/>
++  <androidx.xr.scenecore/>
++  <com.android/>
++  <com.android.ai-pack/>
++  <com.android.application/>
++  <com.android.art/>
++  <com.android.asset-pack/>
++  <com.android.asset-pack-bundle/>
++  <com.android.billingclient/>
++  <com.android.built-in-kotlin/>
++  <com.android.car.setupwizardlib/>
++  <com.android.car.ui/>
++  <com.android.compose.screenshot/>
++  <com.android.databinding/>
++  <com.android.designcompose/>
++  <com.android.dynamic-feature/>
++  <com.android.experimental.built-in-kotlin/>
++  <com.android.extensions.xr/>
++  <com.android.fused-library/>
++  <com.android.identity/>
++  <com.android.installreferrer/>
++  <com.android.internal.settings/>
++  <com.android.java.tools.build/>
++  <com.android.kotlin.multiplatform.library/>
++  <com.android.legacy-kapt/>
++  <com.android.library/>
++  <com.android.lint/>
++  <com.android.ndk.thirdparty/>
++  <com.android.privacy-sandbox-sdk/>
++  <com.android.reporting/>
++  <com.android.security.autorepro/>
++  <com.android.security.autorepro.apptest/>
++  <com.android.security.autorepro.javahosttest/>
++  <com.android.security.autorepro.ndktest/>
++  <com.android.security.autorepro.submission/>
++  <com.android.security.lint/>
++  <com.android.settings/>
++  <com.android.support/>
++  <com.android.support.constraint/>
++  <com.android.support.test/>
++  <com.android.support.test.espresso/>
++  <com.android.support.test.espresso.idling/>
++  <com.android.support.test.janktesthelper/>
++  <com.android.support.test.services/>
++  <com.android.support.test.uiautomator/>
++  <com.android.test/>
++  <com.android.tools/>
++  <com.android.tools.adblib/>
++  <com.android.tools.analytics-library/>
++  <com.android.tools.apkdeployer/>
++  <com.android.tools.apkparser/>
++  <com.android.tools.build/>
++  <com.android.tools.build.jetifier/>
++  <com.android.tools.chunkio/>
++  <com.android.tools.compose/>
++  <com.android.tools.ddms/>
++  <com.android.tools.emulator/>
++  <com.android.tools.external.com-intellij/>
++  <com.android.tools.external.org-jetbrains/>
++  <com.android.tools.fakeadbserver/>
++  <com.android.tools.internal.build.test/>
++  <com.android.tools.journeys/>
++  <com.android.tools.layoutlib/>
++  <com.android.tools.lint/>
++  <com.android.tools.metalava/>
++  <com.android.tools.pixelprobe/>
++  <com.android.tools.screenshot/>
++  <com.android.tools.smali/>
++  <com.android.tools.studio.leakcanary/>
++  <com.android.tools.utp/>
++  <com.android.volley/>
++  <com.crashlytics.sdk.android/>
++  <com.google.ads.afsn/>
++  <com.google.ads.interactivemedia.v3/>
++  <com.google.ads.mediation/>
++  <com.google.ai.client.generativeai/>
++  <com.google.ai.edge.aicore/>
++  <com.google.ai.edge.litert/>
++  <com.google.ai.edge.litertlm/>
++  <com.google.ai.edge.localagents/>
++  <com.google.ambient.crossdevice/>
++  <com.google.android.ads/>
++  <com.google.android.ads.consent/>
++  <com.google.android.appcrawler/>
++  <com.google.android.apps.common.testing.accessibility.framework/>
++  <com.google.android.car.connectionservice/>
++  <com.google.android.datatransport/>
++  <com.google.android.engage/>
++  <com.google.android.enterprise.connectedapps/>
++  <com.google.android.exoplayer/>
++  <com.google.android.fhir/>
++  <com.google.android.flexbox/>
++  <com.google.android.games/>
++  <com.google.android.gms/>
++  <com.google.android.gms.oss-licenses-plugin/>
++  <com.google.android.gms.strict-version-matcher-plugin/>
++  <com.google.android.instantapps/>
++  <com.google.android.instantapps.thirdpartycompat/>
++  <com.google.android.libraries.ads.mobile.sdk/>
++  <com.google.android.libraries.car/>
++  <com.google.android.libraries.cloud.telco.subgraph/>
++  <com.google.android.libraries.enterprise.amapi/>
++  <com.google.android.libraries.healthdata/>
++  <com.google.android.libraries.identity.googleid/>
++  <com.google.android.libraries.maps/>
++  <com.google.android.libraries.mapsplatform.secrets-gradle-plugin/>
++  <com.google.android.libraries.mapsplatform.transportation/>
++  <com.google.android.libraries.navigation/>
++  <com.google.android.libraries.places/>
++  <com.google.android.libraries.play.games/>
++  <com.google.android.libraries.sdkcoroutines/>
++  <com.google.android.libraries.searchinapps/>
++  <com.google.android.livesharing/>
++  <com.google.android.material/>
++  <com.google.android.mdoc/>
++  <com.google.android.mediahome/>
++  <com.google.android.meet/>
++  <com.google.android.odml/>
++  <com.google.android.play/>
++  <com.google.android.recaptcha/>
++  <com.google.android.support/>
++  <com.google.android.things/>
++  <com.google.android.tv/>
++  <com.google.android.tv.tvpanelframework/>
++  <com.google.android.ump/>
++  <com.google.android.wearable/>
++  <com.google.android.wearable.watchface.validator/>
++  <com.google.androidbrowserhelper/>
++  <com.google.ar/>
++  <com.google.ar.sceneform/>
++  <com.google.ar.sceneform.ux/>
++  <com.google.assistant.appactions/>
++  <com.google.assistant.suggestion/>
++  <com.google.camerax.effects/>
++  <com.google.chromeos/>
++  <com.google.cose/>
++  <com.google.d2c/>
++  <com.google.devtools.ksp/>
++  <com.google.fhir/>
++  <com.google.firebase/>
++  <com.google.firebase.appdistribution/>
++  <com.google.firebase.crashlytics/>
++  <com.google.firebase.firebase-perf/>
++  <com.google.firebase.testlab/>
++  <com.google.gms/>
++  <com.google.gms.google-services/>
++  <com.google.jacquard/>
++  <com.google.mediapipe/>
++  <com.google.mlkit/>
++  <com.google.net.cronet/>
++  <com.google.oboe/>
++  <com.google.play.policy.insights/>
++  <com.google.prefab/>
++  <com.google.relay/>
++  <com.google.test.platform/>
++  <com.google.testing.platform/>
++  <io.fabric.sdk.android/>
++  <org.chromium.net/>
++  <org.jetbrains.kotlin/>
++  <org.multipaz/>
++  <tools.base.build-system.debug/>
++  <zipflinger/>
++</metadata>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/sdk_index/snapshot.gz b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/sdk_index/snapshot.gz
+new file mode 100644
+index 0000000..255b926
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/lint-cache/lintVitalAnalyzeRelease/sdk_index/snapshot.gz differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/module.xml b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/module.xml
+new file mode 100644
+index 0000000..b2f958c
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/module.xml
+@@ -0,0 +1,18 @@
++<lint-module
++    format="1"
++    dir="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android"
++    name=":expo-blur"
++    type="LIBRARY"
++    maven="host.exp.exponent:expo-blur:15.0.8"
++    agpVersion="8.11.0"
++    buildFolder="build"
++    bootClassPath="/Users/wassim/Library/Android/sdk/platforms/android-36/android.jar:/Users/wassim/Library/Android/sdk/build-tools/35.0.0/core-lambda-stubs.jar"
++    javaSourceLevel="17"
++    compileTarget="android-36"
++    neverShrinking="true">
++  <lintOptions
++      absolutePaths="true"
++      checkReleaseBuilds="true"
++      explainIssues="true"/>
++  <variant name="release"/>
++</lint-module>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-dependencies.xml b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-dependencies.xml
+new file mode 100644
+index 0000000..0ec0316
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-dependencies.xml
+@@ -0,0 +1,74 @@
++<dependencies>
++  <compile
++      roots=":@@:expo-modules-core::release,androidx.core:core-ktx:1.13.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar,androidx.core:core:1.13.1@aar,androidx.lifecycle:lifecycle-runtime:2.6.2@aar,androidx.lifecycle:lifecycle-common:2.6.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar,androidx.annotation:annotation-experimental:1.4.0@aar,org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,org.jetbrains:annotations:13.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.arch.core:core-common:2.2.0@jar,androidx.collection:collection:1.0.0@jar,androidx.annotation:annotation:1.3.0@jar">
++    <dependency
++        name=":@@:expo-modules-core::release"
++        simpleName="artifacts::expo-modules-core"/>
++    <dependency
++        name="androidx.core:core-ktx:1.13.1@aar"
++        simpleName="androidx.core:core-ktx"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"/>
++    <dependency
++        name="androidx.core:core:1.13.1@aar"
++        simpleName="androidx.core:core"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++        simpleName="androidx.lifecycle:lifecycle-runtime"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++        simpleName="androidx.lifecycle:lifecycle-common"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-android"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk8"/>
++    <dependency
++        name="androidx.annotation:annotation-experimental:1.4.0@aar"
++        simpleName="androidx.annotation:annotation-experimental"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++    <dependency
++        name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++        simpleName="androidx.versionedparcelable:versionedparcelable"/>
++    <dependency
++        name="androidx.arch.core:core-common:2.2.0@jar"
++        simpleName="androidx.arch.core:core-common"/>
++    <dependency
++        name="androidx.collection:collection:1.0.0@jar"
++        simpleName="androidx.collection:collection"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++  </compile>
++  <package
++      roots="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,androidx.annotation:annotation:1.3.0@jar,org.jetbrains:annotations:13.0@jar">
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++  </package>
++</dependencies>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-libraries.xml b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-libraries.xml
+new file mode 100644
+index 0000000..e0a7ca1
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release-artifact-libraries.xml
+@@ -0,0 +1,135 @@
++<libraries>
++  <library
++      name=":@@:expo-modules-core::release"
++      project=":expo-modules-core"
++      provided="true"/>
++  <library
++      name="androidx.core:core-ktx:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core-ktx:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.7.3/2b09627576f0989a436a00a4a54b55fa5026fb86/kotlinx-coroutines-core-jvm-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3"
++      provided="true"/>
++  <library
++      name="androidx.core:core:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2/jars/classes.jar"
++      resolved="androidx.lifecycle:lifecycle-runtime:2.6.2"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.6.2/10f354fdb64868baecd67128560c5a0d6312c495/lifecycle-common-2.6.2.jar"
++      resolved="androidx.lifecycle:lifecycle-common:2.6.2"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.7.3/38d9cad3a0b03a10453b56577984bdeb48edeed5/kotlinx-coroutines-android-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.20/73576ddf378c5b4f1f6b449fe6b119b8183fc078/kotlin-stdlib-jdk8-1.8.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation-experimental:1.4.0@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0/jars/classes.jar"
++      resolved="androidx.annotation:annotation-experimental:1.4.0"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.20/aa8ca79cd50578314f6d1180c47cbe14c0fee567/kotlin-stdlib-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.20"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/2.1.20/72672df5e83231744c00550955b10acb71ed49d6/kotlin-stdlib-jdk7-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20"/>
++  <library
++      name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6/jars/classes.jar"
++      resolved="com.github.Dimezis:BlurView:version-2.0.6"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains:annotations:13.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
++      resolved="org.jetbrains:annotations:13.0"/>
++  <library
++      name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1/jars/classes.jar"
++      resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.arch.core:core-common:2.2.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar"
++      resolved="androidx.arch.core:core-common:2.2.0"
++      provided="true"/>
++  <library
++      name="androidx.collection:collection:1.0.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.0.0/42858b26cafdaa69b6149f45dfc2894007bc2c7a/collection-1.0.0.jar"
++      resolved="androidx.collection:collection:1.0.0"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation:1.3.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.3.0/21f49f5f9b85fc49de712539f79123119740595/annotation-1.3.0.jar"
++      resolved="androidx.annotation:annotation:1.3.0"/>
++</libraries>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release.xml b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release.xml
+new file mode 100644
+index 0000000..4d92649
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_model/release/generateReleaseLintModel/release.xml
+@@ -0,0 +1,31 @@
++<variant
++    name="release"
++    package="expo.modules.blur"
++    minSdkVersion="24"
++    targetSdkVersion="36.0"
++    mergedManifest="build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
++    manifestMergeReport="build/outputs/logs/manifest-merger-release-report.txt"
++    proguardFiles="build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0"
++    partialResultsDir="build/intermediates/lint_partial_results/release/lintAnalyzeRelease/out">
++  <buildFeatures
++      namespacing="REQUIRED"/>
++  <sourceProviders>
++    <sourceProvider
++        manifests="src/main/AndroidManifest.xml"
++        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
++        resDirectories="src/main/res:src/release/res"
++        assetsDirectories="src/main/assets:src/release/assets"/>
++  </sourceProviders>
++  <testSourceProviders>
++  </testSourceProviders>
++  <testFixturesSourceProviders>
++  </testFixturesSourceProviders>
++  <artifact
++      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
++      type="MAIN"
++      applicationId="expo.modules.blur"
++      generatedSourceFolders="build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release"
++      generatedResourceFolders="build/generated/res/resValues/release"
++      desugaredMethodsFiles="/Users/wassim/.gradle/caches/8.14.3/transforms/e95c373bd39b19e9f17e1e1b74501ca6/transformed/D8BackportedDesugaredMethods.txt">
++  </artifact>
++</variant>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_model_metadata/release/writeReleaseLintModelMetadata/lint-model-metadata.properties b/node_modules/expo-blur/android/build/intermediates/lint_model_metadata/release/writeReleaseLintModelMetadata/lint-model-metadata.properties
+new file mode 100644
+index 0000000..775cd30
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_model_metadata/release/writeReleaseLintModelMetadata/lint-model-metadata.properties
+@@ -0,0 +1,3 @@
++mavenArtifactId=expo-blur
++mavenGroupId=host.exp.exponent
++mavenVersion=15.0.8
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/module.xml b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/module.xml
+new file mode 100644
+index 0000000..b2f958c
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/module.xml
+@@ -0,0 +1,18 @@
++<lint-module
++    format="1"
++    dir="/Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android"
++    name=":expo-blur"
++    type="LIBRARY"
++    maven="host.exp.exponent:expo-blur:15.0.8"
++    agpVersion="8.11.0"
++    buildFolder="build"
++    bootClassPath="/Users/wassim/Library/Android/sdk/platforms/android-36/android.jar:/Users/wassim/Library/Android/sdk/build-tools/35.0.0/core-lambda-stubs.jar"
++    javaSourceLevel="17"
++    compileTarget="android-36"
++    neverShrinking="true">
++  <lintOptions
++      absolutePaths="true"
++      checkReleaseBuilds="true"
++      explainIssues="true"/>
++  <variant name="release"/>
++</lint-module>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-dependencies.xml b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-dependencies.xml
+new file mode 100644
+index 0000000..0ec0316
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-dependencies.xml
+@@ -0,0 +1,74 @@
++<dependencies>
++  <compile
++      roots=":@@:expo-modules-core::release,androidx.core:core-ktx:1.13.1@aar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar,androidx.core:core:1.13.1@aar,androidx.lifecycle:lifecycle-runtime:2.6.2@aar,androidx.lifecycle:lifecycle-common:2.6.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar,androidx.annotation:annotation-experimental:1.4.0@aar,org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,org.jetbrains:annotations:13.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.arch.core:core-common:2.2.0@jar,androidx.collection:collection:1.0.0@jar,androidx.annotation:annotation:1.3.0@jar">
++    <dependency
++        name=":@@:expo-modules-core::release"
++        simpleName="artifacts::expo-modules-core"/>
++    <dependency
++        name="androidx.core:core-ktx:1.13.1@aar"
++        simpleName="androidx.core:core-ktx"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"/>
++    <dependency
++        name="androidx.core:core:1.13.1@aar"
++        simpleName="androidx.core:core"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++        simpleName="androidx.lifecycle:lifecycle-runtime"/>
++    <dependency
++        name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++        simpleName="androidx.lifecycle:lifecycle-common"/>
++    <dependency
++        name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++        simpleName="org.jetbrains.kotlinx:kotlinx-coroutines-android"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk8"/>
++    <dependency
++        name="androidx.annotation:annotation-experimental:1.4.0@aar"
++        simpleName="androidx.annotation:annotation-experimental"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++    <dependency
++        name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++        simpleName="androidx.versionedparcelable:versionedparcelable"/>
++    <dependency
++        name="androidx.arch.core:core-common:2.2.0@jar"
++        simpleName="androidx.arch.core:core-common"/>
++    <dependency
++        name="androidx.collection:collection:1.0.0@jar"
++        simpleName="androidx.collection:collection"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++  </compile>
++  <package
++      roots="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar,com.github.Dimezis:BlurView:version-2.0.6@aar,androidx.annotation:annotation:1.3.0@jar,org.jetbrains:annotations:13.0@jar">
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
++    <dependency
++        name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++        simpleName="org.jetbrains.kotlin:kotlin-stdlib-jdk7"/>
++    <dependency
++        name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++        simpleName="com.github.Dimezis:BlurView"/>
++    <dependency
++        name="androidx.annotation:annotation:1.3.0@jar"
++        simpleName="androidx.annotation:annotation"/>
++    <dependency
++        name="org.jetbrains:annotations:13.0@jar"
++        simpleName="org.jetbrains:annotations"/>
++  </package>
++</dependencies>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-libraries.xml b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-libraries.xml
+new file mode 100644
+index 0000000..e0a7ca1
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release-artifact-libraries.xml
+@@ -0,0 +1,135 @@
++<libraries>
++  <library
++      name=":@@:expo-modules-core::release"
++      project=":expo-modules-core"
++      provided="true"/>
++  <library
++      name="androidx.core:core-ktx:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core-ktx:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e7ff672a34eef902276c14a79b6b6511/transformed/core-ktx-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.7.3/2b09627576f0989a436a00a4a54b55fa5026fb86/kotlinx-coroutines-core-jvm-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3"
++      provided="true"/>
++  <library
++      name="androidx.core:core:1.13.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1/jars/classes.jar"
++      resolved="androidx.core:core:1.13.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/936579c3029b54563f9582c4efedaea8/transformed/core-1.13.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-runtime:2.6.2@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2/jars/classes.jar"
++      resolved="androidx.lifecycle:lifecycle-runtime:2.6.2"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/d4702cbd50563e16f67bae5760e6bd0f/transformed/lifecycle-runtime-2.6.2"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.lifecycle:lifecycle-common:2.6.2@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.6.2/10f354fdb64868baecd67128560c5a0d6312c495/lifecycle-common-2.6.2.jar"
++      resolved="androidx.lifecycle:lifecycle-common:2.6.2"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.7.3/38d9cad3a0b03a10453b56577984bdeb48edeed5/kotlinx-coroutines-android-1.7.3.jar"
++      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
++      provided="true"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.20/73576ddf378c5b4f1f6b449fe6b119b8183fc078/kotlin-stdlib-jdk8-1.8.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation-experimental:1.4.0@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0/jars/classes.jar"
++      resolved="androidx.annotation:annotation-experimental:1.4.0"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/ee1b7bba2970abb36fbf449fbc19b658/transformed/annotation-experimental-1.4.0"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.20/aa8ca79cd50578314f6d1180c47cbe14c0fee567/kotlin-stdlib-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.20"/>
++  <library
++      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/2.1.20/72672df5e83231744c00550955b10acb71ed49d6/kotlin-stdlib-jdk7-2.1.20.jar"
++      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.20"/>
++  <library
++      name="com.github.Dimezis:BlurView:version-2.0.6@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6/jars/classes.jar"
++      resolved="com.github.Dimezis:BlurView:version-2.0.6"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/e59b6e32ced14734f833ee2e564dd79c/transformed/BlurView-version-2.0.6"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="org.jetbrains:annotations:13.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
++      resolved="org.jetbrains:annotations:13.0"/>
++  <library
++      name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
++      jars="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1/jars/classes.jar"
++      resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
++      provided="true"
++      folder="/Users/wassim/.gradle/caches/8.14.3/transforms/a04e1cca8ff0ce4d8c526ff7f31cbc64/transformed/versionedparcelable-1.1.1"
++      manifest="AndroidManifest.xml"
++      resFolder="res"
++      assetsFolder="assets"
++      lintJar="lint.jar"
++      publicResources="public.txt"
++      symbolFile="R.txt"
++      externalAnnotations="annotations.zip"
++      proguardRules="proguard.txt"/>
++  <library
++      name="androidx.arch.core:core-common:2.2.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar"
++      resolved="androidx.arch.core:core-common:2.2.0"
++      provided="true"/>
++  <library
++      name="androidx.collection:collection:1.0.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.0.0/42858b26cafdaa69b6149f45dfc2894007bc2c7a/collection-1.0.0.jar"
++      resolved="androidx.collection:collection:1.0.0"
++      provided="true"/>
++  <library
++      name="androidx.annotation:annotation:1.3.0@jar"
++      jars="/Users/wassim/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.3.0/21f49f5f9b85fc49de712539f79123119740595/annotation-1.3.0.jar"
++      resolved="androidx.annotation:annotation:1.3.0"/>
++</libraries>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release.xml b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release.xml
+new file mode 100644
+index 0000000..9c95920
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/lint_vital_lint_model/release/generateReleaseLintVitalModel/release.xml
+@@ -0,0 +1,31 @@
++<variant
++    name="release"
++    package="expo.modules.blur"
++    minSdkVersion="24"
++    targetSdkVersion="36.0"
++    mergedManifest="build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
++    manifestMergeReport="build/outputs/logs/manifest-merger-release-report.txt"
++    proguardFiles="build/intermediates/default_proguard_files/global/proguard-android.txt-8.11.0"
++    partialResultsDir="build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out">
++  <buildFeatures
++      namespacing="REQUIRED"/>
++  <sourceProviders>
++    <sourceProvider
++        manifests="src/main/AndroidManifest.xml"
++        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
++        resDirectories="src/main/res:src/release/res"
++        assetsDirectories="src/main/assets:src/release/assets"/>
++  </sourceProviders>
++  <testSourceProviders>
++  </testSourceProviders>
++  <testFixturesSourceProviders>
++  </testFixturesSourceProviders>
++  <artifact
++      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
++      type="MAIN"
++      applicationId="expo.modules.blur"
++      generatedSourceFolders="build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release"
++      generatedResourceFolders="build/generated/res/resValues/release"
++      desugaredMethodsFiles="/Users/wassim/.gradle/caches/8.14.3/transforms/e95c373bd39b19e9f17e1e1b74501ca6/transformed/D8BackportedDesugaredMethods.txt">
++  </artifact>
++</variant>
+diff --git a/node_modules/expo-blur/android/build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out/lint-resources.xml b/node_modules/expo-blur/android/build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out/lint-resources.xml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/expo-blur/android/build/intermediates/local_aar_for_lint/release/out.aar b/node_modules/expo-blur/android/build/intermediates/local_aar_for_lint/release/out.aar
+new file mode 100644
+index 0000000..260dc5a
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/local_aar_for_lint/release/out.aar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/local_only_symbol_list/release/parseReleaseLocalResources/R-def.txt b/node_modules/expo-blur/android/build/intermediates/local_only_symbol_list/release/parseReleaseLocalResources/R-def.txt
+new file mode 100644
+index 0000000..78ac5b8
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/local_only_symbol_list/release/parseReleaseLocalResources/R-def.txt
+@@ -0,0 +1,2 @@
++R_DEF: Internal format may change without notice
++local
+diff --git a/node_modules/expo-blur/android/build/intermediates/manifest_merge_blame_file/release/processReleaseManifest/manifest-merger-blame-release-report.txt b/node_modules/expo-blur/android/build/intermediates/manifest_merge_blame_file/release/processReleaseManifest/manifest-merger-blame-release-report.txt
+new file mode 100644
+index 0000000..ba52c1b
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/manifest_merge_blame_file/release/processReleaseManifest/manifest-merger-blame-release-report.txt
+@@ -0,0 +1,7 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="expo.modules.blur" >
++4
++5    <uses-sdk android:minSdkVersion="24" />
++6
++7</manifest>
+diff --git a/node_modules/expo-blur/android/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-expo-blur.jar b/node_modules/expo-blur/android/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-expo-blur.jar
+new file mode 100644
+index 0000000..3d42994
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/merged_java_res/release/mergeReleaseJavaResource/feature-expo-blur.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml b/node_modules/expo-blur/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml
+new file mode 100644
+index 0000000..d8065fc
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="expo.modules.blur" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/navigation_json/release/extractDeepLinksRelease/navigation.json b/node_modules/expo-blur/android/build/intermediates/navigation_json/release/extractDeepLinksRelease/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/navigation_json/release/extractDeepLinksRelease/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/nested_resources_validation_report/release/generateReleaseResources/nestedResourcesValidationReport.txt b/node_modules/expo-blur/android/build/intermediates/nested_resources_validation_report/release/generateReleaseResources/nestedResourcesValidationReport.txt
+new file mode 100644
+index 0000000..08f4ebe
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/nested_resources_validation_report/release/generateReleaseResources/nestedResourcesValidationReport.txt
+@@ -0,0 +1 @@
++0 Warning/Error
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/META-INF/expo-blur_release.kotlin_module b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/META-INF/expo-blur_release.kotlin_module
+new file mode 100644
+index 0000000..9dbc290
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/META-INF/expo-blur_release.kotlin_module differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$1.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$1.class
+new file mode 100644
+index 0000000..01b7701
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$1.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$2.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$2.class
+new file mode 100644
+index 0000000..efb1832
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$2.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$3.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$3.class
+new file mode 100644
+index 0000000..408d3d0
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$3.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$4.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$4.class
+new file mode 100644
+index 0000000..7ace6f8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$1$1$4.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class
+new file mode 100644
+index 0000000..cffe9dd
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class
+new file mode 100644
+index 0000000..28d8d4b
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class
+new file mode 100644
+index 0000000..e34319c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class
+new file mode 100644
+index 0000000..e5d9f56
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class
+new file mode 100644
+index 0000000..26a1562
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class
+new file mode 100644
+index 0000000..8fae0e4
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule.class
+new file mode 100644
+index 0000000..49ef380
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BlurModule.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BuildConfig.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BuildConfig.class
+new file mode 100644
+index 0000000..758d2b6
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/BuildConfig.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView$WhenMappings.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView$WhenMappings.class
+new file mode 100644
+index 0000000..8ff1784
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView$WhenMappings.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView.class
+new file mode 100644
+index 0000000..ca47b03
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/ExpoBlurView.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/InvalidTintValueException.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/InvalidTintValueException.class
+new file mode 100644
+index 0000000..c73d4ad
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/InvalidTintValueException.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/BlurMethod.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/BlurMethod.class
+new file mode 100644
+index 0000000..300b697
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/BlurMethod.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle$WhenMappings.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle$WhenMappings.class
+new file mode 100644
+index 0000000..d7e6012
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle$WhenMappings.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle.class b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle.class
+new file mode 100644
+index 0000000..9413369
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_dir/release/bundleLibRuntimeToDirRelease/expo/modules/blur/enums/TintStyle.class differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar
+new file mode 100644
+index 0000000..3608418
+Binary files /dev/null and b/node_modules/expo-blur/android/build/intermediates/runtime_library_classes_jar/release/bundleLibRuntimeToJarRelease/classes.jar differ
+diff --git a/node_modules/expo-blur/android/build/intermediates/symbol_list_with_package_name/release/generateReleaseRFile/package-aware-r.txt b/node_modules/expo-blur/android/build/intermediates/symbol_list_with_package_name/release/generateReleaseRFile/package-aware-r.txt
+new file mode 100644
+index 0000000..63d39fd
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/intermediates/symbol_list_with_package_name/release/generateReleaseRFile/package-aware-r.txt
+@@ -0,0 +1 @@
++expo.modules.blur
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab
+new file mode 100644
+index 0000000..083b69c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream
+new file mode 100644
+index 0000000..e5495c2
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len
+new file mode 100644
+index 0000000..5b7cb00
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at
+new file mode 100644
+index 0000000..1ecb710
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i
+new file mode 100644
+index 0000000..4507bef
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab
+new file mode 100644
+index 0000000..efcd04a
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream
+new file mode 100644
+index 0000000..d2c7cc6
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len
+new file mode 100644
+index 0000000..eaf29a8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at
+new file mode 100644
+index 0000000..3737e13
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i
+new file mode 100644
+index 0000000..4e9a458
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab
+new file mode 100644
+index 0000000..fa188b9
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream
+new file mode 100644
+index 0000000..d2c7cc6
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len
+new file mode 100644
+index 0000000..eaf29a8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at
+new file mode 100644
+index 0000000..da11706
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i
+new file mode 100644
+index 0000000..4e9a458
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab
+new file mode 100644
+index 0000000..a63bb68
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream
+new file mode 100644
+index 0000000..f50ddeb
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len
+new file mode 100644
+index 0000000..7066b00
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len
+new file mode 100644
+index 0000000..385642d
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at
+new file mode 100644
+index 0000000..f4bdaa4
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i
+new file mode 100644
+index 0000000..a353a50
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab
+new file mode 100644
+index 0000000..3bb38f8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream
+new file mode 100644
+index 0000000..88edcb1
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len
+new file mode 100644
+index 0000000..c73331e
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len
+new file mode 100644
+index 0000000..9e27f73
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at
+new file mode 100644
+index 0000000..a745a3a
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i
+new file mode 100644
+index 0000000..4785672
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab
+new file mode 100644
+index 0000000..afb299c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream
+new file mode 100644
+index 0000000..e5495c2
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len
+new file mode 100644
+index 0000000..5b7cb00
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at
+new file mode 100644
+index 0000000..d6b0590
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i
+new file mode 100644
+index 0000000..4507bef
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab
+new file mode 100644
+index 0000000..38744c1
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream
+new file mode 100644
+index 0000000..8efa15f
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len
+new file mode 100644
+index 0000000..10d6e6e
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at
+new file mode 100644
+index 0000000..527b87f
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i
+new file mode 100644
+index 0000000..c2e7449
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab
+new file mode 100644
+index 0000000..478958f
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream
+new file mode 100644
+index 0000000..2248221
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len
+new file mode 100644
+index 0000000..b730b19
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at
+new file mode 100644
+index 0000000..c202f16
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i
+new file mode 100644
+index 0000000..4e9a458
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab
+new file mode 100644
+index 0000000..4a12dea
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab
+@@ -0,0 +1,2 @@
++5
++0
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab
+new file mode 100644
+index 0000000..19a06ee
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream
+new file mode 100644
+index 0000000..e5495c2
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len
+new file mode 100644
+index 0000000..5b7cb00
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at
+new file mode 100644
+index 0000000..f6a4f17
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i
+new file mode 100644
+index 0000000..4507bef
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab
+new file mode 100644
+index 0000000..d1ed861
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream
+new file mode 100644
+index 0000000..1dd772c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len
+new file mode 100644
+index 0000000..62f3e6f
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len
+new file mode 100644
+index 0000000..ec8f944
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at
+new file mode 100644
+index 0000000..ffc6636
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i
+new file mode 100644
+index 0000000..e6ff6ac
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab
+new file mode 100644
+index 0000000..187cb6d
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream
+new file mode 100644
+index 0000000..48dad37
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len
+new file mode 100644
+index 0000000..f85034d
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.len
+new file mode 100644
+index 0000000..ba6b79d
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at
+new file mode 100644
+index 0000000..326f780
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i
+new file mode 100644
+index 0000000..b3ac044
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin
+new file mode 100644
+index 0000000..bc658cc
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin
+new file mode 100644
+index 0000000..6ca960b
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin differ
+diff --git a/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin
+new file mode 100644
+index 0000000..bed33f4
+Binary files /dev/null and b/node_modules/expo-blur/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin differ
+diff --git a/node_modules/expo-blur/android/build/outputs/logs/manifest-merger-release-report.txt b/node_modules/expo-blur/android/build/outputs/logs/manifest-merger-release-report.txt
+new file mode 100644
+index 0000000..cf58542
+--- /dev/null
++++ b/node_modules/expo-blur/android/build/outputs/logs/manifest-merger-release-report.txt
+@@ -0,0 +1,14 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml:1:1-2:12
++INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml:1:1-2:12
++	package
++		INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml
++uses-sdk
++INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml
++INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /Users/wassim/Documents/Etudes/BTS/Projet/Kiseki/node_modules/expo-blur/android/src/main/AndroidManifest.xml
+diff --git a/node_modules/expo-blur/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin b/node_modules/expo-blur/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin
+new file mode 100644
+index 0000000..b903d9f
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/META-INF/expo-blur_release.kotlin_module b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/META-INF/expo-blur_release.kotlin_module
+new file mode 100644
+index 0000000..9dbc290
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/META-INF/expo-blur_release.kotlin_module differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$1.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$1.class
+new file mode 100644
+index 0000000..01b7701
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$1.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$2.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$2.class
+new file mode 100644
+index 0000000..efb1832
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$2.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$3.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$3.class
+new file mode 100644
+index 0000000..408d3d0
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$3.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$4.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$4.class
+new file mode 100644
+index 0000000..7ace6f8
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$1$1$4.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class
+new file mode 100644
+index 0000000..cffe9dd
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$$inlined$View$1.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class
+new file mode 100644
+index 0000000..28d8d4b
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$OnViewDidUpdateProps$1.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class
+new file mode 100644
+index 0000000..e34319c
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$1.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class
+new file mode 100644
+index 0000000..e5d9f56
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$2.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class
+new file mode 100644
+index 0000000..26a1562
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$3.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class
+new file mode 100644
+index 0000000..8fae0e4
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule$definition$lambda$2$lambda$1$$inlined$Prop$4.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule.class
+new file mode 100644
+index 0000000..49ef380
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/BlurModule.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView$WhenMappings.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView$WhenMappings.class
+new file mode 100644
+index 0000000..8ff1784
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView$WhenMappings.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView.class
+new file mode 100644
+index 0000000..ca47b03
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/ExpoBlurView.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/InvalidTintValueException.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/InvalidTintValueException.class
+new file mode 100644
+index 0000000..c73d4ad
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/InvalidTintValueException.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/BlurMethod.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/BlurMethod.class
+new file mode 100644
+index 0000000..300b697
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/BlurMethod.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle$WhenMappings.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle$WhenMappings.class
+new file mode 100644
+index 0000000..d7e6012
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle$WhenMappings.class differ
+diff --git a/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle.class b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle.class
+new file mode 100644
+index 0000000..9413369
+Binary files /dev/null and b/node_modules/expo-blur/android/build/tmp/kotlin-classes/release/expo/modules/blur/enums/TintStyle.class differ
+diff --git a/node_modules/expo-blur/android/src/main/java/expo/modules/blur/BlurModule.kt b/node_modules/expo-blur/android/src/main/java/expo/modules/blur/BlurModule.kt
+index af2e59b..416132f 100644
+--- a/node_modules/expo-blur/android/src/main/java/expo/modules/blur/BlurModule.kt
++++ b/node_modules/expo-blur/android/src/main/java/expo/modules/blur/BlurModule.kt
+@@ -26,6 +26,10 @@ class BlurModule : Module() {
+         view.setBlurMethod(experimentalBlurMethod)
+       }
+ 
++      Prop("clipBorderRadius") { view: ExpoBlurView, radius: Float ->
++        view.setClipBorderRadius(radius)
++      }
++
+       OnViewDidUpdateProps { view: ExpoBlurView ->
+         view.applyTint()
+       }
+diff --git a/node_modules/expo-blur/android/src/main/java/expo/modules/blur/ExpoBlurView.kt b/node_modules/expo-blur/android/src/main/java/expo/modules/blur/ExpoBlurView.kt
+index c0559c8..2d34ad7 100644
+--- a/node_modules/expo-blur/android/src/main/java/expo/modules/blur/ExpoBlurView.kt
++++ b/node_modules/expo-blur/android/src/main/java/expo/modules/blur/ExpoBlurView.kt
+@@ -2,8 +2,13 @@ package expo.modules.blur
+ 
+ import android.annotation.SuppressLint
+ import android.content.Context
++import android.graphics.Canvas
+ import android.graphics.Color
++import android.graphics.Path
++import android.graphics.RectF
+ import android.os.Build
++import android.util.Log
++import android.view.View
+ import android.view.ViewGroup
+ import eightbitlab.com.blurview.BlurView
+ import eightbitlab.com.blurview.RenderEffectBlur
+@@ -20,6 +25,9 @@ class ExpoBlurView(context: Context, appContext: AppContext) : ExpoView(context,
+   private var blurRadius = 50f
+   internal var tint: TintStyle = TintStyle.DEFAULT
+   private var isBlurViewConfigured = false
++  private var clipRadiusPx = 0f
++  private val clipPath = Path()
++  private val clipRect = RectF()
+ 
+   private val blurView = BlurView(context).also {
+     it.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+@@ -72,6 +80,25 @@ class ExpoBlurView(context: Context, appContext: AppContext) : ExpoView(context,
+     setBlurRadius(blurRadius)
+   }
+ 
++  fun setClipBorderRadius(radiusDp: Float) {
++    clipRadiusPx = radiusDp * resources.displayMetrics.density
++    invalidate()
++  }
++
++  override fun dispatchDraw(canvas: Canvas) {
++    if (clipRadiusPx > 0f) {
++      clipRect.set(0f, 0f, width.toFloat(), height.toFloat())
++      clipPath.reset()
++      clipPath.addRoundRect(clipRect, clipRadiusPx, clipRadiusPx, Path.Direction.CW)
++      canvas.save()
++      canvas.clipPath(clipPath)
++      super.dispatchDraw(canvas)
++      canvas.restore()
++    } else {
++      super.dispatchDraw(canvas)
++    }
++  }
++
+   fun applyTint() {
+     if (!isBlurViewConfigured) return
+ 
+@@ -101,10 +128,22 @@ class ExpoBlurView(context: Context, appContext: AppContext) : ExpoView(context,
+     val rootView = findOptimalBlurRoot()
+     val decorView = appContext.throwingActivity.window?.decorView
+ 
++    Log.d("ExpoBlurView", "=== configureBlurView ===")
++    Log.d("ExpoBlurView", "rootView class: ${rootView.javaClass.name}")
++    Log.d("ExpoBlurView", "rootView id: ${rootView.id} (android.R.id.content = ${android.R.id.content})")
++    Log.d("ExpoBlurView", "rootView size: ${rootView.width}x${rootView.height}")
++    Log.d("ExpoBlurView", "rootView childCount: ${rootView.childCount}")
++    Log.d("ExpoBlurView", "decorView bg: ${decorView?.background}")
++    Log.d("ExpoBlurView", "API level: ${Build.VERSION.SDK_INT} (S=${Build.VERSION_CODES.S})")
++    Log.d("ExpoBlurView", "blurMethod: $blurMethod, blurRadius: $blurRadius, tint: $tint")
++    dumpViewHierarchy(rootView, 0)
++
+     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
++      Log.d("ExpoBlurView", "Using RenderEffectBlur")
+       blurView.setupWith(rootView, RenderEffectBlur())
+         .setFrameClearDrawable(decorView?.background)
+     } else {
++      Log.d("ExpoBlurView", "Using RenderScriptBlur (legacy)")
+       @Suppress("DEPRECATION")
+       blurView.setupWith(rootView, eightbitlab.com.blurview.RenderScriptBlur(context))
+         .setFrameClearDrawable(decorView?.background)
+@@ -114,6 +153,19 @@ class ExpoBlurView(context: Context, appContext: AppContext) : ExpoView(context,
+     applyCurrentBlurSettings()
+   }
+ 
++  private fun dumpViewHierarchy(view: View, depth: Int) {
++    if (depth > 4) return // max 4 levels deep
++    val indent = "  ".repeat(depth)
++    val info = "${indent}${view.javaClass.simpleName}(${view.javaClass.name}) " +
++      "${view.width}x${view.height} bg=${view.background != null}"
++    Log.d("ExpoBlurView", info)
++    if (view is ViewGroup) {
++      for (i in 0 until view.childCount) {
++        dumpViewHierarchy(view.getChildAt(i), depth + 1)
++      }
++    }
++  }
++
+   /**
+    * Apply blur settings that may have been set before the BlurView was configured.
+    */
+@@ -128,8 +180,7 @@ class ExpoBlurView(context: Context, appContext: AppContext) : ExpoView(context,
+    * Falls back to app root if no Screen is found.
+    */
+   private fun findOptimalBlurRoot(): ViewGroup {
+-    val screenAncestor = findNearestScreenAncestor()
+-    return screenAncestor ?: getAppRootFallback()
++    return getAppRootFallback()
+   }
+ 
+   /**
+diff --git a/node_modules/expo-blur/expo-module.config.json b/node_modules/expo-blur/expo-module.config.json
+index 22c5736..c8a8fdf 100644
+--- a/node_modules/expo-blur/expo-module.config.json
++++ b/node_modules/expo-blur/expo-module.config.json
+@@ -4,12 +4,6 @@
+     "modules": ["BlurViewModule"]
+   },
+   "android": {
+-    "modules": ["expo.modules.blur.BlurModule"],
+-    "publication": {
+-      "groupId": "host.exp.exponent",
+-      "artifactId": "expo.modules.blur",
+-      "version": "15.0.8",
+-      "repository": "local-maven-repo"
+-    }
++    "modules": ["expo.modules.blur.BlurModule"]
+   }
+ }
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar
+deleted file mode 100644
+index 8116c29..0000000
+Binary files a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar and /dev/null differ
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.md5 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.md5
+deleted file mode 100644
+index 8823106..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.md5
++++ /dev/null
+@@ -1 +0,0 @@
+-7d2d9df77c6249e349898fb142346e0d
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha1 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha1
+deleted file mode 100644
+index 541e579..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha1
++++ /dev/null
+@@ -1 +0,0 @@
+-6c8a896fd0015549c757f6ab50c4ee0934ac851b
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha256 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha256
+deleted file mode 100644
+index b2b9c65..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha256
++++ /dev/null
+@@ -1 +0,0 @@
+-af10bee78d94f164a4b0b2e007d6a082f3b1e40c57293ce1b79365677656ffd7
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha512 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha512
+deleted file mode 100644
+index 93db020..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8-sources.jar.sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-bab50f7da1f76c0b2c4842388399099b535f6c8dc1ceef1fa130615fc706560d36b267162660ae86290530546346f807b89557ad854ff8ccc921cf00a9660f8c
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar
+deleted file mode 100644
+index 9e6e725..0000000
+Binary files a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar and /dev/null differ
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.md5 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.md5
+deleted file mode 100644
+index b732352..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.md5
++++ /dev/null
+@@ -1 +0,0 @@
+-22650a975176205b49f9c25c7fb3918d
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha1 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha1
+deleted file mode 100644
+index e9132d4..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha1
++++ /dev/null
+@@ -1 +0,0 @@
+-d462c1cfc862cc29c57d65286073d165308053b2
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha256 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha256
+deleted file mode 100644
+index cdcb681..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha256
++++ /dev/null
+@@ -1 +0,0 @@
+-fa0631bb002f5c8a9ff1fe74c12ec4683f031a495445294a7266818eee83aa89
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha512 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha512
+deleted file mode 100644
+index d2cbe12..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.aar.sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-5b49bab57362b812d22c36be489da4cb470361a88f7cc765eb391c930a8d05ddc3a6b49f97b4fead816461fb8bc57376070e8cf3888e1d9293e320927a6eea9a
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module
+deleted file mode 100644
+index 93fe4da..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module
++++ /dev/null
+@@ -1,94 +0,0 @@
+-{
+-  "formatVersion": "1.1",
+-  "component": {
+-    "group": "host.exp.exponent",
+-    "module": "expo.modules.blur",
+-    "version": "15.0.8",
+-    "attributes": {
+-      "org.gradle.status": "release"
+-    }
+-  },
+-  "createdBy": {
+-    "gradle": {
+-      "version": "8.14.3"
+-    }
+-  },
+-  "variants": [
+-    {
+-      "name": "releaseVariantReleaseApiPublication",
+-      "attributes": {
+-        "org.gradle.category": "library",
+-        "org.gradle.dependency.bundling": "external",
+-        "org.gradle.libraryelements": "aar",
+-        "org.gradle.usage": "java-api"
+-      },
+-      "files": [
+-        {
+-          "name": "expo.modules.blur-15.0.8.aar",
+-          "url": "expo.modules.blur-15.0.8.aar",
+-          "size": 23309,
+-          "sha512": "5b49bab57362b812d22c36be489da4cb470361a88f7cc765eb391c930a8d05ddc3a6b49f97b4fead816461fb8bc57376070e8cf3888e1d9293e320927a6eea9a",
+-          "sha256": "fa0631bb002f5c8a9ff1fe74c12ec4683f031a495445294a7266818eee83aa89",
+-          "sha1": "d462c1cfc862cc29c57d65286073d165308053b2",
+-          "md5": "22650a975176205b49f9c25c7fb3918d"
+-        }
+-      ]
+-    },
+-    {
+-      "name": "releaseVariantReleaseRuntimePublication",
+-      "attributes": {
+-        "org.gradle.category": "library",
+-        "org.gradle.dependency.bundling": "external",
+-        "org.gradle.libraryelements": "aar",
+-        "org.gradle.usage": "java-runtime"
+-      },
+-      "dependencies": [
+-        {
+-          "group": "org.jetbrains.kotlin",
+-          "module": "kotlin-stdlib-jdk7",
+-          "version": {
+-            "requires": "2.1.20"
+-          }
+-        },
+-        {
+-          "group": "com.github.Dimezis",
+-          "module": "BlurView",
+-          "version": {
+-            "requires": "version-2.0.6"
+-          }
+-        }
+-      ],
+-      "files": [
+-        {
+-          "name": "expo.modules.blur-15.0.8.aar",
+-          "url": "expo.modules.blur-15.0.8.aar",
+-          "size": 23309,
+-          "sha512": "5b49bab57362b812d22c36be489da4cb470361a88f7cc765eb391c930a8d05ddc3a6b49f97b4fead816461fb8bc57376070e8cf3888e1d9293e320927a6eea9a",
+-          "sha256": "fa0631bb002f5c8a9ff1fe74c12ec4683f031a495445294a7266818eee83aa89",
+-          "sha1": "d462c1cfc862cc29c57d65286073d165308053b2",
+-          "md5": "22650a975176205b49f9c25c7fb3918d"
+-        }
+-      ]
+-    },
+-    {
+-      "name": "releaseVariantReleaseSourcePublication",
+-      "attributes": {
+-        "org.gradle.category": "documentation",
+-        "org.gradle.dependency.bundling": "external",
+-        "org.gradle.docstype": "sources",
+-        "org.gradle.usage": "java-runtime"
+-      },
+-      "files": [
+-        {
+-          "name": "expo.modules.blur-15.0.8-sources.jar",
+-          "url": "expo.modules.blur-15.0.8-sources.jar",
+-          "size": 4740,
+-          "sha512": "bab50f7da1f76c0b2c4842388399099b535f6c8dc1ceef1fa130615fc706560d36b267162660ae86290530546346f807b89557ad854ff8ccc921cf00a9660f8c",
+-          "sha256": "af10bee78d94f164a4b0b2e007d6a082f3b1e40c57293ce1b79365677656ffd7",
+-          "sha1": "6c8a896fd0015549c757f6ab50c4ee0934ac851b",
+-          "md5": "7d2d9df77c6249e349898fb142346e0d"
+-        }
+-      ]
+-    }
+-  ]
+-}
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.md5 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.md5
+deleted file mode 100644
+index 0301d03..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.md5
++++ /dev/null
+@@ -1 +0,0 @@
+-4974fedbb9b1537a47d0dafddcea2c4b
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha1 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha1
+deleted file mode 100644
+index 8fcac2e..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha1
++++ /dev/null
+@@ -1 +0,0 @@
+-b7fc5cac3b15a1fde8218561b92a23584eacd9dc
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha256 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha256
+deleted file mode 100644
+index 499dd30..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha256
++++ /dev/null
+@@ -1 +0,0 @@
+-ff38f630f5ba4d68528a06cd40c24984322ac779359de0f6673162ce96037b3f
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha512 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha512
+deleted file mode 100644
+index 41243ef..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.module.sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-7b3cbc677d13218ac5e1f04f71295542f3e1b76376c0910a6697ed736c698b4a66cd72108d5c6a41106de19cddf75035147e590849a2959da98936e2e43dbcb5
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom
+deleted file mode 100644
+index b095e1c..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom
++++ /dev/null
+@@ -1,41 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+-  <!-- This module was also published with a richer model, Gradle metadata,  -->
+-  <!-- which should be used instead. Do not delete the following line which  -->
+-  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+-  <!-- that they should prefer consuming it instead. -->
+-  <!-- do_not_remove: published-with-gradle-metadata -->
+-  <modelVersion>4.0.0</modelVersion>
+-  <groupId>host.exp.exponent</groupId>
+-  <artifactId>expo.modules.blur</artifactId>
+-  <version>15.0.8</version>
+-  <packaging>aar</packaging>
+-  <name>expo.modules.blur</name>
+-  <url>https://github.com/expo/expo</url>
+-  <licenses>
+-    <license>
+-      <name>MIT License</name>
+-      <url>https://github.com/expo/expo/blob/main/LICENSE</url>
+-    </license>
+-  </licenses>
+-  <scm>
+-    <connection>https://github.com/expo/expo.git</connection>
+-    <developerConnection>https://github.com/expo/expo.git</developerConnection>
+-    <url>https://github.com/expo/expo</url>
+-  </scm>
+-  <dependencies>
+-    <dependency>
+-      <groupId>org.jetbrains.kotlin</groupId>
+-      <artifactId>kotlin-stdlib-jdk7</artifactId>
+-      <version>2.1.20</version>
+-      <scope>runtime</scope>
+-    </dependency>
+-    <dependency>
+-      <groupId>com.github.Dimezis</groupId>
+-      <artifactId>BlurView</artifactId>
+-      <version>version-2.0.6</version>
+-      <scope>runtime</scope>
+-    </dependency>
+-  </dependencies>
+-</project>
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.md5 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.md5
+deleted file mode 100644
+index 007406b..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.md5
++++ /dev/null
+@@ -1 +0,0 @@
+-619166fe9dbe59a4fef85919ed6b6977
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha1 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha1
+deleted file mode 100644
+index da62528..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha1
++++ /dev/null
+@@ -1 +0,0 @@
+-b73a260f9466cde5fbc674d89915f9ab132f3447
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha256 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha256
+deleted file mode 100644
+index dc15113..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha256
++++ /dev/null
+@@ -1 +0,0 @@
+-62675286df74c19c003d78dd7179529ed76cd260efad64104642d75cc5403455
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha512 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha512
+deleted file mode 100644
+index 9f5f422..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/15.0.8/expo.modules.blur-15.0.8.pom.sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-314be870cce94fce29dcfb478816ae83574bf771df3d8225d98275876501619bfc17c12e04c7f62bd26e6da3ea0e313e6ac725a7f24457ad70758261906a43b5
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml
+deleted file mode 100644
+index 6dd07a8..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml
++++ /dev/null
+@@ -1,13 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<metadata>
+-  <groupId>host.exp.exponent</groupId>
+-  <artifactId>expo.modules.blur</artifactId>
+-  <versioning>
+-    <latest>15.0.8</latest>
+-    <release>15.0.8</release>
+-    <versions>
+-      <version>15.0.8</version>
+-    </versions>
+-    <lastUpdated>20251205064603</lastUpdated>
+-  </versioning>
+-</metadata>
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.md5 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.md5
+deleted file mode 100644
+index c77f294..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.md5
++++ /dev/null
+@@ -1 +0,0 @@
+-f1a1558778880145c59b8c7d12d6853c
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha1 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha1
+deleted file mode 100644
+index 9f08371..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha1
++++ /dev/null
+@@ -1 +0,0 @@
+-51246ed50fb8dc2b18b2a0c0815ffdfa67eb5bf8
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha256 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha256
+deleted file mode 100644
+index 23403b7..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha256
++++ /dev/null
+@@ -1 +0,0 @@
+-b912b0c6b12a1b9d3d3f44dfb6eaf238030cdfb03ce3df7dc1d4b848da94f2cc
+\ No newline at end of file
+diff --git a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha512 b/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha512
+deleted file mode 100644
+index 0302773..0000000
+--- a/node_modules/expo-blur/local-maven-repo/host/exp/exponent/expo.modules.blur/maven-metadata.xml.sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-aae038e6f1460c3a5229c0686ca82d7694525579e9288f632ddd60ed58f67422f5b27f8f34d1f2cf2946089b241b0115c76796c65db3fc77a2e188e651a5be53
+\ No newline at end of file

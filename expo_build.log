@@ -1,0 +1,10 @@
+› Android package name: com.wassim_ztn.myapp
+- Creating native directory (./android)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json
+Dependencies in the package.json changed:
+  expo, react, react-native
+CommandError: Input is required, but 'npx expo' is in non-interactive mode.
+Required input:
+> Install the updated dependencies?

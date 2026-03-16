@@ -59,7 +59,7 @@ export function SubmitQuestionCard({ groupId, slotId, onSubmitted }) {
                                             : "rgba(255, 255, 255, 0.05)",
                                         borderWidth: 1,
                                         borderColor: mode === "bank" ? colors.success : "rgba(255, 255, 255, 0.1)",
-                                    }, children: _jsx(KText, { variant: "body", color: mode === "bank" ? colors.textPrimary : colors.textSecondary, children: "Banque auto" }) })] }), mode === "custom" ? (_jsxs(_Fragment, { children: [_jsx(KInput, { label: "Ta question", value: questionText, onChangeText: (t) => setQuestionText(t.slice(0, 200)), placeholder: "Qui est le plus susceptible de...", multiline: true, maxLength: 200, style: { minHeight: 80, textAlignVertical: "top" }, containerStyle: { marginBottom: spacing.xs } }), _jsxs(KText, { variant: "caption", color: trimmed.length < 10
+                                    }, children: _jsx(KText, { variant: "body", color: mode === "bank" ? colors.textPrimary : colors.textSecondary, children: "Auto" }) })] }), mode === "custom" ? (_jsxs(_Fragment, { children: [_jsx(KInput, { label: "Ta question", value: questionText, onChangeText: (t) => setQuestionText(t.slice(0, 200)), placeholder: "Qui est le plus susceptible de...", multiline: true, maxLength: 200, style: { minHeight: 80, textAlignVertical: "top" }, containerStyle: { marginBottom: spacing.xs } }), _jsxs(KText, { variant: "caption", color: trimmed.length < 10
                                         ? colors.textMuted
                                         : trimmed.length >= 190
                                             ? colors.error

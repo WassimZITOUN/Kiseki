@@ -58,11 +58,12 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
       style={[
         {
           borderRadius: resolvedRadius,
+          overflow: Platform.OS === "android" ? "hidden" : undefined,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.4,
           shadowRadius: 20,
-          elevation: 12,
+          elevation: Platform.OS === "android" ? 0 : 12,
         },
         style,
       ]}
@@ -78,6 +79,7 @@ export function GlassCard({ children, style, intensity = 40 }: Props) {
           intensity={intensity}
           tint="dark"
           experimentalBlurMethod="dimezisBlurView"
+          clipBorderRadius={resolvedRadius}
           style={StyleSheet.absoluteFill}
         />
       </View>

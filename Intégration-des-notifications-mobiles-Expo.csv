@@ -1,0 +1,6 @@
+"Type de Notification","Trigger Technique","Copywriting Suggéré (Modern & Fun)","Objectif UX / Psychologie"
+"Question du matin","pg_cron à 09:00 UTC","""Le tribunal est ouvert ⚖️ Une nouvelle question t'attend dans [Groupe].""","Rituel : Créer l'habitude quotidienne. Utilisation d'emojis pour casser la monotonie visuelle."
+"Social Proof (Nouveau !)","Webhook sur table votes","""Quelqu'un vient de voter pour toi dans [Groupe] 👀 Connecte-toi pour le découvrir ce soir !""","Curiosité & FOMO : Ne pas dire qui a voté. C'est la mécanique la plus puissante des apps comme Bereal ou Slay."
+"Rappel (Dernière chance)","1 heure avant l'heure de reveal du groupe pour ceux qui n'ont pas voté.","""Tic tac ⏳ Plus qu'une heure pour balancer tes potes dans [Groupe] !""","Urgence (Scarcity) : Pousser les retardataires à agir via le widget ou l'app pour atteindre l'objectif de >70% de participation."
+"Reveal (Résultats)","pg_cron à 20:00 ","""Les masques tombent 🎭 Viens voir quel amitié a été ruinée dans [Groupe] !""","Récompense / Climax : C'est le ""payoff"" de la journée. Deep link direct vers le PodiumView."
+"Nouveau Membre","Insert sur group_members","""Fresh meat 🥩 [Nom] vient de rejoindre [Groupe]. Préparez les dossiers.""","Validation sociale : Montre que le groupe est vivant et grandit."

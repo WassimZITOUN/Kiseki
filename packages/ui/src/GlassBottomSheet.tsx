@@ -66,12 +66,13 @@ function SheetContent({ children }: { children: React.ReactNode }) {
       style={{
         borderTopLeftRadius: radii.xl,
         borderTopRightRadius: radii.xl,
+        overflow: Platform.OS === "android" ? "hidden" : undefined,
         maxHeight: "80%",
         shadowColor: colors.shadow.color,
         shadowOffset: { width: 0, height: -12 },
         shadowOpacity: 0.2,
         shadowRadius: 20,
-        elevation: 16,
+        elevation: Platform.OS === "android" ? 0 : 16,
       }}
     >
       {/* Blur layer */}
@@ -87,6 +88,7 @@ function SheetContent({ children }: { children: React.ReactNode }) {
           intensity={60}
           tint="dark"
           experimentalBlurMethod="dimezisBlurView"
+          clipBorderRadius={radii.xl}
           style={StyleSheet.absoluteFill}
         />
       </View>

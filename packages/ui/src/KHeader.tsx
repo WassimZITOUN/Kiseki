@@ -36,11 +36,12 @@ export function KHeader({ title, onBack, rightAction }: Props) {
       <View
         style={{
           borderRadius: radii.lg,
+          overflow: Platform.OS === "android" ? "hidden" : undefined,
           shadowColor: colors.shadow.color,
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.15,
           shadowRadius: 15,
-          elevation: 8,
+          elevation: Platform.OS === "android" ? 0 : 8,
         }}
       >
         {/* Blur layer (native only) */}
@@ -55,6 +56,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
               intensity={30}
               tint="dark"
               experimentalBlurMethod="dimezisBlurView"
+              clipBorderRadius={radii.lg}
               style={StyleSheet.absoluteFill}
             />
           </View>
@@ -103,6 +105,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                   width: 44,
                   height: 44,
                   borderRadius: 22,
+                  overflow: Platform.OS === "android" ? "hidden" : undefined,
                   ...(isWeb
                     ? {}
                     : {
@@ -110,7 +113,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                         shadowOffset: { width: 0, height: 4 },
                         shadowOpacity: 0.1,
                         shadowRadius: 8,
-                        elevation: 4,
+                        elevation: Platform.OS === "android" ? 0 : 4,
                       }),
                 }}
               >
@@ -126,6 +129,7 @@ export function KHeader({ title, onBack, rightAction }: Props) {
                       intensity={25}
                       tint="dark"
                       experimentalBlurMethod="dimezisBlurView"
+                      clipBorderRadius={22}
                       style={StyleSheet.absoluteFill}
                     />
                   </View>

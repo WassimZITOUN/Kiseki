@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "548c9d57-0a07-46f4-afeb-e2177f3c3fbf"
+      }
+    },
+    "owner": "wassim_ztn",
+    "android": {
+      "package": "com.wassim_ztn.myapp"
+    }
+  }
+}

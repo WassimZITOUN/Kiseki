@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { View, TouchableOpacity, Image, Alert, ScrollView, Platform } from "react-native";
 import { useAuth } from "../../providers/auth-provider";
 import { getSupabase } from "../../utils/supabase";
-import { pickImage, uploadAvatar } from "../../utils/avatar";
+import { deleteAvatarByPublicUrl, pickImage, uploadAvatar } from "../../utils/avatar";
 import {
   AuroraScreenWrapper,
   KText,
@@ -77,9 +77,7 @@ export function EditProfileScreen({ onComplete, onCancel }: Props) {
         .update({
           display_name: displayName.trim(),
           username: username.trim().toLowerCase(),
-          ...(avatarUrl !== currentAvatarUrl
-            ? { avatar_url: avatarUrl }
-            : {}),
+          avatar_url: avatarUrl ?? null,
         })
         .eq("id", user.id);
 
@@ -94,6 +92,19 @@ export function EditProfileScreen({ onComplete, onCancel }: Props) {
         }
         setLoading(false);
         return;
+      }
+
+      if (
+        imageUri &&
+        currentAvatarUrl &&
+        avatarUrl &&
+        currentAvatarUrl !== avatarUrl
+      ) {
+        try {
+          await deleteAvatarByPublicUrl(currentAvatarUrl);
+        } catch (deleteError: any) {
+          console.warn("Old avatar cleanup failed:", deleteError?.message ?? deleteError);
+        }
       }
 
       await refreshProfile();
